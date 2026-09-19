@@ -59,7 +59,7 @@ export function SiteHeader() {
           <span className="sr-only">Centerville-Washington Park District</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-0.5 xl:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-0.5 lg:flex">
           {nav.map((item) => {
             const active =
               pathname === item.href || pathname.startsWith(`${item.href}/`);
@@ -68,7 +68,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={`focus-ring rounded-sm px-2.5 py-2 text-sm font-medium transition-colors ${
-                  active ? "text-white" : "text-white/75 hover:text-white"
+                  active ? "text-white" : "text-white/90 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -98,7 +98,7 @@ export function SiteHeader() {
           </label>
         </nav>
 
-        <div className="flex items-center gap-2 xl:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <SiteSearch />
           <button
             type="button"
@@ -126,7 +126,7 @@ export function SiteHeader() {
       {open && (
         <div
           id="mobile-nav"
-          className="section-pad border-t border-white/15 bg-forest-deep py-3 xl:hidden"
+          className="section-pad border-t border-white/15 bg-forest-deep py-3 lg:hidden"
         >
           <nav aria-label="Mobile" className="flex flex-col gap-0.5">
             {nav.map((item) => (

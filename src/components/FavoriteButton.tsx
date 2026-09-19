@@ -31,7 +31,7 @@ export function useFavorites() {
   return { ids, toggle, has };
 }
 
-export function FavoriteButton({ slug, name }: { slug: string; name: string }) {
+export function FavoriteButton({ slug }: { slug: string; name?: string }) {
   const { has, toggle } = useFavorites();
   const on = has(slug);
 
@@ -44,10 +44,11 @@ export function FavoriteButton({ slug, name }: { slug: string; name: string }) {
           : "border-line bg-paper text-ink-muted hover:border-forest/30 hover:text-forest"
       }`}
       aria-pressed={on}
+      aria-label={on ? "Remove from saved parks" : "Save park"}
       onClick={() => toggle(slug)}
     >
       <span aria-hidden>{on ? "★" : "☆"}</span>
-      {on ? "Saved" : `Save ${name}`}
+      {on ? "Saved" : "Save"}
     </button>
   );
 }
