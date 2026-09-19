@@ -74,7 +74,6 @@ export function SiteFooter() {
         <div>
           <p
             className="font-[family-name:var(--font-display)] text-2xl leading-tight tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 40, "WONK" 0' }}
           >
             Centerville-Washington
             <br />

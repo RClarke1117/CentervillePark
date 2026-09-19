@@ -60,7 +60,6 @@ export default async function ParkDetailPage({ params }: Props) {
           </p>
           <h1
             className="mt-3 font-[family-name:var(--font-display)] text-5xl tracking-tight md:text-6xl"
-            style={{ fontVariationSettings: '"SOFT" 40' }}
           >
             {park.name}
           </h1>
@@ -75,7 +74,6 @@ export default async function ParkDetailPage({ params }: Props) {
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 30' }}
           >
             Amenities at a glance
           </h2>
@@ -100,7 +98,6 @@ export default async function ParkDetailPage({ params }: Props) {
           <div className="mt-12">
             <h2
               className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-              style={{ fontVariationSettings: '"SOFT" 30' }}
             >
               Upcoming events
             </h2>
@@ -169,7 +166,6 @@ export default async function ParkDetailPage({ params }: Props) {
       <div className="section-pad border-t border-line bg-mist/40 py-14 pb-24">
         <h2
           className="font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-4xl"
-          style={{ fontVariationSettings: '"SOFT" 30' }}
         >
           Programs at {park.name}
         </h2>

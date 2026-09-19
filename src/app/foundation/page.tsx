@@ -37,7 +37,6 @@ export default function FoundationPage() {
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-3xl tracking-tight text-foundation"
-            style={{ fontVariationSettings: '"SOFT" 20' }}
           >
             Ways to give
           </h2>

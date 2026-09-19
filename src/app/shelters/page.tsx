@@ -35,7 +35,6 @@ export default function SheltersPage() {
         <div className="mb-10">
           <h2
             className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 30' }}
           >
             Parks with shelters
           </h2>

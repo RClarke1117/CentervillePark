@@ -4,15 +4,16 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { MobileDock } from "@/components/MobileDock";
 import { BackToTop } from "@/components/BackToTop";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Domine, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const display = Fraunces({
+const display = Domine({
   variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const sans = Plus_Jakarta_Sans({
+const sans = Montserrat({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],

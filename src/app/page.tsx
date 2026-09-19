@@ -61,7 +61,6 @@ export default function HomePage() {
           </p>
           <h1
             className="reveal reveal-delay-1 mt-4 max-w-4xl font-[family-name:var(--font-display)] text-[clamp(2.75rem,8vw,5.75rem)] leading-[0.95] tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 50, "WONK" 0, "opsz" 144' }}
           >
             Your community&apos;s
             <br />
@@ -92,7 +91,6 @@ export default function HomePage() {
             <div className="max-w-2xl">
               <h2
                 className="font-[family-name:var(--font-display)] text-3xl tracking-tight text-ink md:text-4xl"
-                style={{ fontVariationSettings: '"SOFT" 30' }}
               >
                 Plan your park experience
               </h2>
@@ -138,7 +136,6 @@ export default function HomePage() {
             <div className="max-w-xl">
               <h2
                 className="font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-4xl"
-                style={{ fontVariationSettings: '"SOFT" 30' }}
               >
                 Parks worth knowing by name
               </h2>
@@ -190,7 +187,6 @@ export default function HomePage() {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2
                 className="font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-4xl"
-                style={{ fontVariationSettings: '"SOFT" 30' }}
               >
                 Upcoming events
               </h2>
@@ -261,7 +257,6 @@ export default function HomePage() {
               </p>
               <h2
                 className="mt-4 font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-5xl"
-                style={{ fontVariationSettings: '"SOFT" 20' }}
               >
                 Give the backyard a future.
               </h2>

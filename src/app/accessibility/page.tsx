@@ -49,7 +49,6 @@ export default function AccessibilityPage() {
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 30' }}
           >
             Our commitment
           </h2>
@@ -72,7 +71,6 @@ export default function AccessibilityPage() {
 
           <h2
             className="mt-12 font-[family-name:var(--font-display)] text-2xl tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 30' }}
           >
             Known limitations
           </h2>

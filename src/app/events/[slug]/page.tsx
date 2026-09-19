@@ -72,7 +72,6 @@ export default async function EventDetailPage({ params }: Props) {
           </p>
           <h1
             className="mt-3 max-w-3xl font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
-            style={{ fontVariationSettings: '"SOFT" 40' }}
           >
             {event.title}
           </h1>
