@@ -21,7 +21,7 @@ export default function NewsPage() {
           {news.map((item) => (
             <li key={item.slug}>
               <article>
-                <div className="relative mb-4 aspect-[16/10] overflow-hidden">
+                <div className="media-frame relative mb-4 aspect-[16/10] overflow-hidden">
                   <Image
                     src={item.image}
                     alt=""

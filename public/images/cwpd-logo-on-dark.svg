@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 112" role="img" aria-label="Centerville-Washington Park District">
+  <g fill="#ffffff">
+    <rect x="47" y="20" width="8" height="74" rx="1"/>
+    <polygon points="51,12 24,46 78,46"/>
+    <polygon points="51,34 16,70 86,70"/>
+    <polygon points="51,56 10,92 92,92"/>
+  </g>
+  <text x="112" y="48" fill="#ffffff" font-family="Georgia, Times New Roman, serif" font-style="italic" font-size="26">Centerville-Washington</text>
+  <text x="112" y="88" fill="#ffffff" font-family="Georgia, Times New Roman, serif" font-size="32" font-weight="700" letter-spacing="1.2">PARK DISTRICT</text>
+</svg>

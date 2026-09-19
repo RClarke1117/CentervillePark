@@ -93,14 +93,13 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/images/cwpd-logo.png"
+            src="/images/cwpd-logo-on-dark.png"
             alt="Centerville-Washington Park District"
-            width={180}
-            height={35}
-            className="h-7 w-auto brightness-0 invert md:h-8"
+            width={280}
+            height={59}
+            className="h-10 w-auto md:h-12"
             priority
           />
-          <span className="sr-only">Centerville-Washington Park District</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-0.5 lg:flex">
@@ -130,18 +129,6 @@ export function SiteHeader() {
           <div className="ml-2">
             <SiteSearch />
           </div>
-          <label className="ml-1 flex items-center">
-            <span className="sr-only">Language</span>
-            <select
-              className="focus-ring cursor-pointer rounded-sm border border-white/25 bg-forest-deep px-2 py-1.5 text-xs font-medium text-white"
-              defaultValue="en"
-              aria-label="Language translation"
-            >
-              <option value="en">EN</option>
-              <option value="es">ES</option>
-              <option value="zh">中文</option>
-            </select>
-          </label>
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">
