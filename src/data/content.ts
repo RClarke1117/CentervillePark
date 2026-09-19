@@ -54,7 +54,7 @@ export const events: ParkEvent[] = [
     excerpt:
       "A festive, family-friendly stroll designed especially for preschoolers with sponsored stations along the way.",
     body: "Join CWPD and local businesses for a festive, family-friendly stroll! Designed especially for preschoolers, this playful walk invites children to stop at sponsored stations along the route.",
-    image: "/images/park-meadow.jpg",
+    image: "/images/parks/forest-field.jpg",
     recdeskProgramId: "5628",
   },
   {
@@ -66,7 +66,7 @@ export const events: ParkEvent[] = [
     excerpt:
       "An afternoon of adapted events for all abilities — archery, kickball, and more at Activity Center Park.",
     body: "Join us at the accessible and exciting Activity Center Park for an afternoon of adapted events created to serve all abilities — including archery, kickball, and more.",
-    image: "/images/playground.jpg",
+    image: "/images/parks/activity-center.jpg",
     recdeskProgramId: "5535",
   },
   {
@@ -78,7 +78,7 @@ export const events: ParkEvent[] = [
     excerpt:
       "Second date of the preschool Halloween stroll with local business stations and fall fun.",
     body: "Join CWPD and local businesses for a festive, family-friendly stroll designed especially for preschoolers — a second chance to hop through the stations.",
-    image: "/images/park-meadow.jpg",
+    image: "/images/playground.jpg",
     recdeskProgramId: "5629",
   },
   {
@@ -90,7 +90,7 @@ export const events: ParkEvent[] = [
     excerpt:
       "A glow-in-the-dark fun run and walk on a lit half-mile trail at Schoolhouse Park.",
     body: "A special glow-in-the-dark fun run and walk! Kick off on an approximately 0.5-mile paved trail lined with colorful lights and glow-in-the-dark décor.",
-    image: "/images/park-community.jpg",
+    image: "/images/parks/schoolhouse.jpg",
     recdeskProgramId: "5413",
   },
   {
@@ -102,7 +102,7 @@ export const events: ParkEvent[] = [
     excerpt:
       "Explore community vehicles, collect treats, and climb aboard at this fall family favorite.",
     body: "A fall family favorite! Explore a lineup of awesome trucks and community vehicles while collecting treats and giveaways along the way.",
-    image: "/images/park-community.jpg",
+    image: "/images/parks/oak-grove.jpg",
     recdeskProgramId: "5630",
   },
   {
@@ -114,7 +114,7 @@ export const events: ParkEvent[] = [
     excerpt:
       "Scent-enrichment fun for dogs and their people at Bill Yeck Park.",
     body: "Did you know just 20 minutes of exploring novel scents has the same enrichment benefits as an hour-long walk for dogs? Let’s get those noses going at Bill Yeck Park.",
-    image: "/images/park-trail.jpg",
+    image: "/images/parks/bill-yeck.jpg",
     recdeskProgramId: "5631",
   },
   {
@@ -126,7 +126,7 @@ export const events: ParkEvent[] = [
     excerpt:
       "Family-friendly honeysuckle removal, then a fire and s’mores at Grant Park.",
     body: "Join us for a family-friendly day of honeysuckle removal! After we clear invasive plants, we’ll build a fire and make s’mores.",
-    image: "/images/fog-trees.jpg",
+    image: "/images/parks/grant.jpg",
     recdeskProgramId: "5636",
   },
   {
