@@ -412,8 +412,9 @@ def section_pricing(st):
     story.append(Spacer(1, 4))
     story.append(
         P(
-            "Hosting: Cloudflare Pages (often $0–$240/year). CWPD owns the account; "
-            "studio can administer under retainer. Fees in USD; valid 90 days. "
+            "Hosting: Cloudflare Pages Free — typically <b>$0</b> (static site + Functions within free Workers limits). "
+            "Optional later: Workers Paid (~$5/month) only if Function traffic outgrows the free daily cap. "
+            "CWPD owns the account; studio can administer under retainer. Fees in USD; valid 90 days. "
             "CWPD owns delivered content, design files, and custom code.",
             st["meta"],
         )
