@@ -97,8 +97,7 @@ export default async function EventDetailPage({ params }: Props) {
         <div className="mb-10 max-w-2xl">
           <p className="text-lg leading-relaxed text-ink">{event.body}</p>
           <p className="mt-4 text-sm text-ink-muted">
-            Registration below is the live RecDesk listing for this event —
-            openings and waitlists update automatically.
+            Register below for this event.
           </p>
           <Link
             href="/events/"
@@ -111,7 +110,7 @@ export default async function EventDetailPage({ params }: Props) {
         <RecDeskEmbed
           src={recdeskUrl}
           title={`${event.title} · registration`}
-          openLabel="Open this event in RecDesk"
+          openLabel="Open event registration"
           frameHeight={1000}
         />
       </div>

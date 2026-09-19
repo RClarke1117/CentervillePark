@@ -10,7 +10,7 @@ type Hit = { href: string; title: string; meta: string; group: string };
 function buildIndex(): Hit[] {
   const pages: Hit[] = [
     { href: "/parks", title: "Find a Park", meta: "Directory & filters", group: "Pages" },
-    { href: "/programs", title: "Programs", meta: "Registration via RecDesk", group: "Pages" },
+    { href: "/programs", title: "Programs", meta: "Camps, classes & registration", group: "Pages" },
     { href: "/events", title: "Events", meta: "Special events calendar", group: "Pages" },
     { href: "/fields", title: "Field Status", meta: "Athletic fields & dog park", group: "Pages" },
     { href: "/shelters", title: "Reserve a Shelter", meta: "Group picnic shelters", group: "Pages" },

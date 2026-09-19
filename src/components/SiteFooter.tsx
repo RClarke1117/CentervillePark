@@ -83,8 +83,8 @@ export function SiteFooter() {
             Centerville and Washington Township.
           </p>
           <p className="mt-6 text-xs text-white/50">
-            Parks open during daylight hours unless posted for programs or
-            rentals.
+            Parks open from one-half hour before sunrise to one-half hour after
+            sunset, unless posted for programs or permits.
           </p>
         </div>
 

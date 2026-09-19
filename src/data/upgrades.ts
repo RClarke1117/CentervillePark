@@ -10,7 +10,7 @@
  * 07 Plan-link arrow micro-motion
  * 08 Park finder quick amenity chip row
  * 09 Favorite parks (localStorage)
- * 10 Related parks on park detail
+ * 10 Park detail Visit rules aligned to CWPD (no Related parks)
  * 11 Programs audience filter tabs
  * 12 Field status icons + pattern (not color-only)
  * 13 Dog park status alongside fields

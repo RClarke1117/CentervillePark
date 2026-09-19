@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: "Events",
   description:
-    "Upcoming special events from Centerville-Washington Park District — register through live RecDesk listings.",
+    "Upcoming special events from Centerville-Washington Park District.",
 };
 
 export default function EventsPage() {
