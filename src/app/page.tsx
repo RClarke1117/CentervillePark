@@ -19,7 +19,7 @@ const planLinks = [
   {
     href: "/programs",
     title: "Search & register",
-    text: "Camps, classes, and special events — with a clearer handoff into RecDesk.",
+    text: "Camps, classes, and special events — search and register in one place.",
   },
   {
     href: "/fields",
@@ -266,9 +266,8 @@ export default function HomePage() {
                 Give the backyard a future.
               </h2>
               <p className="mt-4 max-w-md text-base leading-relaxed text-white/80">
-                A distinct nonprofit partner — visually separate from Park
-                District operations — funding trees, benches, trails, and
-                scholarships.
+                A nonprofit partner funding trees, benches, trails, and
+                scholarships across the Park District.
               </p>
               <div className="mt-8">
                 <ButtonLink

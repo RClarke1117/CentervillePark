@@ -141,9 +141,6 @@ export function ParkFinder() {
             <legend className="text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">
               Amenities
             </legend>
-            <p className="mt-1 text-xs text-ink-muted">
-              See enough detail to decide without opening every park page.
-            </p>
             <div className="mt-3 flex flex-col gap-2">
               {amenityFilters.map((a) => (
                 <label key={a} className="flex items-center gap-2 text-sm">

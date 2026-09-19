@@ -48,6 +48,10 @@ export type Park = {
   summary: string;
   image: string;
   featured?: boolean;
+  /** Exact RecDesk Location Filter label(s) for programs at this park */
+  recdeskLocations?: string[];
+  /** RecDesk Facility checkbox ids used to auto-filter programs */
+  recdeskFacilityIds?: number[];
 };
 
 export const parks: Park[] = [
@@ -68,8 +72,10 @@ export const parks: Park[] = [
     ],
     summary:
       "Home to the Park District office, an all-access playground, zero-depth sprayground, and shelters where kids of all abilities play side by side.",
-    image: "/images/playground.jpg",
+    image: "/images/parks/activity-center.jpg",
     featured: true,
+    recdeskLocations: ["Activity Center Park"],
+    recdeskFacilityIds: [15],
   },
   {
     slug: "oak-grove",
@@ -91,8 +97,10 @@ export const parks: Park[] = [
     ],
     summary:
       "A stand of old oaks anchors soccer fields, baseball diamonds, tennis courts, an archery range, and the community dog park.",
-    image: "/images/park-community.jpg",
+    image: "/images/parks/oak-grove.jpg",
     featured: true,
+    recdeskLocations: ["Oak Grove Park"],
+    recdeskFacilityIds: [3],
   },
   {
     slug: "grant",
@@ -104,8 +112,14 @@ export const parks: Park[] = [
     amenities: ["hiking-trails", "paved-trails", "picnic", "fishing"],
     summary:
       "A 222-acre natural area with trails through forest, meadow, prairie, and wetland — one of the largest open spaces in the district.",
-    image: "/images/fog-trees.jpg",
+    image: "/images/parks/grant.jpg",
     featured: true,
+    recdeskLocations: [
+      "Grant Park - Normandy Entrance",
+      "Grant Park - McEwen Entrance (All Amenities)",
+      "Grant Park - Nature Nook",
+    ],
+    recdeskFacilityIds: [21, 24, 25],
   },
   {
     slug: "bill-yeck",
@@ -117,8 +131,14 @@ export const parks: Park[] = [
     amenities: ["hiking-trails", "paved-trails", "picnic"],
     summary:
       "Nearly 200 acres along 1.75 miles of Sugar Creek — trails, rare plants, and year-round nature programs.",
-    image: "/images/park-trail.jpg",
+    image: "/images/parks/bill-yeck.jpg",
     featured: true,
+    recdeskLocations: [
+      "Bill Yeck Park - Smith House Entrance",
+      "Bill Yeck Park - McGuffey Meadow Entrance",
+      "Bill Yeck Park - Rooks Mill Lane Entrance",
+    ],
+    recdeskFacilityIds: [26, 158, 143],
   },
   {
     slug: "schoolhouse",
@@ -137,8 +157,10 @@ export const parks: Park[] = [
     ],
     summary:
       "Home to youth football and community gatherings, with playgrounds, shelters, and open fields for game days and movie nights.",
-    image: "/images/park-meadow.jpg",
+    image: "/images/parks/schoolhouse.jpg",
     featured: true,
+    recdeskLocations: ["Schoolhouse Park"],
+    recdeskFacilityIds: [1],
   },
   {
     slug: "iron-horse",
@@ -157,7 +179,9 @@ export const parks: Park[] = [
     ],
     summary:
       "Named for the historic rail corridor, with a paved multi-use trail, playground, diamonds, and neighborhood gathering spaces.",
-    image: "/images/hiking.jpg",
+    image: "/images/parks/iron-horse.jpg",
+    recdeskLocations: ["Iron Horse Park"],
+    recdeskFacilityIds: [13],
   },
   {
     slug: "forest-field",
@@ -180,7 +204,9 @@ export const parks: Park[] = [
     ],
     summary:
       "An arboretum-meets-community park with paved loops into Bill Yeck, tennis and pickleball, and a natural play area.",
-    image: "/images/nature-hills.jpg",
+    image: "/images/parks/forest-field.jpg",
+    recdeskLocations: ["Forest Field Park"],
+    recdeskFacilityIds: [11],
   },
   {
     slug: "oak-creek-south",
@@ -200,7 +226,9 @@ export const parks: Park[] = [
     ],
     summary:
       "Skatepark, play equipment, a renovated wetland stream corridor, and a group shelter with restrooms.",
-    image: "/images/park-community.jpg",
+    image: "/images/parks/oak-creek-south.jpg",
+    recdeskLocations: ["Oak Creek South Park"],
+    recdeskFacilityIds: [17],
   },
   {
     slug: "robert-f-mays",
@@ -218,7 +246,9 @@ export const parks: Park[] = [
     ],
     summary:
       "Community fields and a reservable shelter supporting youth sports and neighborhood gatherings.",
-    image: "/images/park-meadow.jpg",
+    image: "/images/parks/robert-f-mays.jpg",
+    recdeskLocations: ["Robert F. Mays Park"],
+    recdeskFacilityIds: [19],
   },
   {
     slug: "yankee",
@@ -239,7 +269,9 @@ export const parks: Park[] = [
     ],
     summary:
       "Tennis, pickleball, playground, and diamonds on 37 acres — a full community park along Yankee Street.",
-    image: "/images/playground.jpg",
+    image: "/images/parks/yankee.jpg",
+    recdeskLocations: ["Yankee Park"],
+    recdeskFacilityIds: [2],
   },
   {
     slug: "black-oak",
@@ -251,7 +283,7 @@ export const parks: Park[] = [
     amenities: ["hiking-trails", "paved-trails", "playground", "picnic"],
     summary:
       "Hiking trails, a short paved path, wetland overlook, and play equipment in a quiet nature park.",
-    image: "/images/fog-trees.jpg",
+    image: "/images/parks/black-oak.jpg",
   },
   {
     slug: "black-oak-east",
@@ -263,7 +295,7 @@ export const parks: Park[] = [
     amenities: ["hiking-trails"],
     summary:
       "A companion nature preserve to Black Oak with soft-surface trails and woodland habitat.",
-    image: "/images/park-trail.jpg",
+    image: "/images/parks/black-oak-east.png",
   },
   {
     slug: "holes-creek",
@@ -275,7 +307,9 @@ export const parks: Park[] = [
     amenities: ["paved-trails"],
     summary:
       "A 10-foot-wide paved multi-use trail spanning 1.3 miles along the Holes Creek corridor.",
-    image: "/images/hiking.jpg",
+    image: "/images/parks/holes-creek.jpg",
+    recdeskLocations: ["Holes Creek Park"],
+    recdeskFacilityIds: [59],
   },
   {
     slug: "huffman",
@@ -287,7 +321,7 @@ export const parks: Park[] = [
     amenities: [],
     summary:
       "A natural area with a meandering stream held as wildlife habitat — limited access, no off-street parking or trails.",
-    image: "/images/nature-hills.jpg",
+    image: "/images/parks/huffman.jpg",
   },
   {
     slug: "woodbourne-springs",
@@ -299,7 +333,7 @@ export const parks: Park[] = [
     amenities: ["hiking-trails", "picnic"],
     summary:
       "A nature park beside Dr. John Hole Elementary with hiking trails and a stream corridor.",
-    image: "/images/fog-trees.jpg",
+    image: "/images/parks/woodbourne-springs.jpg",
   },
   {
     slug: "forest-walk",
@@ -311,7 +345,9 @@ export const parks: Park[] = [
     amenities: ["hiking-trails", "playground", "picnic"],
     summary:
       "Wooded trails and play equipment, accessible from Forest Brook Boulevard and Deer Run Road.",
-    image: "/images/park-trail.jpg",
+    image: "/images/parks/forest-walk.jpg",
+    recdeskLocations: ["Forest Walk Park"],
+    recdeskFacilityIds: [56],
   },
   {
     slug: "nutt-woods",
@@ -323,7 +359,7 @@ export const parks: Park[] = [
     amenities: ["picnic", "hiking-trails"],
     summary:
       "A small wooded park known for spring wildflowers, including the district’s only patch of goldenseal.",
-    image: "/images/park-meadow.jpg",
+    image: "/images/parks/nutt-woods.jpg",
   },
   {
     slug: "rooks-ravine",
@@ -335,7 +371,7 @@ export const parks: Park[] = [
     amenities: ["hiking-trails"],
     summary:
       "A steep, wooded ravine preserve protecting habitat and quiet trail moments.",
-    image: "/images/nature-hills.jpg",
+    image: "/images/parks/rooks-ravine.jpg",
   },
   {
     slug: "little-woods",
@@ -347,7 +383,7 @@ export const parks: Park[] = [
     amenities: ["hiking-trails", "picnic"],
     summary:
       "Developed with an emphasis on native plants — a pocket woodland for close-to-home nature.",
-    image: "/images/fog-trees.jpg",
+    image: "/images/parks/little-woods.jpg",
   },
   {
     slug: "cloverbrook",
@@ -359,7 +395,7 @@ export const parks: Park[] = [
     amenities: ["playground", "picnic", "shelter-drop-in"],
     summary:
       "Neighborhood play and picnic space within walking distance of nearby homes.",
-    image: "/images/playground.jpg",
+    image: "/images/parks/cloverbrook.jpg",
   },
   {
     slug: "donnybrook",
@@ -371,7 +407,7 @@ export const parks: Park[] = [
     amenities: ["playground", "picnic", "paved-trails"],
     summary:
       "Reachable from Donnybrook Drive or Millbrook — play equipment and green space for the block.",
-    image: "/images/park-community.jpg",
+    image: "/images/parks/donnybrook.jpg",
   },
   {
     slug: "green",
@@ -383,7 +419,7 @@ export const parks: Park[] = [
     amenities: ["playground", "picnic", "shelter-drop-in"],
     summary:
       "A five-acre neighborhood park with play and gathering space.",
-    image: "/images/park-meadow.jpg",
+    image: "/images/parks/green.jpg",
   },
   {
     slug: "pleasant-hill",
@@ -395,7 +431,7 @@ export const parks: Park[] = [
     amenities: ["playground", "picnic", "hiking-trails"],
     summary:
       "Neighborhood park purchased with community assistance — play, picnic, and light trails.",
-    image: "/images/hiking.jpg",
+    image: "/images/parks/pleasant-hill.png",
   },
   {
     slug: "quail-run",
@@ -407,7 +443,7 @@ export const parks: Park[] = [
     amenities: ["playground", "picnic", "hiking-trails"],
     summary:
       "Nearly ten acres of neighborhood open space with play and walking paths.",
-    image: "/images/park-trail.jpg",
+    image: "/images/parks/quail-run.jpg",
   },
   {
     slug: "beechwood-springs",
@@ -419,7 +455,323 @@ export const parks: Park[] = [
     amenities: ["playground", "picnic", "hiking-trails", "shelter-drop-in"],
     summary:
       "Wooded neighborhood park with play areas and soft paths among the beeches.",
-    image: "/images/nature-hills.jpg",
+    image: "/images/parks/beechwood-springs.jpg",
+  },
+  {
+    slug: "big-bend",
+    name: "Big Bend",
+    type: "neighborhood",
+    acres: 7.841,
+    address: "1328 Spring Ash Drive",
+    city: "Washington Township",
+    amenities: ["playground", "hiking-trails", "picnic"],
+    summary:
+      "Big Bend Park is a neighborhood park with some features of a nature park. A tributary of Holes Creek runs along the southern edge of the playground.",
+    image: "/images/parks/big-bend.png",
+    recdeskLocations: ["Big Bend Park"],
+    recdeskFacilityIds: [42],
+  },
+  {
+    slug: "brittany-hills",
+    name: "Brittany Hills",
+    type: "neighborhood",
+    acres: 4.184,
+    address: "5825 Batsford Drive",
+    city: "Centerville",
+    amenities: ["playground", "hiking-trails", "picnic"],
+    summary:
+      "Brittany Hills Park is a neighborhood park with a wooded area and play equipment featuring slides, climbers, belt swings and infant swings.",
+    image: "/images/parks/brittany-hills.jpg",
+  },
+  {
+    slug: "cherry-hill",
+    name: "Cherry Hill",
+    type: "neighborhood",
+    acres: 6.016,
+    address: "10244 Cherry Tree Terrace",
+    city: "Centerville",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Cherry Hill Park features play equipment including a slide, tire swing, belt swings, infant swings, and talk tubes. An open area is available for athletics.",
+    image: "/images/parks/cherry-hill.jpg",
+  },
+  {
+    slug: "concept",
+    name: "Concept",
+    type: "neighborhood",
+    acres: 6.016,
+    address: "345 Clareridge Lane",
+    city: "Centerville",
+    amenities: ["playground", "shelter-drop-in", "picnic"],
+    summary:
+      "Concept Park is a neighborhood park featuring a basketball court, small shelter, and play equipment including a climber with slides, belt swings and infant swings.",
+    image: "/images/parks/concept.png",
+  },
+  {
+    slug: "divided-ridge",
+    name: "Divided Ridge",
+    type: "neighborhood",
+    acres: 1.374,
+    address: "347 Beck Drive",
+    city: "Centerville",
+    amenities: ["playground", "shelter-drop-in"],
+    summary:
+      "Divided Ridge Park is a neighborhood park located in Benham Estates. It features a paved walking path, benches, play equipment and a neighborhood shelter.",
+    image: "/images/parks/divided-ridge.png",
+  },
+  {
+    slug: "elizabeth-hoy",
+    name: "Elizabeth Hoy",
+    type: "neighborhood",
+    acres: 4.058,
+    address: "185 Hampton Drive",
+    city: "Centerville",
+    amenities: ["paved-trails"],
+    summary:
+      "Elizabeth Hoy Park is an open green space with a small concrete whale climber. It is adjacent to the Activity Center Park .",
+    image: "/images/parks/elizabeth-hoy.png",
+  },
+  {
+    slug: "fence-row",
+    name: "Fence Row",
+    type: "neighborhood",
+    acres: 2.0169,
+    address: "1650 Haley Drive",
+    city: "Centerville",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Fence Row Park features play equipment with a Thunderhead climber, belt swings, infant swings and an adult swing.",
+    image: "/images/parks/fence-row.jpg",
+  },
+  {
+    slug: "greene-line",
+    name: "Greene Line",
+    type: "neighborhood",
+    acres: 11.325,
+    address: "6774 Crossbrook Drive 2170 Briggs Drive",
+    city: "Centerville",
+    amenities: ["playground", "hiking-trails", "picnic"],
+    summary:
+      "Greene Line Park is a large neighborhood park with a wooded area with hiking trails in the eastern section. Play equipment with climbers, belt swings and infant swings located near the Crossbrook Drive entrance.",
+    image: "/images/parks/greene-line.jpg",
+  },
+  {
+    slug: "hithergreen",
+    name: "Hithergreen",
+    type: "neighborhood",
+    acres: 14.889,
+    address: "5900 Hithergreen Drive",
+    city: "Washington Township",
+    amenities: ["playground", "hiking-trails", "paved-trails", "shelter-drop-in", "picnic"],
+    summary:
+      "Site of the former Hithergreen Center, the Park District acquired this park from Washington Township in April 2019. The building on the property was demolished in fall 2019.",
+    image: "/images/parks/hithergreen.png",
+  },
+  {
+    slug: "little-mound",
+    name: "Little Mound",
+    type: "neighborhood",
+    acres: 5.141,
+    address: "9490 Still Meadow Lane",
+    city: "Centerville",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Little Mound Park is a neighborhood park with a sled hill and play equipment including a climber, slide, zip line, swings and infant swings.",
+    image: "/images/parks/little-mound.jpg",
+  },
+  {
+    slug: "manor",
+    name: "Manor",
+    type: "neighborhood",
+    acres: 7.431,
+    address: "989 Thorndale Drive",
+    city: "Centerville",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Manor Park is a neighborhood park with play equipment including a climber, slides, belt swings and infant swings.",
+    image: "/images/parks/manor.jpg",
+  },
+  {
+    slug: "old-lane",
+    name: "Old Lane",
+    type: "neighborhood",
+    acres: 4.426,
+    address: "500 Druewood Lane",
+    city: "Centerville",
+    amenities: ["playground", "tennis", "pickleball", "picnic"],
+    summary:
+      "Old Lane Park is a neighborhood park with tennis courts and play equipment featuring climbers, slides, belt swings and infant swings.",
+    image: "/images/parks/old-lane.jpg",
+  },
+  {
+    slug: "rahn",
+    name: "Rahn",
+    type: "neighborhood",
+    acres: 0.98,
+    address: "223 W. Rahn Road",
+    city: "Centerville",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Rahn Park is a neighborhood park with play equipment featuring climbers, slides, belt swings and infant swings.",
+    image: "/images/parks/rahn.jpg",
+  },
+  {
+    slug: "red-coach",
+    name: "Red Coach",
+    type: "neighborhood",
+    acres: 5,
+    address: "5500 Royalwood Drive",
+    city: "Centerville",
+    amenities: ["playground", "shelter-drop-in", "picnic"],
+    summary:
+      "Red Coach Park is a neighborhood park with play equipment featuring climbers, slides, belt swings and infant swings. A small picnic shelter is available for use.",
+    image: "/images/parks/red-coach.jpg",
+  },
+  {
+    slug: "rosewood",
+    name: "Rosewood",
+    type: "neighborhood",
+    acres: 13.047,
+    address: "475 Roselake Drive",
+    city: "Centerville",
+    amenities: ["playground", "hiking-trails", "fishing", "picnic"],
+    summary:
+      "Rosewood Park is a neighborhood park located in Rose Estates. The park includes a large open area for sports, a fishing pond, sled hill and woods to explore.",
+    image: "/images/parks/rosewood.png",
+  },
+  {
+    slug: "silvercreek",
+    name: "Silvercreek",
+    type: "neighborhood",
+    acres: 8.969,
+    address: "9369 Yankee Street",
+    city: "Centerville",
+    amenities: ["paved-trails"],
+    summary:
+      "The Centerville-Washington Park District installed a multi-use trail through Holes Creek and Silvercreek Parks. This project was funded in part through a Clean Ohio Trails grant and spans 3,900 feet from the north end of Holes Creek to Spring Valley Pike, and approximately 2,100 ",
+    image: "/images/parks/silvercreek.jpg",
+  },
+  {
+    slug: "stansel",
+    name: "Stansel",
+    type: "neighborhood",
+    acres: 3.546,
+    address: "1304 Sarah Freeman Drive",
+    city: "Washington Township",
+    amenities: [],
+    summary:
+      "Stansel Park is a neighborhood park located in Sweeney Place.",
+    image: "/images/parks/stansel.jpg",
+  },
+  {
+    slug: "stringtown",
+    name: "Stringtown",
+    type: "neighborhood",
+    acres: 4.168,
+    address: "9191 Woodstream Lane",
+    city: "Centerville",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Stringtown Park is a neighborhood park with a sled hill and play equipment.",
+    image: "/images/parks/stringtown.jpg",
+    recdeskLocations: ["Stringtown Park"],
+    recdeskFacilityIds: [146],
+  },
+  {
+    slug: "trailways",
+    name: "Trailways",
+    type: "neighborhood",
+    acres: 1,
+    address: "1165 W. Spring Valley Pike",
+    city: "Washington Township",
+    amenities: ["picnic"],
+    summary:
+      "The park provides a resting spot for bicyclists traveling the multi-use trail on the shared sidewalk along Spring Valley Pike. It is located in the McEwen Woods neighborhood, just west of McEwen Road.",
+    image: "/images/parks/trailways.jpg",
+  },
+  {
+    slug: "village-south",
+    name: "Village South",
+    type: "neighborhood",
+    acres: 17.188,
+    address: "411 North Village Drive",
+    city: "Centerville",
+    amenities: ["playground", "shelter-drop-in", "tennis", "pickleball", "picnic"],
+    summary:
+      "Village South Park is a neighborhood park with a basketball court, tennis courts and play equipment featuring climbers, slides, belt swings and infant swings. A small picnic shelter is available.",
+    image: "/images/parks/village-south.jpg",
+  },
+  {
+    slug: "wagon-trail",
+    name: "Wagon Trail",
+    type: "neighborhood",
+    acres: 7.014,
+    address: "8450 Washington Village Drive",
+    city: "Centerville",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Wagon Trail Park is a neighborhood park with large open areas for sports and play equipment including a climber, slides, belt swings and infant swings.",
+    image: "/images/parks/wagon-trail.jpg",
+  },
+  {
+    slug: "waterbury-woods",
+    name: "Waterbury Woods",
+    type: "neighborhood",
+    acres: 6.607,
+    address: "1250 W. Social Row Road",
+    city: "Washington Township",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Waterbury Woods Park is a neighborhood park with a large open area for sports, sled hill, and play equipment with belt swings and infant swings.",
+    image: "/images/parks/waterbury-woods.png",
+  },
+  {
+    slug: "watkins-glen",
+    name: "Watkins Glen",
+    type: "neighborhood",
+    acres: 5.712,
+    address: "825 Watkins Glen Drive",
+    city: "Washington Township",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Watkins Glen Park is divided by a creek with a large open area to the west and play equipment including a climber, adult swing, belt swings and infant swings to the east. A stone crossing joins the two park areas.",
+    image: "/images/parks/watkins-glen.jpg",
+  },
+  {
+    slug: "weatherstone",
+    name: "Weatherstone",
+    type: "neighborhood",
+    acres: 5.099,
+    address: "10998 Pennfield Road 164 Summerford Place",
+    city: "Centerville",
+    amenities: ["playground", "picnic"],
+    summary:
+      "Weatherstone Park offers play equipment with a climber, slides, swings, baby swings and a tire swing. The playground was installed with support from an Ohio NatureWorks grant.",
+    image: "/images/parks/weatherstone.png",
+  },
+  {
+    slug: "willowbrook",
+    name: "Willowbrook",
+    type: "neighborhood",
+    acres: 17.89,
+    address: "10225 Park Edge Drive 570 Nutt Road 10140 Atchison Road",
+    city: "Centerville",
+    amenities: ["playground", "hiking-trails", "shelter-drop-in", "picnic"],
+    summary:
+      "Willowbrook Park surrounds a creek from Nutt Road south to a large open area along Park Edge Drive. Hiking trails through the woods and across the creek provide opportunities for nature exploration.",
+    image: "/images/parks/willowbrook.jpg",
+  },
+  {
+    slug: "woodbourne-green",
+    name: "Woodbourne Green",
+    type: "neighborhood",
+    acres: 0.113,
+    address: "W. Whipp Road at Paddington Road",
+    city: "Centerville",
+    amenities: [],
+    summary:
+      "Woodbourne Green Park is a triangular shaped parcel located where Whipp Road meets Paddington Road. The park features a rock with a historical marker placed by the Centerville Historical Society in 1971.",
+    image: "/images/parks/woodbourne-green.jpg",
   },
 ];
 
