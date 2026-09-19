@@ -78,7 +78,7 @@ export const events: ParkEvent[] = [
     excerpt:
       "Second date of the preschool Halloween stroll with local business stations and fall fun.",
     body: "Join CWPD and local businesses for a festive, family-friendly stroll designed especially for preschoolers — a second chance to hop through the stations.",
-    image: "/images/playground.jpg",
+    image: "/images/park-meadow.jpg",
     recdeskProgramId: "5629",
   },
   {
@@ -138,7 +138,7 @@ export const events: ParkEvent[] = [
     excerpt:
       "A Thanksgiving adventure with clues along the routes — last 5K groups leave at 2:15 p.m.",
     body: "We need your help for this Thanksgiving adventure. Follow the clues along the routes and help us find our way — last groups head onto the 5K trail at 2:15 p.m.",
-    image: "/images/hiking.jpg",
+    image: "/images/park-trail.jpg",
     recdeskProgramId: "5415",
   },
 ];
