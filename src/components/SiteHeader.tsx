@@ -93,14 +93,13 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
         >
           <Image
-            src="/images/cwpd-logo.png"
+            src="/images/cwpd-logo-on-dark.png"
             alt="Centerville-Washington Park District"
-            width={220}
-            height={46}
-            className="h-8 w-auto brightness-0 invert md:h-9"
+            width={280}
+            height={59}
+            className="h-10 w-auto md:h-12"
             priority
           />
-          <span className="sr-only">Centerville-Washington Park District</span>
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-0.5 lg:flex">

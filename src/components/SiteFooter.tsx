@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SiteTranslate } from "@/components/SiteTranslate";
 
 const columns = [
@@ -72,14 +73,14 @@ export function SiteFooter() {
 
       <div className="section-pad grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-8">
         <div>
-          <p
-            className="font-[family-name:var(--font-display)] text-2xl leading-tight tracking-tight"
-          >
-            Centerville-Washington
-            <br />
-            Park District
-          </p>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
+          <Image
+            src="/images/cwpd-logo-on-dark.png"
+            alt="Centerville-Washington Park District"
+            width={280}
+            height={59}
+            className="h-12 w-auto"
+          />
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
             Your community&apos;s big backyard — 51 parks across 1,063 acres in
             Centerville and Washington Township.
           </p>
