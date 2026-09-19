@@ -95,9 +95,9 @@ export function SiteHeader() {
           <Image
             src="/images/cwpd-logo.png"
             alt="Centerville-Washington Park District"
-            width={180}
-            height={35}
-            className="h-7 w-auto brightness-0 invert md:h-8"
+            width={220}
+            height={46}
+            className="h-8 w-auto brightness-0 invert md:h-9"
             priority
           />
           <span className="sr-only">Centerville-Washington Park District</span>
