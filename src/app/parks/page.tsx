@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ParkFinder } from "@/components/ParkFinder";
 import { PageHero } from "@/components/PageHero";
+import { parks } from "@/data/parks";
 
 export const metadata: Metadata = {
   title: "Find a Park",
@@ -15,7 +16,7 @@ export default function ParksPage() {
       <PageHero
         eyebrow="Parks"
         title="Find a park that fits today"
-        description="Filter by what you need — trails, spraygrounds, shelters, dog parks — and read amenity summaries without opening every park page."
+        description={`All ${parks.length} Centerville-Washington parks — filter by trails, spraygrounds, shelters, dog parks, and more.`}
         crumbs={[{ label: "Find a Park" }]}
       />
       <div className="section-pad py-10 pb-24 md:py-14">

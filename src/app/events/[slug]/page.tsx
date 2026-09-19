@@ -56,7 +56,7 @@ export default async function EventDetailPage({ params }: Props) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/60 to-forest-deep/30" />
         <div className="section-pad relative flex min-h-[42svh] flex-col justify-end pb-10 pt-28 md:min-h-[50svh] md:pb-14">
-          <p className="text-xs text-white/65">
+          <p className="text-xs text-white/85">
             <Link href="/" className="focus-ring hover:text-white">
               Home
             </Link>
@@ -72,13 +72,12 @@ export default async function EventDetailPage({ params }: Props) {
           </p>
           <h1
             className="mt-3 max-w-3xl font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
-            style={{ fontVariationSettings: '"SOFT" 40' }}
           >
             {event.title}
           </h1>
           <p className="mt-4 text-base text-white/85">
             {dateLabel}
-            <span className="text-white/50"> · </span>
+            <span className="text-white/70"> · </span>
             {event.timeLabel}
           </p>
           <p className="mt-1 text-sm text-white/70">{event.location}</p>
@@ -97,8 +96,7 @@ export default async function EventDetailPage({ params }: Props) {
         <div className="mb-10 max-w-2xl">
           <p className="text-lg leading-relaxed text-ink">{event.body}</p>
           <p className="mt-4 text-sm text-ink-muted">
-            Registration below is the live RecDesk listing for this event —
-            openings and waitlists update automatically.
+            Register below for this event.
           </p>
           <Link
             href="/events/"
@@ -111,7 +109,7 @@ export default async function EventDetailPage({ params }: Props) {
         <RecDeskEmbed
           src={recdeskUrl}
           title={`${event.title} · registration`}
-          openLabel="Open this event in RecDesk"
+          openLabel="Open event registration"
           frameHeight={1000}
         />
       </div>

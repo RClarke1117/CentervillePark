@@ -22,9 +22,6 @@ export function RecDeskEmbed({
     <section className="overflow-hidden border border-line bg-paper shadow-[0_20px_60px_rgba(15,47,35,0.06)]">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-mist/80 px-4 py-3 md:px-5">
         <div className="min-w-0 flex-1">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-forest-mid">
-            Live registration
-          </p>
           <p className="mt-0.5 text-sm font-semibold text-ink">{title}</p>
         </div>
         <a
@@ -34,6 +31,7 @@ export function RecDeskEmbed({
           className="focus-ring inline-flex shrink-0 items-center justify-center rounded-sm bg-forest px-4 py-2.5 text-sm font-semibold text-white hover:bg-forest-mid"
         >
           {openLabel} ↗
+          <span className="sr-only"> (opens in a new tab)</span>
         </a>
       </div>
 
@@ -44,15 +42,14 @@ export function RecDeskEmbed({
               className="h-8 w-8 animate-spin rounded-full border-2 border-forest/20 border-t-forest"
               aria-hidden
             />
-            <p className="text-sm text-ink-muted">Loading live registration…</p>
+            <p className="text-sm text-ink-muted">Loading…</p>
           </div>
         )}
 
         {failed ? (
           <div className="flex min-h-[320px] flex-col items-center justify-center gap-4 p-8 text-center">
             <p className="max-w-md text-ink-muted">
-              Registration couldn&apos;t be embedded in this browser. Continue in
-              the full portal.
+              Registration couldn&apos;t load here. Open the full list instead.
             </p>
             <a
               href={src}
@@ -61,6 +58,7 @@ export function RecDeskEmbed({
               className="focus-ring bg-forest px-5 py-3 text-sm font-semibold text-white hover:bg-forest-mid"
             >
               {openLabel}
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
         ) : (
@@ -71,21 +69,11 @@ export function RecDeskEmbed({
             style={{ height: frameHeight }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            data-third-party="recdesk"
             onLoad={() => setLoaded(true)}
             onError={() => setFailed(true)}
           />
         )}
-      </div>
-
-      <div className="border-t border-line bg-paper px-4 py-3 text-xs leading-relaxed text-ink-muted md:px-5">
-        Openings and waitlists update automatically. Questions? Call{" "}
-        <a
-          className="font-semibold text-forest underline-offset-2 hover:underline"
-          href="tel:9374335155"
-        >
-          (937) 433-5155
-        </a>
-        .
       </div>
     </section>
   );
