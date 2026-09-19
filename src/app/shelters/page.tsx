@@ -23,11 +23,11 @@ export default function SheltersPage() {
       <PageHero
         eyebrow="Shelters"
         title="Reserve a group shelter"
-        description="Browse parks with shelters below, then reserve in the live RecDesk facilities panel — availability stays current in RecDesk."
+        description="Pick a park below, then reserve in the live panel — availability stays current."
         crumbs={[{ label: "Shelters" }]}
       >
         <ButtonLink href={RECDESK_FACILITY} external>
-          Open RecDesk facilities
+          Open full reservation list
         </ButtonLink>
       </PageHero>
 
@@ -40,8 +40,8 @@ export default function SheltersPage() {
             Parks with shelters
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-ink-muted">
-            Context from the park directory — reservations are confirmed in
-            RecDesk.
+            Park details for planning — confirm your reservation in the list
+            below.
           </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {withShelter.map((p) => (
@@ -69,8 +69,8 @@ export default function SheltersPage() {
 
         <RecDeskEmbed
           src={RECDESK_FACILITY}
-          title="CWPD facility & shelter reservations"
-          openLabel="Open full RecDesk facilities"
+          title="Shelter reservations"
+          openLabel="Open full reservation list"
           frameHeight={1000}
         />
       </div>

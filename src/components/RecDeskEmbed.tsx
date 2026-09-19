@@ -26,7 +26,7 @@ export function RecDeskEmbed({
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-mist/80 px-4 py-3 md:px-5">
         <div className="min-w-0 flex-1">
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-forest-mid">
-            Live from RecDesk
+            Live registration
           </p>
           <p className="mt-0.5 text-sm font-semibold text-ink">{title}</p>
         </div>
@@ -42,8 +42,8 @@ export function RecDeskEmbed({
 
       <div className="flex items-center justify-between gap-3 border-b border-line bg-[#f3eee0] px-4 py-2.5 text-xs text-ink md:hidden">
         <p className="leading-snug">
-          Swipe sideways in the panel so category names stay on one line — or
-          open the full portal for easier phone browsing.
+          Tip: swipe sideways in the list if you need more room — or open the
+          full list above.
         </p>
       </div>
 
@@ -97,11 +97,11 @@ export function RecDeskEmbed({
       </div>
 
       <div className="border-t border-line bg-paper px-4 py-3 text-xs leading-relaxed text-ink-muted md:px-5">
-        Live status comes from RecDesk. This panel uses a desktop-width layout so
-        labels like “Adult Programs” don&apos;t break mid-word. Centerville /
-        Washington Township residents: use{" "}
-        <strong className="font-semibold text-ink">Dayton</strong> as your city
-        when creating an account.
+        Openings and waitlists update automatically. Questions? Call{" "}
+        <a className="font-semibold text-forest underline-offset-2 hover:underline" href="tel:9374335155">
+          (937) 433-5155
+        </a>
+        .
       </div>
     </section>
   );
