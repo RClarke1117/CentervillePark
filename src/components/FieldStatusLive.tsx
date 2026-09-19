@@ -11,13 +11,9 @@ type FieldRow = {
 };
 
 type Payload = {
-  source: string;
-  provider: string;
   rainoutLine: string;
   subscribeUrl: string;
   fields: FieldRow[];
-  fetchedAt: string;
-  error?: string;
 };
 
 function toneFor(status: string) {
@@ -70,16 +66,7 @@ export function FieldStatusLive() {
   if (error) {
     return (
       <div className="border border-line bg-paper p-6 text-sm text-ink-muted">
-        Live field status couldn’t load. Check the district’s{" "}
-        <a
-          className="font-semibold text-forest underline-offset-2 hover:underline"
-          href="https://cwpd.org/field_status/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Athletic Field Status
-        </a>{" "}
-        page or call the Rainout Line at{" "}
+        Field status is unavailable right now. Call the Rainout Line at{" "}
         <a className="font-semibold text-forest" href="tel:9372652001">
           (937) 265-2001
         </a>
@@ -95,47 +82,28 @@ export function FieldStatusLive() {
           className="h-6 w-6 animate-spin rounded-full border-2 border-forest/20 border-t-forest"
           aria-hidden
         />
-        Loading live field status from RainoutLine…
+        Loading field status…
       </div>
     );
   }
 
   return (
     <div>
-      <div className="mb-8 border border-line bg-paper p-5 md:flex md:items-start md:justify-between md:gap-6">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-forest-mid">
-            Live from {data.provider}
-          </p>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            Same source as{" "}
-            <a
-              className="font-semibold text-forest underline-offset-2 hover:underline"
-              href={data.source}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              cwpd.org/field_status
-            </a>
-            . Coaches can also call the Rainout Line or subscribe to alerts.
-          </p>
-        </div>
-        <div className="mt-4 flex flex-col gap-2 md:mt-0 md:items-end">
-          <a
-            href={`tel:${data.rainoutLine.replace(/\D/g, "")}`}
-            className="focus-ring text-sm font-semibold text-forest"
-          >
-            Rainout Line {data.rainoutLine}
-          </a>
-          <a
-            href={data.subscribeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="focus-ring text-sm text-ink-muted underline-offset-2 hover:underline"
-          >
-            Text / email alerts ↗
-          </a>
-        </div>
+      <div className="mb-8 flex flex-wrap items-baseline justify-between gap-3">
+        <a
+          href={`tel:${data.rainoutLine.replace(/\D/g, "")}`}
+          className="focus-ring text-sm font-semibold text-forest"
+        >
+          Rainout Line {data.rainoutLine}
+        </a>
+        <a
+          href={data.subscribeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="focus-ring text-sm text-ink-muted underline-offset-2 hover:underline"
+        >
+          Text / email alerts ↗
+        </a>
       </div>
 
       <div className="mb-8 border border-line bg-paper p-5 md:flex md:items-center md:justify-between">
@@ -188,12 +156,12 @@ export function FieldStatusLive() {
       </ul>
 
       <p className="mt-8 text-sm text-ink-muted">
-        Need a park with sports fields?{" "}
+        Looking for sports fields?{" "}
         <Link
           href="/parks?amenity=sports-fields"
           className="focus-ring font-semibold text-forest underline-offset-2 hover:underline"
         >
-          Filter the park finder
+          Find a park
         </Link>
         .
       </p>

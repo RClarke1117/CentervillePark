@@ -190,14 +190,12 @@ export default async function ParkDetailPage({ params }: Props) {
           Programs at {park.name}
         </h2>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-muted">
-          Register for programs held at this park — openings are filtered live
-          from RecDesk.
+          Register for programs held at this park.
         </p>
         <div className="mt-8">
           <ParkProgramsEmbed
             parkName={park.name}
             facilityIds={park.recdeskFacilityIds}
-            locationLabels={park.recdeskLocations}
           />
         </div>
       </div>

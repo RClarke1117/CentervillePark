@@ -17,27 +17,24 @@ type ProgramHit = {
 type Props = {
   parkName: string;
   facilityIds?: number[];
-  locationLabels?: string[];
 };
 
 type LoadState =
   | { status: "loading" }
-  | { status: "empty"; summary: string | null }
-  | { status: "ready"; programs: ProgramHit[]; summary: string | null }
+  | { status: "empty" }
+  | { status: "ready"; programs: ProgramHit[] }
   | { status: "error" };
 
 export function ParkProgramsEmbed({
   parkName,
   facilityIds = [],
-  locationLabels = [],
 }: Props) {
   const [state, setState] = useState<LoadState>({ status: "loading" });
-
   const facilityKey = facilityIds.join(",");
 
   useEffect(() => {
     if (!facilityKey) {
-      setState({ status: "empty", summary: null });
+      setState({ status: "error" });
       return;
     }
 
@@ -54,13 +51,9 @@ export function ParkProgramsEmbed({
         if (cancelled) return;
         const programs: ProgramHit[] = data.programs || [];
         if (!programs.length) {
-          setState({ status: "empty", summary: data.summary ?? null });
+          setState({ status: "empty" });
         } else {
-          setState({
-            status: "ready",
-            programs,
-            summary: data.summary ?? null,
-          });
+          setState({ status: "ready", programs });
         }
       } catch {
         if (!cancelled) setState({ status: "error" });
@@ -75,19 +68,12 @@ export function ParkProgramsEmbed({
 
   if (!facilityIds.length || state.status === "error") {
     return (
-      <div>
-        <p className="mb-6 max-w-2xl text-base leading-relaxed text-ink-muted">
-          {facilityIds.length
-            ? "Live filter is temporarily unavailable — browse all programs below and use Location Filter for this park."
-            : "This park isn’t listed as a RecDesk location yet — browse district programs below."}
-        </p>
-        <RecDeskEmbed
-          src={RECDESK_PROGRAMS}
-          title={`Programs · ${parkName}`}
-          openLabel="Open programs in RecDesk"
-          frameHeight={1000}
-        />
-      </div>
+      <RecDeskEmbed
+        src={RECDESK_PROGRAMS}
+        title={`Programs · ${parkName}`}
+        openLabel="Open full program list"
+        frameHeight={1000}
+      />
     );
   }
 
@@ -95,10 +81,7 @@ export function ParkProgramsEmbed({
     <section className="overflow-hidden border border-line bg-paper shadow-[0_20px_60px_rgba(15,47,35,0.06)]">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-mist/80 px-4 py-3 md:px-5">
         <div className="min-w-0 flex-1">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-forest-mid">
-            Live registration · filtered to this park
-          </p>
-          <p className="mt-0.5 text-sm font-semibold text-ink">
+          <p className="text-sm font-semibold text-ink">
             Programs at {parkName}
           </p>
         </div>
@@ -108,7 +91,7 @@ export function ParkProgramsEmbed({
           rel="noopener noreferrer"
           className="focus-ring inline-flex shrink-0 items-center justify-center rounded-sm bg-forest px-4 py-2.5 text-sm font-semibold text-white hover:bg-forest-mid"
         >
-          Open full program list ↗
+          All programs ↗
         </a>
       </div>
 
@@ -119,9 +102,7 @@ export function ParkProgramsEmbed({
               className="h-8 w-8 animate-spin rounded-full border-2 border-forest/20 border-t-forest"
               aria-hidden
             />
-            <p className="text-sm text-ink-muted">
-              Loading programs for {parkName}…
-            </p>
+            <p className="text-sm text-ink-muted">Loading programs…</p>
           </div>
         )}
 
@@ -129,12 +110,6 @@ export function ParkProgramsEmbed({
           <div className="px-5 py-12 text-center">
             <p className="text-base font-semibold text-ink">
               No open programs at {parkName} right now
-            </p>
-            <p className="mx-auto mt-2 max-w-md text-sm text-ink-muted">
-              Check back as seasons open, or browse the full district list.
-              {locationLabels[0]
-                ? ` In RecDesk, Location Filter → “${locationLabels[0]}”.`
-                : ""}
             </p>
             <a
               href={RECDESK_PROGRAMS}
@@ -177,18 +152,6 @@ export function ParkProgramsEmbed({
             ))}
           </ul>
         )}
-      </div>
-
-      <div className="border-t border-line bg-paper px-4 py-3 text-xs leading-relaxed text-ink-muted md:px-5">
-        Filtered live from RecDesk by park location. Openings and waitlists
-        update automatically. Questions? Call{" "}
-        <a
-          className="font-semibold text-forest underline-offset-2 hover:underline"
-          href="tel:9374335155"
-        >
-          (937) 433-5155
-        </a>
-        .
       </div>
     </section>
   );

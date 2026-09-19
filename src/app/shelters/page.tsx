@@ -8,7 +8,7 @@ import { parks } from "@/data/parks";
 export const metadata: Metadata = {
   title: "Reserve a Shelter",
   description:
-    "Reserve group picnic shelters at Centerville-Washington community parks via live RecDesk facilities.",
+    "Reserve group picnic shelters at Centerville-Washington community parks.",
 };
 
 const RECDESK_FACILITY = "https://cwpd.recdesk.com/Community/Facility";
@@ -23,7 +23,7 @@ export default function SheltersPage() {
       <PageHero
         eyebrow="Shelters"
         title="Reserve a group shelter"
-        description="Pick a park below, then reserve in the live panel — availability stays current."
+        description="Book a group picnic shelter for reunions, birthdays, and celebrations."
         crumbs={[{ label: "Shelters" }]}
       >
         <ButtonLink href={RECDESK_FACILITY} external>

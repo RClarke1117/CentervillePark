@@ -7,7 +7,7 @@ import { RECDESK_PROGRAMS } from "@/data/content";
 export const metadata: Metadata = {
   title: "Programs",
   description:
-    "Search and register for Centerville-Washington Park District programs — live listings from RecDesk.",
+    "Search and register for Centerville-Washington Park District programs.",
 };
 
 export default function ProgramsPage() {
@@ -16,7 +16,7 @@ export default function ProgramsPage() {
       <PageHero
         eyebrow="Programs & registration"
         title="Find a program. Register once."
-        description="Search programs below and register in one place — openings and waitlists stay up to date automatically."
+        description="Search camps, classes, and events — then register in one place."
         crumbs={[{ label: "Programs" }]}
       >
         <div className="flex flex-wrap gap-3">
@@ -35,9 +35,9 @@ export default function ProgramsPage() {
 
       <div className="section-pad py-10 pb-24 md:py-14">
         <p className="mb-8 max-w-2xl text-base leading-relaxed text-ink-muted">
-          Browse and register below. If you live in Centerville or Washington
-          Township, choose <strong className="font-semibold text-ink">Dayton</strong>{" "}
-          as your city when you create an account.
+          If you live in Centerville or Washington Township, choose{" "}
+          <strong className="font-semibold text-ink">Dayton</strong> as your
+          city when you create an account.
         </p>
 
         <RecDeskEmbed
