@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ButtonLink";
 import { PageHero } from "@/components/PageHero";
 import { RecDeskEmbed } from "@/components/RecDeskEmbed";
+import { RECDESK_PROGRAMS } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Programs",
   description:
     "Search and register for Centerville-Washington Park District programs — live listings from RecDesk.",
 };
-
-const RECDESK_PROGRAMS = "https://cwpd.recdesk.com/Community/Program";
 
 export default function ProgramsPage() {
   return (
