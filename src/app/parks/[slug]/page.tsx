@@ -5,10 +5,10 @@ import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FavoriteButton } from "@/components/FavoriteButton";
-import { RecDeskEmbed } from "@/components/RecDeskEmbed";
+import { ParkProgramsEmbed } from "@/components/ParkProgramsEmbed";
 import { SharePrint } from "@/components/SharePrint";
 import { AMENITY_LABELS, getPark, parks } from "@/data/parks";
-import { getUpcomingEvents, RECDESK_PROGRAMS } from "@/data/content";
+import { getUpcomingEvents } from "@/data/content";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -41,12 +41,6 @@ export default async function ParkDetailPage({ params }: Props) {
     .slice(0, 3);
 
   const relatedNews = getUpcomingEvents().slice(0, 2);
-  const locationTip =
-    park.recdeskLocations && park.recdeskLocations.length > 0
-      ? park.recdeskLocations.length === 1
-        ? `Use Location Filter → “${park.recdeskLocations[0]}” for programs at this park.`
-        : `Use Location Filter and select a ${park.name} entrance for programs at this park.`
-      : "Use the Location filter if this park is listed — openings stay current automatically.";
 
   return (
     <article>
@@ -196,14 +190,14 @@ export default async function ParkDetailPage({ params }: Props) {
           Programs at {park.name}
         </h2>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-muted">
-          Register below in the live listing. {locationTip}
+          Register for programs held at this park — openings are filtered live
+          from RecDesk.
         </p>
         <div className="mt-8">
-          <RecDeskEmbed
-            src={RECDESK_PROGRAMS}
-            title={`Programs · ${park.name}`}
-            openLabel="Open programs in RecDesk"
-            frameHeight={1000}
+          <ParkProgramsEmbed
+            parkName={park.name}
+            facilityIds={park.recdeskFacilityIds}
+            locationLabels={park.recdeskLocations}
           />
         </div>
       </div>
