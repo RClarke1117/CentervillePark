@@ -119,27 +119,23 @@ img.hero-image {
 
 /* Letter outline for type sitting on photography */
 .text-on-media {
-  -webkit-text-stroke: 3px var(--forest);
+  -webkit-text-stroke: 1px var(--forest);
   paint-order: stroke fill;
   text-shadow:
-    0 2px 0 var(--forest),
-    0 -2px 0 var(--forest),
-    2px 0 0 var(--forest),
-    -2px 0 0 var(--forest),
-    1px 1px 0 var(--forest),
-    -1px -1px 0 var(--forest),
-    1px -1px 0 var(--forest),
-    -1px 1px 0 var(--forest);
+    0 0.5px 0 var(--forest),
+    0 -0.5px 0 var(--forest),
+    0.5px 0 0 var(--forest),
+    -0.5px 0 0 var(--forest);
 }
 
 .text-on-media-sm {
-  -webkit-text-stroke: 2px var(--forest);
+  -webkit-text-stroke: 0.6px var(--forest);
   paint-order: stroke fill;
   text-shadow:
-    0 1px 0 var(--forest),
-    0 -1px 0 var(--forest),
-    1px 0 0 var(--forest),
-    -1px 0 0 var(--forest);
+    0 0.4px 0 var(--forest),
+    0 -0.4px 0 var(--forest),
+    0.4px 0 0 var(--forest),
+    -0.4px 0 0 var(--forest);
 }
 
 .skip-link {
