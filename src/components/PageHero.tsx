@@ -32,7 +32,7 @@ export function PageHero({
         {title}
       </h1>
       {description && (
-        <p className="mt-4 max-w-2xl text-base text-white/80">{description}</p>
+        <p className="mt-4 max-w-2xl text-base text-white/90">{description}</p>
       )}
       {children && <div className="mt-8">{children}</div>}
     </div>

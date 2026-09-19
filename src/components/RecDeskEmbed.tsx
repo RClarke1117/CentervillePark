@@ -31,6 +31,7 @@ export function RecDeskEmbed({
           className="focus-ring inline-flex shrink-0 items-center justify-center rounded-sm bg-forest px-4 py-2.5 text-sm font-semibold text-white hover:bg-forest-mid"
         >
           {openLabel} ↗
+          <span className="sr-only"> (opens in a new tab)</span>
         </a>
       </div>
 
@@ -57,6 +58,7 @@ export function RecDeskEmbed({
               className="focus-ring bg-forest px-5 py-3 text-sm font-semibold text-white hover:bg-forest-mid"
             >
               {openLabel}
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
           </div>
         ) : (
@@ -67,6 +69,7 @@ export function RecDeskEmbed({
             style={{ height: frameHeight }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
+            data-third-party="recdesk"
             onLoad={() => setLoaded(true)}
             onError={() => setFailed(true)}
           />

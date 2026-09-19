@@ -56,7 +56,7 @@ export default async function EventDetailPage({ params }: Props) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/60 to-forest-deep/30" />
         <div className="section-pad relative flex min-h-[42svh] flex-col justify-end pb-10 pt-28 md:min-h-[50svh] md:pb-14">
-          <p className="text-xs text-white/65">
+          <p className="text-xs text-white/85">
             <Link href="/" className="focus-ring hover:text-white">
               Home
             </Link>
@@ -78,7 +78,7 @@ export default async function EventDetailPage({ params }: Props) {
           </h1>
           <p className="mt-4 text-base text-white/85">
             {dateLabel}
-            <span className="text-white/50"> · </span>
+            <span className="text-white/70"> · </span>
             {event.timeLabel}
           </p>
           <p className="mt-1 text-sm text-white/70">{event.location}</p>

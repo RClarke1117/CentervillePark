@@ -130,18 +130,6 @@ export function SiteHeader() {
           <div className="ml-2">
             <SiteSearch />
           </div>
-          <label className="ml-1 flex items-center">
-            <span className="sr-only">Language</span>
-            <select
-              className="focus-ring cursor-pointer rounded-sm border border-white/25 bg-forest-deep px-2 py-1.5 text-xs font-medium text-white"
-              defaultValue="en"
-              aria-label="Language translation"
-            >
-              <option value="en">EN</option>
-              <option value="es">ES</option>
-              <option value="zh">中文</option>
-            </select>
-          </label>
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">

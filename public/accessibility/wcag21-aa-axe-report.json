@@ -1,0 +1,501 @@
+{
+  "generatedAt": "2026-09-19T03:11:16.430Z",
+  "standard": "WCAG 2.1 Level A + AA (axe-core tags wcag2a, wcag2aa, wcag21a, wcag21aa)",
+  "base": "http://127.0.0.1:4173",
+  "notes": [
+    "districtControlled excludes third-party RecDesk iframes and Google Translate chrome.",
+    "full includes cross-origin iframe content when axe can access it (RecDesk vendor UI)."
+  ],
+  "summary": [
+    {
+      "route": "/",
+      "url": "http://127.0.0.1:4173/",
+      "full": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      },
+      "districtControlled": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      }
+    },
+    {
+      "route": "/parks/",
+      "url": "http://127.0.0.1:4173/parks/",
+      "full": {
+        "passes": 28,
+        "violations": 0,
+        "violationDetails": []
+      },
+      "districtControlled": {
+        "passes": 28,
+        "violations": 0,
+        "violationDetails": []
+      }
+    },
+    {
+      "route": "/parks/brittany-hills/",
+      "url": "http://127.0.0.1:4173/parks/brittany-hills/",
+      "full": {
+        "passes": 35,
+        "violations": 3,
+        "violationDetails": [
+          {
+            "id": "aria-allowed-attr",
+            "impact": "critical",
+            "help": "Elements must only use supported ARIA attributes",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-allowed-attr?application=playwright",
+            "nodes": 5,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-DateRange"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-ProgramType"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-Age"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+            "nodes": 4,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  ".btm"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.92 (foreground color: #ffffff, background color: #a8947a, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1"
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".olr"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.92 (foreground color: #ffffff, background color: #a8947a, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1"
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".rd-filter-show-more"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #3a7cb7, background color: #f0f2f4, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ]
+          },
+          {
+            "id": "listitem",
+            "impact": "serious",
+            "help": "<li> elements must be contained in a <ul> or <ol>",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/listitem?application=playwright",
+            "nodes": 6,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  "ul[role=\"navigation\"] > li:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".dropdown.active"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".dropdown:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              }
+            ]
+          }
+        ]
+      },
+      "districtControlled": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      }
+    },
+    {
+      "route": "/parks/oak-grove/",
+      "url": "http://127.0.0.1:4173/parks/oak-grove/",
+      "full": {
+        "passes": 35,
+        "violations": 3,
+        "violationDetails": [
+          {
+            "id": "aria-allowed-attr",
+            "impact": "critical",
+            "help": "Elements must only use supported ARIA attributes",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-allowed-attr?application=playwright",
+            "nodes": 5,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-DateRange"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-ProgramType"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-Age"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+            "nodes": 4,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  ".btm"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.92 (foreground color: #ffffff, background color: #a8947a, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1"
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".olr"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.92 (foreground color: #ffffff, background color: #a8947a, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1"
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".rd-filter-show-more"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #3a7cb7, background color: #f0f2f4, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ]
+          },
+          {
+            "id": "listitem",
+            "impact": "serious",
+            "help": "<li> elements must be contained in a <ul> or <ol>",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/listitem?application=playwright",
+            "nodes": 6,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  "ul[role=\"navigation\"] > li:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".dropdown.active"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".dropdown:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              }
+            ]
+          }
+        ]
+      },
+      "districtControlled": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      }
+    },
+    {
+      "route": "/programs/",
+      "url": "http://127.0.0.1:4173/programs/",
+      "full": {
+        "passes": 35,
+        "violations": 3,
+        "violationDetails": [
+          {
+            "id": "aria-allowed-attr",
+            "impact": "critical",
+            "help": "Elements must only use supported ARIA attributes",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-allowed-attr?application=playwright",
+            "nodes": 5,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-DateRange"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-ProgramType"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-Age"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+            "nodes": 4,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  ".btm"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.92 (foreground color: #ffffff, background color: #a8947a, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1"
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".olr"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.92 (foreground color: #ffffff, background color: #a8947a, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1"
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".rd-filter-show-more"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.94 (foreground color: #3a7cb7, background color: #f0f2f4, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ]
+          },
+          {
+            "id": "listitem",
+            "impact": "serious",
+            "help": "<li> elements must be contained in a <ul> or <ol>",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/listitem?application=playwright",
+            "nodes": 6,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  "ul[role=\"navigation\"] > li:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".dropdown.active"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".dropdown:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              }
+            ]
+          }
+        ]
+      },
+      "districtControlled": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      }
+    },
+    {
+      "route": "/events/",
+      "url": "http://127.0.0.1:4173/events/",
+      "full": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      },
+      "districtControlled": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      }
+    },
+    {
+      "route": "/fields/",
+      "url": "http://127.0.0.1:4173/fields/",
+      "full": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      },
+      "districtControlled": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      }
+    },
+    {
+      "route": "/shelters/",
+      "url": "http://127.0.0.1:4173/shelters/",
+      "full": {
+        "passes": 33,
+        "violations": 3,
+        "violationDetails": [
+          {
+            "id": "aria-allowed-attr",
+            "impact": "critical",
+            "help": "Elements must only use supported ARIA attributes",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-allowed-attr?application=playwright",
+            "nodes": 1,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  "#panel-collapse-FacilityType"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-expanded=\"true\""
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+            "nodes": 3,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  ".btm"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.92 (foreground color: #ffffff, background color: #a8947a, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1"
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".olr"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.92 (foreground color: #ffffff, background color: #a8947a, font size: 8.3pt (11px), font weight: bold). Expected contrast ratio of 4.5:1"
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".panel-heading.hidden-xs > .h3"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.91 (foreground color: #ffffff, background color: #61a845, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ]
+          },
+          {
+            "id": "listitem",
+            "impact": "serious",
+            "help": "<li> elements must be contained in a <ul> or <ol>",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/listitem?application=playwright",
+            "nodes": 6,
+            "samples": [
+              {
+                "target": [
+                  ".w-full",
+                  "ul[role=\"navigation\"] > li:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".dropdown:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              },
+              {
+                "target": [
+                  ".w-full",
+                  ".dropdown.active"
+                ],
+                "failureSummary": "Fix any of the following:\n  List item parent element has a role that is not role=\"list\""
+              }
+            ]
+          }
+        ]
+      },
+      "districtControlled": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      }
+    },
+    {
+      "route": "/accessibility/",
+      "url": "http://127.0.0.1:4173/accessibility/",
+      "full": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      },
+      "districtControlled": {
+        "passes": 27,
+        "violations": 0,
+        "violationDetails": []
+      }
+    },
+    {
+      "route": "/contact/",
+      "url": "http://127.0.0.1:4173/contact/",
+      "full": {
+        "passes": 28,
+        "violations": 0,
+        "violationDetails": []
+      },
+      "districtControlled": {
+        "passes": 28,
+        "violations": 0,
+        "violationDetails": []
+      }
+    }
+  ]
+}

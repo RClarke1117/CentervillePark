@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SiteTranslate } from "@/components/SiteTranslate";
 
 const columns = [
   {
@@ -24,6 +25,7 @@ const columns = [
     links: [
       { href: "/foundation", label: "Foundation" },
       { href: "/about", label: "About CWPD" },
+      { href: "/accessibility", label: "Accessibility" },
       { href: "/about#volunteer", label: "Volunteer" },
       { href: "/about#careers", label: "Careers" },
     ],
@@ -63,7 +65,7 @@ export function SiteFooter() {
               (937) 433-5155
             </a>
             <br />
-            <span className="text-white/55">FAX (937) 433-6564</span>
+            <span className="text-white/70">FAX (937) 433-6564</span>
           </p>
         </div>
       </div>
@@ -82,7 +84,7 @@ export function SiteFooter() {
             Your community&apos;s big backyard — 51 parks across 1,063 acres in
             Centerville and Washington Township.
           </p>
-          <p className="mt-6 text-xs text-white/50">
+          <p className="mt-6 text-xs text-white/70">
             Parks open from one-half hour before sunrise to one-half hour after
             sunset, unless posted for programs or permits.
           </p>
@@ -98,7 +100,7 @@ export function SiteFooter() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="focus-ring text-sm text-white/75 transition hover:text-white"
+                    className="focus-ring text-sm text-white/90 transition hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -109,18 +111,37 @@ export function SiteFooter() {
         ))}
       </div>
 
-      <div className="section-pad flex flex-col gap-3 border-t border-white/10 py-5 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+      <div className="section-pad border-t border-white/10 py-6">
+        <SiteTranslate />
+        <p className="mt-2 text-xs text-white/70">
+          Same languages as cwpd.org — powered by Google Translate.
+        </p>
+      </div>
+
+      <div className="section-pad flex flex-col gap-3 border-t border-white/10 py-5 text-xs text-white/70 sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} Centerville-Washington Park District</p>
-        <p>
-          Redesign concept by{" "}
-          <a
-            href="https://clarkedesignstudio.com"
-            className="focus-ring text-white/70 underline-offset-2 hover:text-white hover:underline"
-            rel="noopener noreferrer"
-            target="_blank"
+        <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <Link
+            href="/accessibility"
+            className="focus-ring text-white underline-offset-2 hover:underline"
           >
-            Clarke Design Studio
-          </a>
+            Accessibility
+          </Link>
+          <span aria-hidden className="text-white/40">
+            ·
+          </span>
+          <span>
+            Redesign concept by{" "}
+            <a
+              href="https://clarkedesignstudio.com"
+              className="focus-ring text-white underline-offset-2 hover:underline"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Clarke Design Studio
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </span>
         </p>
       </div>
     </footer>

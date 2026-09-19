@@ -78,7 +78,7 @@ export default function HomePage() {
             </ButtonLink>
           </div>
           <p
-            className="scroll-cue mt-14 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/55"
+            className="scroll-cue mt-14 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70"
             aria-hidden
           >
             Scroll

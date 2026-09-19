@@ -91,7 +91,7 @@ export function SiteSearch() {
       >
         <span aria-hidden>⌕</span>
         <span className="hidden sm:inline">Search</span>
-        <kbd className="hidden rounded border border-white/20 px-1 py-0.5 text-[10px] text-white/60 md:inline">
+        <kbd className="hidden rounded border border-white/20 px-1 py-0.5 text-[10px] text-white/80 md:inline">
           ⌘K
         </kbd>
       </button>
