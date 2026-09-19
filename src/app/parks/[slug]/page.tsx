@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ButtonLink";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { FavoriteButton } from "@/components/FavoriteButton";
+import { SharePrint } from "@/components/SharePrint";
 import { AMENITY_LABELS, getPark, parks } from "@/data/parks";
 import { news, programs } from "@/data/content";
 
@@ -27,6 +30,15 @@ export default async function ParkDetailPage({ params }: Props) {
   const park = getPark(slug);
   if (!park) notFound();
 
+  const related = parks
+    .filter(
+      (p) =>
+        p.slug !== park.slug &&
+        (p.type === park.type ||
+          p.amenities.some((a) => park.amenities.includes(a))),
+    )
+    .slice(0, 3);
+
   const relatedPrograms = programs.filter((p) =>
     p.location.toLowerCase().includes(park.name.split(" ")[0].toLowerCase()),
   );
@@ -45,7 +57,13 @@ export default async function ParkDetailPage({ params }: Props) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/55 to-forest-deep/25" />
         <div className="section-pad relative flex min-h-[70svh] flex-col justify-end pb-12 pt-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
+          <Breadcrumbs
+            items={[
+              { href: "/parks", label: "Parks" },
+              { label: park.name },
+            ]}
+          />
+          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
             {park.type} park
             {park.acres != null ? ` · ${park.acres} acres` : ""}
           </p>
@@ -62,7 +80,7 @@ export default async function ParkDetailPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="section-pad grid gap-12 py-14 lg:grid-cols-[1.4fr_0.8fr]">
+      <div className="section-pad grid gap-12 py-14 pb-24 lg:grid-cols-[1.4fr_0.8fr]">
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
@@ -89,28 +107,28 @@ export default async function ParkDetailPage({ params }: Props) {
               Upcoming nearby
             </h2>
             <p className="mt-2 text-sm text-ink-muted">
-              Programs and stories related to this park — pulled from the shared
-              content model (RecDesk-ready).
+              Programs related to this park — RecDesk-ready content model.
             </p>
             <ul className="mt-5 space-y-3">
-              {(relatedPrograms.length ? relatedPrograms : programs.slice(0, 2)).map(
-                (p) => (
-                  <li
-                    key={p.id}
-                    className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line py-3"
-                  >
-                    <div>
-                      <p className="font-semibold text-ink">{p.title}</p>
-                      <p className="text-sm text-ink-muted">
-                        {p.dateLabel} · {p.location}
-                      </p>
-                    </div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-forest-mid">
-                      {p.status}
-                    </span>
-                  </li>
-                ),
-              )}
+              {(relatedPrograms.length
+                ? relatedPrograms
+                : programs.slice(0, 2)
+              ).map((p) => (
+                <li
+                  key={p.id}
+                  className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line py-3"
+                >
+                  <div>
+                    <p className="font-semibold text-ink">{p.title}</p>
+                    <p className="text-sm text-ink-muted">
+                      {p.dateLabel} · {p.location}
+                    </p>
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-forest-mid">
+                    {p.status}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -136,9 +154,35 @@ export default async function ParkDetailPage({ params }: Props) {
               ))}
             </ul>
           </div>
+
+          {related.length > 0 && (
+            <div className="mt-12">
+              <h2
+                className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
+                style={{ fontVariationSettings: '"SOFT" 30' }}
+              >
+                Related parks
+              </h2>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-3">
+                {related.map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/parks/${p.slug}`}
+                      className="focus-ring block border border-line p-4 hover:border-forest/30 hover:bg-mist"
+                    >
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-forest-mid">
+                        {p.type}
+                      </p>
+                      <p className="mt-1 font-semibold">{p.name}</p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
-        <aside className="h-fit border border-line bg-paper p-6 lg:sticky lg:top-6">
+        <aside className="h-fit border border-line bg-paper p-6 lg:sticky lg:top-24">
           <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
             Visit
           </h2>
@@ -147,10 +191,12 @@ export default async function ParkDetailPage({ params }: Props) {
             rentals.
           </p>
           <p className="mt-4 text-sm text-ink-muted">
-            Domesticated animals must remain on a visible leash (max 8 ft),
-            except inside designated off-leash dog park areas.
+            Pets on leash (max 8 ft), except inside designated off-leash dog park
+            areas.
           </p>
           <div className="mt-6 flex flex-col gap-3">
+            <FavoriteButton slug={park.slug} name={park.name} />
+            <SharePrint title={`${park.name} · CWPD`} />
             <ButtonLink href="/shelters">Reserve a shelter</ButtonLink>
             <ButtonLink href="/parks" variant="ghost">
               Back to park finder

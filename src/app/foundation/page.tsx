@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Foundation for Centerville-Washington Parks",
@@ -11,46 +12,28 @@ export const metadata: Metadata = {
 export default function FoundationPage() {
   return (
     <div className="min-h-screen bg-[#f5f8fc]">
-      <section className="relative overflow-hidden bg-foundation text-white">
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 70% at 80% 0%, #4a7ab8, transparent 55%)",
-          }}
-          aria-hidden
-        />
-        <div className="section-pad relative pb-16 pt-28 md:pb-24 md:pt-36">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9ec0ef]">
-            Foundation for Centerville-Washington Parks
-          </p>
-          <h1
-            className="mt-4 max-w-3xl font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-6xl"
-            style={{ fontVariationSettings: '"SOFT" 20' }}
+      <PageHero
+        tone="foundation"
+        eyebrow="Foundation for Centerville-Washington Parks"
+        title="Private generosity for a public backyard."
+        description="A distinct nonprofit partner — visually separate from the Park District — funding trees, benches, trail enhancements, and program scholarships."
+        crumbs={[{ label: "Foundation" }]}
+      >
+        <div className="flex flex-wrap gap-3">
+          <ButtonLink
+            href="/contact"
+            variant="foundation"
+            className="!bg-white !text-foundation hover:!bg-[#e8eef6]"
           >
-            Private generosity for a public backyard.
-          </h1>
-          <p className="mt-5 max-w-xl text-lg text-white/80">
-            The Foundation is a distinct nonprofit partner — visually separate
-            from the Park District — funding trees, benches, trail enhancements,
-            and program scholarships.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink
-              href="/contact"
-              variant="foundation"
-              className="!bg-white !text-foundation hover:!bg-[#e8eef6]"
-            >
-              Donate / inquire
-            </ButtonLink>
-            <ButtonLink href="/" variant="secondary">
-              Back to CWPD
-            </ButtonLink>
-          </div>
+            Donate / inquire
+          </ButtonLink>
+          <ButtonLink href="/" variant="secondary">
+            Back to CWPD
+          </ButtonLink>
         </div>
-      </section>
+      </PageHero>
 
-      <div className="section-pad grid gap-10 py-16 md:grid-cols-2 md:py-20">
+      <div className="section-pad grid gap-10 py-16 pb-24 md:grid-cols-2 md:py-20">
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-3xl tracking-tight text-foundation"

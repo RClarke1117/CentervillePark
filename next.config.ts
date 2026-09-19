@@ -1,8 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Static redesign prototype — ready for CMS handoff
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
   reactStrictMode: true,
+  trailingSlash: true,
 };
 
 export default nextConfig;

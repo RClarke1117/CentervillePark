@@ -33,6 +33,41 @@ const columns = [
 export function SiteFooter() {
   return (
     <footer className="bg-forest-deep text-white">
+      <div className="section-pad grid gap-8 border-b border-white/10 py-10 md:grid-cols-3">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-bright">
+            Visit the office
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-white/80">
+            221 N. Main Street
+            <br />
+            Centerville, Ohio 45459
+          </p>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-bright">
+            Hours
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-white/80">
+            Monday–Friday
+            <br />
+            8:00 a.m. – 3:30 p.m.
+          </p>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-bright">
+            Call
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-white/80">
+            <a className="focus-ring underline-offset-2 hover:underline" href="tel:9374335155">
+              (937) 433-5155
+            </a>
+            <br />
+            <span className="text-white/55">FAX (937) 433-6564</span>
+          </p>
+        </div>
+      </div>
+
       <div className="section-pad grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-8">
         <div>
           <p
@@ -47,17 +82,9 @@ export function SiteFooter() {
             Your community&apos;s big backyard — 51 parks across 1,063 acres in
             Centerville and Washington Township.
           </p>
-          <p className="mt-6 text-sm text-white/70">
-            221 N. Main Street
-            <br />
-            Centerville, Ohio 45459
-            <br />
-            <a className="focus-ring mt-2 inline-block underline-offset-2 hover:underline" href="tel:9374335155">
-              (937) 433-5155
-            </a>
-          </p>
-          <p className="mt-3 text-xs text-white/50">
-            Office hours: 8 a.m. – 3:30 p.m., Monday–Friday
+          <p className="mt-6 text-xs text-white/50">
+            Parks open during daylight hours unless posted for programs or
+            rentals.
           </p>
         </div>
 

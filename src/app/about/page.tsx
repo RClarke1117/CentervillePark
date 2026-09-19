@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ButtonLink";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "About",
@@ -10,24 +11,14 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="atmosphere min-h-screen">
-      <div className="section-pad border-b border-line bg-forest-deep pb-14 pt-28 text-white md:pt-32">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
-          About
-        </p>
-        <h1
-          className="mt-3 max-w-3xl font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
-          style={{ fontVariationSettings: '"SOFT" 40' }}
-        >
-          Who we are
-        </h1>
-        <p className="mt-4 max-w-2xl text-white/80">
-          Founded in 1959, CWPD now stewards eight community parks, nature
-          preserves, and neighborhood greens across 1,063 acres — so there is a
-          park near every home.
-        </p>
-      </div>
+      <PageHero
+        eyebrow="About"
+        title="Who we are"
+        description="Founded in 1959, CWPD now stewards eight community parks, nature preserves, and neighborhood greens across 1,063 acres — so there is a park near every home."
+        crumbs={[{ label: "About" }]}
+      />
 
-      <div className="section-pad grid gap-12 py-14 md:grid-cols-2 md:py-20">
+      <div className="section-pad grid gap-12 py-14 pb-8 md:grid-cols-2 md:py-20">
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
@@ -74,7 +65,7 @@ export default function AboutPage() {
 
       <div
         id="volunteer"
-        className="section-pad border-t border-line py-14 md:py-16"
+        className="section-pad border-t border-line py-14 pb-24 md:py-16"
       >
         <h2
           className="font-[family-name:var(--font-display)] text-2xl tracking-tight"

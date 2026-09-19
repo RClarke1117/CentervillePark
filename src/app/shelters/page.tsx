@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ButtonLink";
+import { PageHero } from "@/components/PageHero";
 import { parks } from "@/data/parks";
 
 export const metadata: Metadata = {
@@ -15,32 +16,18 @@ export default function SheltersPage() {
 
   return (
     <div className="atmosphere min-h-screen">
-      <div className="section-pad border-b border-line bg-forest-deep pb-14 pt-28 text-white md:pt-32">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
-          Shelters
-        </p>
-        <h1
-          className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
-          style={{ fontVariationSettings: '"SOFT" 40' }}
-        >
-          Reserve a group shelter
-        </h1>
-        <p className="mt-4 max-w-xl text-white/80">
-          Community parks offer reservable shelters for reunions, birthdays, and
-          team parties. Booking continues through RecDesk with clearer park
-          context on this site.
-        </p>
-        <div className="mt-8">
-          <ButtonLink
-            href="https://secure.recdesk.com/Community/Home"
-            external
-          >
-            Start a reservation
-          </ButtonLink>
-        </div>
-      </div>
+      <PageHero
+        eyebrow="Shelters"
+        title="Reserve a group shelter"
+        description="Community parks offer reservable shelters for reunions, birthdays, and team parties. Booking continues through RecDesk with clearer park context here."
+        crumbs={[{ label: "Shelters" }]}
+      >
+        <ButtonLink href="https://secure.recdesk.com/Community/Home" external>
+          Start a reservation
+        </ButtonLink>
+      </PageHero>
 
-      <div className="section-pad py-12 md:py-16">
+      <div className="section-pad py-12 pb-24 md:py-16">
         <h2
           className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
           style={{ fontVariationSettings: '"SOFT" 30' }}

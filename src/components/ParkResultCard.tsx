@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AMENITY_LABELS, type Park } from "@/data/parks";
+import { FavoriteButton } from "@/components/FavoriteButton";
 
 export function ParkResultCard({ park }: { park: Park }) {
   const topAmenities = park.amenities.slice(0, 5);
@@ -24,17 +25,23 @@ export function ParkResultCard({ park }: { park: Park }) {
               {park.acres != null ? ` · ${park.acres} acres` : ""}
             </p>
             <h3 className="mt-1 font-[family-name:var(--font-display)] text-2xl tracking-tight text-ink">
-              <Link href={`/parks/${park.slug}`} className="focus-ring hover:text-forest-mid">
+              <Link
+                href={`/parks/${park.slug}`}
+                className="focus-ring hover:text-forest-mid"
+              >
                 {park.name}
               </Link>
             </h3>
           </div>
-          <Link
-            href={`/parks/${park.slug}`}
-            className="focus-ring text-sm font-semibold text-forest underline-offset-4 hover:underline"
-          >
-            Details
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <FavoriteButton slug={park.slug} name={park.name} />
+            <Link
+              href={`/parks/${park.slug}`}
+              className="focus-ring text-sm font-semibold text-forest underline-offset-4 hover:underline"
+            >
+              Details
+            </Link>
+          </div>
         </div>
         <p className="text-sm leading-relaxed text-ink-muted">{park.summary}</p>
         <p className="text-xs text-ink-muted">

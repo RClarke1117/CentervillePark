@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -8,18 +9,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="atmosphere min-h-screen">
-      <div className="section-pad border-b border-line bg-forest-deep pb-14 pt-28 text-white md:pt-32">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
-          Contact
-        </p>
-        <h1
-          className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
-          style={{ fontVariationSettings: '"SOFT" 40' }}
-        >
-          We&apos;re here to help
-        </h1>
-      </div>
-      <div className="section-pad grid gap-10 py-14 md:grid-cols-2 md:py-16">
+      <PageHero
+        eyebrow="Contact"
+        title="We're here to help"
+        crumbs={[{ label: "Contact" }]}
+      />
+      <div className="section-pad grid gap-10 py-14 pb-24 md:grid-cols-2 md:py-16">
         <div>
           <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
             Main office
@@ -32,7 +27,10 @@ export default function ContactPage() {
             Centerville, Ohio 45459
           </p>
           <p className="mt-4 text-ink">
-            <a className="focus-ring font-semibold underline-offset-2 hover:underline" href="tel:9374335155">
+            <a
+              className="focus-ring font-semibold underline-offset-2 hover:underline"
+              href="tel:9374335155"
+            >
               (937) 433-5155
             </a>
             <br />
@@ -42,7 +40,10 @@ export default function ContactPage() {
             Office hours: 8 a.m. – 3:30 p.m., Monday–Friday
           </p>
         </div>
-        <form className="border border-line bg-paper p-6" aria-label="Contact form">
+        <form
+          className="border border-line bg-paper p-6"
+          aria-label="Contact form"
+        >
           <label className="block text-sm font-medium">
             Name
             <input

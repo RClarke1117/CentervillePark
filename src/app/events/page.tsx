@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PageHero } from "@/components/PageHero";
 import { news } from "@/data/content";
 
 export const metadata: Metadata = {
@@ -12,25 +13,20 @@ export default function EventsPage() {
 
   return (
     <div className="atmosphere min-h-screen">
-      <div className="section-pad border-b border-line bg-forest-deep pb-14 pt-28 text-white md:pt-32">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
-          Events
-        </p>
-        <h1
-          className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
-          style={{ fontVariationSettings: '"SOFT" 40' }}
-        >
-          Gather outdoors
-        </h1>
-        <p className="mt-4 max-w-xl text-white/80">
-          Movie nights, glow runs, adapted play days, and signature walks —
-          roughly 30 large special events each year.
-        </p>
-      </div>
-      <div className="section-pad py-12 md:py-16">
-        <ul className="mx-auto max-w-3xl divide-y divide-line border border-line bg-paper">
+      <PageHero
+        eyebrow="Events"
+        title="Gather outdoors"
+        description="Movie nights, glow runs, adapted play days, and signature walks — roughly 30 large special events each year."
+        crumbs={[{ label: "Events" }]}
+      />
+      <div className="section-pad py-12 pb-24 md:py-16">
+        <ol className="relative mx-auto max-w-3xl border-l border-forest/25 pl-8">
           {events.map((e) => (
-            <li key={e.slug} className="p-6 md:p-8">
+            <li key={e.slug} className="relative pb-12 last:pb-0">
+              <span
+                className="absolute -left-[2.15rem] top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-forest bg-paper"
+                aria-hidden
+              />
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-forest-mid">
                 {new Date(e.date).toLocaleDateString("en-US", {
                   weekday: "long",
@@ -51,7 +47,7 @@ export default function EventsPage() {
               </Link>
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </div>
   );

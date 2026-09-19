@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { news } from "@/data/content";
+import { PageHero } from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "News",
@@ -10,18 +11,12 @@ export const metadata: Metadata = {
 export default function NewsPage() {
   return (
     <div className="atmosphere min-h-screen">
-      <div className="section-pad border-b border-line bg-forest-deep pb-14 pt-28 text-white md:pt-32">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
-          News
-        </p>
-        <h1
-          className="mt-3 font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
-          style={{ fontVariationSettings: '"SOFT" 40' }}
-        >
-          Stories from the backyard
-        </h1>
-      </div>
-      <div className="section-pad py-12 md:py-16">
+      <PageHero
+        eyebrow="News"
+        title="Stories from the backyard"
+        crumbs={[{ label: "News" }]}
+      />
+      <div className="section-pad py-12 pb-24 md:py-16">
         <ul className="grid gap-10 md:grid-cols-2">
           {news.map((item) => (
             <li key={item.slug}>

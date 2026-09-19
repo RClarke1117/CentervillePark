@@ -186,3 +186,68 @@ img {
   outline: 3px solid var(--gold-bright);
   outline-offset: 3px;
 }
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.plan-arrow {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .plan-arrow {
+  transform: translateX(5px);
+}
+
+.scroll-cue {
+  animation: cue 2.2s ease-in-out infinite;
+}
+
+@keyframes cue {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scroll-cue {
+    animation: none;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .skip-link,
+  [aria-label="Quick links"],
+  [role="status"] {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
