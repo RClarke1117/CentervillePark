@@ -27,12 +27,11 @@ export function PageHero({
       </p>
       <h1
         className="mt-3 max-w-3xl font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
-        style={{ fontVariationSettings: '"SOFT" 40' }}
       >
         {title}
       </h1>
       {description && (
-        <p className="mt-4 max-w-2xl text-base text-white/80">{description}</p>
+        <p className="mt-4 max-w-2xl text-base text-white/90">{description}</p>
       )}
       {children && <div className="mt-8">{children}</div>}
     </div>

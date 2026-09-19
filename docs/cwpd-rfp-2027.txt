@@ -1,0 +1,228 @@
+ 
+Request for Proposals (RFP) 
+Website Redesign 
+ 
+RFP released: September 1, 2026 
+Questions due: September 18, 2026 
+Proposals due: October 12, 2026, at 4:30 p.m. 
+Anticipate project to begin: January 2027 
+Desired site launch: Third or fourth quarter 2027 
+Mandatory accessibility compliance: WCAG 2.1 Level AA by April 2028 
+ 
+Summary and Project Description 
+The Centerville-Washington Park District (CWPD) is issuing this Request for Proposals (RFP) for the redesign and 
+redevelopment of cwpd.org. CWPD seeks a website that improves customer experience, makes it easier for 
+residents to discover parks, programs and events and provides a flexible, intuitive content management system that 
+can be maintained by non-technical staff. More than 60% of CWPD's website traffic comes from mobile devices. 
+Therefore, a mobile-first, responsive design is essential. 
+ 
+CWPD is seeking a partner that can provide strategy, information architecture, user experience design, visual design, 
+development, accessibility testing, training, launch support and ongoing maintenance. 
+ 
+We welcome proposals that challenge assumptions and offer innovative solutions while respecting CWPD's 
+established brand and successful existing features. 
+ 
+Background and Need 
+The Centerville-Washington Park District operates eight community parks, nine nature parks and 34 neighborhood 
+parks encompassing 1,063 acres in Centerville and Washington Township, a southern suburb of Dayton, Ohio. The 
+Park District serves a community of approximately 61,000 residents. The 51 parks offer a wide variety of amenities 
+and experiences, including a sprayground, dog park, skatepark, archery range, sports fields, playgrounds, hiking 
+trails, walking paths, fishing areas, nature preserves and more. 
+ 
+In addition to maintaining the parks, CWPD also offers recreational programming throughout the year. CWPD 
+averages approximately 30 large special events annually, including Movie Parties in the Park and the Luminary Walk. 
+The Park District also offers approximately 90 summer day camp sessions and 
+hundreds of additional programs throughout the year. In 2025, CWPD offered 470 
+other park programs. CWPD is passionate about creating positive memories and 
+meaningful outdoor experiences for residents of Centerville and Washington 
+Township. 
+ 
+
+ 
+ 
+CWPD's website is approximately 10 years old, with significant improvements made about four years ago. The 
+current website is built using WordPress. 
+ 
+CWPD also utilizes RecDesk for program registration and facility rentals. The current website does not have an 
+automated integration with RecDesk, requiring staff to enter program information separately for them to appear on 
+the CWPD website. 
+ 
+CWPD's existing website meets many accessibility standards but is not fully compliant with WCAG 2.1 Level AA. 
+The redesigned website must meet all WCAG 2.1 Level AA requirements. 
+ 
+Website Audience & Analytics 
+CWPD's primary website audience is residents of Centerville and Washington Township. CWPD’s most prevalent 
+customer base is women of Centerville/Washington Township that fall in the age range of mid 20’s through mid-
+to-late 40’s. Our secondary audience is senior adults exploring our site for information about health and wellness 
+programs and hiking trails/paved walking paths. 
+ 
+Our most visited web pages (excluding the home page) in 2025: 
+1. Athletic Field Status 
+2. Find a Park  
+3. A blog post about vultures (this was a fluke, but our monthly blog posts do have fairly high views) 
+4. Upcoming Events 
+5. Oak Grove Park 
+6. Reserving Group Shelters 
+7. Bill Yeck Park 
+8. Parks 
+9. Grant Park 
+10. Programs and Events 
+ 
+Project Goals 
+The redesigned website should: 
+• Improve the overall customer experience. 
+• Make it easier for residents to find the right park, program, event or facility.  
+• Improve mobile usability and performance. Improve page load times. 
+• Provide robust and accurate site search, improving upon speed and accuracy.   
+
+ 
+• Improve the existing Park Finder. Search results should provide enough information for users to determine 
+whether a park meets their needs without requiring them to open every individual park page. 
+• Create a more seamless relationship between cwpd.org and RecDesk, minimizing or eliminating duplicate 
+entry of program information between the two sites, where technically feasible.  
+• Meet WCAG 2.1 Level AA accessibility standards.  
+• Improve search engine optimization and visibility in emerging AI-powered search and answer engines.  
+• Make content easy for staff to create, update and manage.  
+• Preserve and improve CWPD's strong visual identity and storytelling.  
+ 
+Project Scope and Desired Functionality 
+These features must also be included on a new site, with improved function where possible. 
+• Language translation feature 
+• A news section, with latest news appearing on home page 
+• Robust park pages with a repeatable park page structure for our 10 largest parks – with potential for listing 
+upcoming programs and recent news stories related to the specific parks. The website should provide a 
+flexible, standardized park page template that can accommodate varying amenities and levels of information. 
+CWPD anticipates enhanced content for its 10 largest parks, but all 51 parks should benefit from the 
+redesigned structure. 
+• Improved site navigation/information architecture focused on the customer. CWPD believes the current 
+information architecture provides a strong foundation but is open to recommendations based on user 
+research, analytics and industry best practices.  
+• A section for the Foundation for Centerville-Washington Parks using its own visual identity to differentiate 
+between the Park District and the Foundation. The Foundation should have a prominent visual link from 
+CWPD home page. 
+• Allow for different user roles and permissions  
+ 
+The refreshed site design should reflect CWPD’s established brand standards. Brand guide and design samples will 
+be made available at the onset of the project.  
+ 
+WordPress does not need to remain the CMS; however, the utilized CMS should allow non-technical staff to easily 
+edit and create pages, add photos and videos, schedule content for publishing on future dates, create alerts and add 
+downloadable files.  
+ 
+   
+
+ 
+Proposal Submittal 
+Proposals should include the following: 
+ 
+Answers to vendor questions: 
+ 
+1. What do you see as the three biggest opportunities for improvement on CWPD's current website?  
+2. What would you retain from the existing site?  
+3. How would you approach RecDesk integration?  
+4. What CMS do you recommend and why? Include additional costs associated with the chosen CMS. 
+5. How will you achieve WCAG 2.1 AA compliance?  
+6. How will you preserve SEO during migration?  
+7. What would you recommend changing about the current information architecture?  
+8. What will CWPD staff be responsible for during the project?  
+9. What ongoing technical resources will CWPD need after launch? 
+ 
+Also include: 
+• A proposed project timeline, including stages for discovery, information architecture, design, development, 
+content migration (all content will be provided by CWPD staff and staff can assist with migration), site 
+testing, training, launch and post-launch support  
+• Project estimate with a cost breakdown for each stage and any optional recommended features. Please 
+include an option for ongoing maintenance support and describe what support entails.  
+• Description of previous experience with comparable projects, preferably with other park districts or 
+municipal agencies. Include sample websites to review. 
+• Key personnel who would be involved with this project, their previous project experience and qualifications.  
+• Experience with site accessibility as it pertains to WCAG 2.1 AA guidelines. Describe process for testing 
+and documenting compliance prior to launch. The selected vendor will be responsible for remediating 
+accessibility issues. 
+• Experience with RecDesk integration: 
+o Vendors must clearly describe any existing RecDesk integrations, APIs, feeds or other integration 
+methods they have implemented, as well as any limitations, third-party costs or ongoing 
+maintenance requirements. 
+o Vendors should identify whether their proposed solution would allow program information, 
+registration status, dates, locations and/or availability to be displayed automatically on the CWPD 
+website. 
+o If full automation is not technically feasible, vendors should propose 
+the most efficient alternative workflow for minimizing duplicate staff 
+data entry. 
+ 
+
+ 
+• References available for contact 
+• All website content, data, design files, custom code and other project deliverables shall remain the property 
+of CWPD. Vendors shall describe any proprietary components or licensing restrictions that could affect 
+CWPD's ability to maintain or migrate the website in the future. 
+ 
+Hosting and Security 
+The CWPD website is currently hosted by DataYard. The proposed website must provide a secure, reliable and 
+scalable platform. Vendors should specify whether hosting would be managed by the vendor or whether CWPD 
+would independently manage hosting. Please include the following information if you propose a change to the 
+existing site host:  
+• Recommended hosting environment  
+• Hosting provider  
+• Annual hosting cost  
+• Location of hosted data  
+• Expected uptime/service availability  
+• Backup frequency  
+• Disaster recovery procedures  
+• Security monitoring  
+• Malware protection  
+• Software/CMS/plugin updates  
+• Website outage response procedures  
+ 
+Vendors should also describe: 
+• Security practices  
+• Vulnerability monitoring  
+• Software updates  
+• SSL  
+• Backup and recovery  
+• User authentication  
+• Protection against common web vulnerabilities 
+ 
+Evaluation 
+The following criteria will be used to evaluate proposals:  
+• Understanding of project goals 
+• Design quality  
+• User experience 
+• Municipal/park district experience 
+
+ 
+• CMS usability 
+• RecDesk integration approach 
+• Accessibility expertise 
+• SEO and performance approach 
+• Cost 
+ 
+CWPD may invite selected vendors to participate in a finalist presentation and/or demonstration. CWPD reserves 
+the right to request additional information or clarification from respondents during the evaluation process. 
+ 
+Centerville-Washington Park District Obligations and Rights 
+Response to the RFP is entirely voluntary. This RFP does not and shall not commit the Centerville-Washington 
+Park District or any of its agents to enter into any agreement, to pay any costs incurred in the preparation of any 
+response to this RFP, or to procure or contract for any services or supplies.  
+ 
+The Centerville-Washington Park District reserves the right to accept or reject any or all responses to this RFP, to 
+enter into contractual agreement with any individual or company submitting a response to the RFP, or to delay 
+and/or cancel in part or in its entirety this RFP if it is in the best interest of the Centerville-Washington Park 
+District, in its sole opinion, to do so.  
+ 
+Additional Information 
+Additional information about the Centerville-Washington Park District can be found on our website, cwpd.org.  
+ 
+Questions may be submitted by email up until 4:30 p.m. on September 18, 2026. Proposals may be 
+submitted by email up until 4:30 p.m. on October 12, 2026. Questions and proposals should be sent to 
+Carrie Dittman at cdittman@cwpd.org.   
+ 
+Sincerely, 
+ 
+ 
+Carrie Dittman 
+Marketing & Communications Manager 
+Centerville-Washington Park District 
+221 N. Main St 
+Centerville, OH 45459 
+   

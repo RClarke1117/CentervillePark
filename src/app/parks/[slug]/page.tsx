@@ -5,9 +5,10 @@ import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FavoriteButton } from "@/components/FavoriteButton";
+import { ParkProgramsEmbed } from "@/components/ParkProgramsEmbed";
 import { SharePrint } from "@/components/SharePrint";
 import { AMENITY_LABELS, getPark, parks } from "@/data/parks";
-import { getUpcomingEvents, programs } from "@/data/content";
+import { getUpcomingEvents } from "@/data/content";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -30,23 +31,13 @@ export default async function ParkDetailPage({ params }: Props) {
   const park = getPark(slug);
   if (!park) notFound();
 
-  const related = parks
-    .filter(
-      (p) =>
-        p.slug !== park.slug &&
-        (p.type === park.type ||
-          p.amenities.some((a) => park.amenities.includes(a))),
-    )
-    .slice(0, 3);
-
-  const relatedPrograms = programs.filter((p) =>
-    p.location.toLowerCase().includes(park.name.split(" ")[0].toLowerCase()),
-  );
   const relatedNews = getUpcomingEvents().slice(0, 2);
+  const hasReservableShelter = park.amenities.includes("shelter-reservable");
+  const hasDogPark = park.amenities.includes("dog-park");
 
   return (
     <article>
-      <header className="relative min-h-[70svh] overflow-hidden bg-forest-deep text-white">
+      <header className="media-frame relative min-h-[70svh] overflow-hidden bg-forest-deep text-white">
         <Image
           src={park.image}
           alt=""
@@ -56,20 +47,19 @@ export default async function ParkDetailPage({ params }: Props) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/55 to-forest-deep/25" />
-        <div className="section-pad relative flex min-h-[70svh] flex-col justify-end pb-12 pt-28">
+        <div className="section-pad relative z-[5] flex min-h-[70svh] flex-col justify-end pb-12 pt-28">
           <Breadcrumbs
             items={[
               { href: "/parks", label: "Parks" },
               { label: park.name },
             ]}
           />
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
+          <p className="text-on-media-sm mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
             {park.type} park
             {park.acres != null ? ` · ${park.acres} acres` : ""}
           </p>
           <h1
-            className="mt-3 font-[family-name:var(--font-display)] text-5xl tracking-tight md:text-6xl"
-            style={{ fontVariationSettings: '"SOFT" 40' }}
+            className="text-on-media mt-3 font-[family-name:var(--font-display)] text-5xl tracking-tight md:text-6xl"
           >
             {park.name}
           </h1>
@@ -80,62 +70,34 @@ export default async function ParkDetailPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="section-pad grid gap-12 py-14 pb-24 lg:grid-cols-[1.4fr_0.8fr]">
+      <div className="section-pad grid gap-12 py-14 lg:grid-cols-[1.4fr_0.8fr]">
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 30' }}
           >
             Amenities at a glance
           </h2>
-          <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-            {park.amenities.map((a) => (
-              <li
-                key={a}
-                className="border border-line bg-mist/50 px-4 py-3 text-sm font-medium text-forest"
-              >
-                {AMENITY_LABELS[a]}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-12">
-            <h2
-              className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-              style={{ fontVariationSettings: '"SOFT" 30' }}
-            >
-              Upcoming nearby
-            </h2>
-            <p className="mt-2 text-sm text-ink-muted">
-              Programs related to this park — RecDesk-ready content model.
-            </p>
-            <ul className="mt-5 space-y-3">
-              {(relatedPrograms.length
-                ? relatedPrograms
-                : programs.slice(0, 2)
-              ).map((p) => (
+          {park.amenities.length > 0 ? (
+            <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+              {park.amenities.map((a) => (
                 <li
-                  key={p.id}
-                  className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line py-3"
+                  key={a}
+                  className="border border-line bg-mist/50 px-4 py-3 text-sm font-medium text-forest"
                 >
-                  <div>
-                    <p className="font-semibold text-ink">{p.title}</p>
-                    <p className="text-sm text-ink-muted">
-                      {p.dateLabel} · {p.location}
-                    </p>
-                  </div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-forest-mid">
-                    {p.status}
-                  </span>
+                  {AMENITY_LABELS[a]}
                 </li>
               ))}
             </ul>
-          </div>
+          ) : (
+            <p className="mt-5 text-sm leading-relaxed text-ink-muted">
+              Natural or open space with limited developed amenities — see the
+              park description for what to expect.
+            </p>
+          )}
 
           <div className="mt-12">
             <h2
               className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-              style={{ fontVariationSettings: '"SOFT" 30' }}
             >
               Upcoming events
             </h2>
@@ -160,32 +122,6 @@ export default async function ParkDetailPage({ params }: Props) {
               ))}
             </ul>
           </div>
-
-          {related.length > 0 && (
-            <div className="mt-12">
-              <h2
-                className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-                style={{ fontVariationSettings: '"SOFT" 30' }}
-              >
-                Related parks
-              </h2>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-                {related.map((p) => (
-                  <li key={p.slug}>
-                    <Link
-                      href={`/parks/${p.slug}`}
-                      className="focus-ring block border border-line p-4 hover:border-forest/30 hover:bg-mist"
-                    >
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-forest-mid">
-                        {p.type}
-                      </p>
-                      <p className="mt-1 font-semibold">{p.name}</p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
 
         <aside className="h-fit border border-line bg-paper p-6 lg:sticky lg:top-24">
@@ -193,17 +129,27 @@ export default async function ParkDetailPage({ params }: Props) {
             Visit
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-ink">
-            Open during daylight hours unless posted otherwise for programs or
-            rentals.
+            Open from one-half hour before sunrise to one-half hour after sunset,
+            unless posted for evening programs or permits.
           </p>
           <p className="mt-4 text-sm text-ink-muted">
-            Pets on leash (max 8 ft), except inside designated off-leash dog park
-            areas.
+            Pets on a visible leash no longer than 8 feet
+            {hasDogPark
+              ? ", except inside the fenced off-leash dog park"
+              : ""}. Owners must clean up pet waste. Pets are not permitted in
+            playground, sprayground, skatepark, fenced baseball diamond, or
+            tennis court areas.
+          </p>
+          <p className="mt-4 text-sm text-ink-muted">
+            Alcoholic beverages are prohibited except by Park District permit.
+            Smoking is prohibited in all indoor facilities.
           </p>
           <div className="mt-6 flex flex-col gap-3">
             <FavoriteButton slug={park.slug} name={park.name} />
             <SharePrint title={`${park.name} · CWPD`} />
-            <ButtonLink href="/shelters">Reserve a shelter</ButtonLink>
+            {hasReservableShelter ? (
+              <ButtonLink href="/shelters">Reserve a shelter</ButtonLink>
+            ) : null}
             <ButtonLink href="/parks" variant="ghost">
               Back to park finder
             </ButtonLink>
@@ -215,6 +161,23 @@ export default async function ParkDetailPage({ params }: Props) {
             </a>
           </p>
         </aside>
+      </div>
+
+      <div className="section-pad border-t border-line bg-mist/40 py-14 pb-24">
+        <h2
+          className="font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-4xl"
+        >
+          Programs at {park.name}
+        </h2>
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-muted">
+          Register for programs held at this park.
+        </p>
+        <div className="mt-8">
+          <ParkProgramsEmbed
+            parkName={park.name}
+            facilityIds={park.recdeskFacilityIds}
+          />
+        </div>
       </div>
     </article>
   );

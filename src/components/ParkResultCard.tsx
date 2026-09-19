@@ -8,7 +8,7 @@ export function ParkResultCard({ park }: { park: Park }) {
 
   return (
     <article className="group grid gap-0 overflow-hidden border border-line bg-paper transition hover:border-forest/30 md:grid-cols-[140px_1fr]">
-      <div className="relative min-h-36 md:min-h-full">
+      <div className="relative min-h-36 md:min-h-full media-frame">
         <Image
           src={park.image}
           alt=""
