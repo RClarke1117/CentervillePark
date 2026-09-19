@@ -31,16 +31,9 @@ export default async function ParkDetailPage({ params }: Props) {
   const park = getPark(slug);
   if (!park) notFound();
 
-  const related = parks
-    .filter(
-      (p) =>
-        p.slug !== park.slug &&
-        (p.type === park.type ||
-          p.amenities.some((a) => park.amenities.includes(a))),
-    )
-    .slice(0, 3);
-
   const relatedNews = getUpcomingEvents().slice(0, 2);
+  const hasReservableShelter = park.amenities.includes("shelter-reservable");
+  const hasDogPark = park.amenities.includes("dog-park");
 
   return (
     <article>
@@ -86,16 +79,23 @@ export default async function ParkDetailPage({ params }: Props) {
           >
             Amenities at a glance
           </h2>
-          <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-            {park.amenities.map((a) => (
-              <li
-                key={a}
-                className="border border-line bg-mist/50 px-4 py-3 text-sm font-medium text-forest"
-              >
-                {AMENITY_LABELS[a]}
-              </li>
-            ))}
-          </ul>
+          {park.amenities.length > 0 ? (
+            <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+              {park.amenities.map((a) => (
+                <li
+                  key={a}
+                  className="border border-line bg-mist/50 px-4 py-3 text-sm font-medium text-forest"
+                >
+                  {AMENITY_LABELS[a]}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mt-5 text-sm leading-relaxed text-ink-muted">
+              Natural or open space with limited developed amenities — see the
+              park description for what to expect.
+            </p>
+          )}
 
           <div className="mt-12">
             <h2
@@ -125,32 +125,6 @@ export default async function ParkDetailPage({ params }: Props) {
               ))}
             </ul>
           </div>
-
-          {related.length > 0 && (
-            <div className="mt-12">
-              <h2
-                className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-                style={{ fontVariationSettings: '"SOFT" 30' }}
-              >
-                Related parks
-              </h2>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-                {related.map((p) => (
-                  <li key={p.slug}>
-                    <Link
-                      href={`/parks/${p.slug}`}
-                      className="focus-ring block border border-line p-4 hover:border-forest/30 hover:bg-mist"
-                    >
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-forest-mid">
-                        {p.type}
-                      </p>
-                      <p className="mt-1 font-semibold">{p.name}</p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
 
         <aside className="h-fit border border-line bg-paper p-6 lg:sticky lg:top-24">
@@ -158,17 +132,27 @@ export default async function ParkDetailPage({ params }: Props) {
             Visit
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-ink">
-            Open during daylight hours unless posted otherwise for programs or
-            rentals.
+            Open from one-half hour before sunrise to one-half hour after sunset,
+            unless posted for evening programs or permits.
           </p>
           <p className="mt-4 text-sm text-ink-muted">
-            Pets on leash (max 8 ft), except inside designated off-leash dog park
-            areas.
+            Pets on a visible leash no longer than 8 feet
+            {hasDogPark
+              ? ", except inside the fenced off-leash dog park"
+              : ""}. Owners must clean up pet waste. Pets are not permitted in
+            playground, sprayground, skatepark, fenced baseball diamond, or
+            tennis court areas.
+          </p>
+          <p className="mt-4 text-sm text-ink-muted">
+            Alcoholic beverages are prohibited except by Park District permit.
+            Smoking is prohibited in all indoor facilities.
           </p>
           <div className="mt-6 flex flex-col gap-3">
             <FavoriteButton slug={park.slug} name={park.name} />
             <SharePrint title={`${park.name} · CWPD`} />
-            <ButtonLink href="/shelters">Reserve a shelter</ButtonLink>
+            {hasReservableShelter ? (
+              <ButtonLink href="/shelters">Reserve a shelter</ButtonLink>
+            ) : null}
             <ButtonLink href="/parks" variant="ghost">
               Back to park finder
             </ButtonLink>

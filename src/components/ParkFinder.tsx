@@ -25,6 +25,8 @@ const amenityFilters: Amenity[] = [
   "archery",
   "fishing",
   "pickleball",
+  "basketball",
+  "sled-hill",
 ];
 
 const types: { value: ParkType | "all"; label: string }[] = [
