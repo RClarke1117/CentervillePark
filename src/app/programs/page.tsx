@@ -15,8 +15,8 @@ export default function ProgramsPage() {
     <div className="atmosphere min-h-screen">
       <PageHero
         eyebrow="Programs & registration"
-        title="Find a program. Register once."
-        description="Search camps, classes, and events — then register in one place."
+        title="Find a program. Register."
+        description="Search camps, classes, and events."
         crumbs={[{ label: "Programs" }]}
       >
         <div className="flex flex-wrap gap-3">

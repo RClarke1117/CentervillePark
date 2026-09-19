@@ -31,7 +31,7 @@ const features = [
   },
   {
     title: "Language",
-    text: "The site language is set to English. A Google Translate control in the footer offers dozens of languages for machine translation.",
+    text: "The site language is set to English. Use Translate this site in the footer to choose another language.",
   },
 ];
 
@@ -55,9 +55,8 @@ export default function AccessibilityPage() {
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted">
             Centerville-Washington Park District is committed to providing a
-            website that is usable by people with disabilities. This prototype
-            was designed and tested against WCAG 2.1 Level AA, including
-            automated checks with axe-core and manual keyboard review.
+            website that is usable by people with disabilities. This site is
+            designed to meet WCAG 2.1 Level AA.
           </p>
 
           <ul className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -78,11 +77,10 @@ export default function AccessibilityPage() {
             Known limitations
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-muted">
-            Third-party embeds (RecDesk registration and Google Translate) are
-            provided by external vendors. Their accessibility may vary and is
-            outside full District control. Where possible we add clear open-in-new
-            labels, transcripts alternatives are noted on program pages, and a
-            native language control wraps Google Translate.
+            Some areas of the site embed tools from other providers (program
+            registration and translation). Accessibility of those tools may
+            vary. If you need help using any part of this site, contact the
+            Park District office.
           </p>
         </div>
 
@@ -120,14 +118,7 @@ export default function AccessibilityPage() {
               WCAG 2.1
               <span className="sr-only"> (opens in a new tab)</span>
             </a>{" "}
-            Level AA. Latest automated audit summary:{" "}
-            <a
-              className="focus-ring underline underline-offset-2"
-              href="/accessibility/wcag21-aa-axe-summary.md"
-            >
-              axe-core report
-            </a>
-            .
+            Level AA
           </p>
         </aside>
       </div>

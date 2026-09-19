@@ -19,7 +19,7 @@ const planLinks = [
   {
     href: "/programs",
     title: "Search & register",
-    text: "Camps, classes, and special events — search and register in one place.",
+    text: "Camps, classes, and special events — search and register.",
   },
   {
     href: "/fields",

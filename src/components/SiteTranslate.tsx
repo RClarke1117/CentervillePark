@@ -189,9 +189,6 @@ export function SiteTranslate({ compact = false }: { compact?: boolean }) {
         className="sr-only"
         aria-hidden={ready ? undefined : true}
       />
-      <p className="sr-only">
-        Machine translation powered by Google Translate.
-      </p>
     </div>
   );
 }

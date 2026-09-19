@@ -113,10 +113,6 @@ export function SiteFooter() {
 
       <div className="section-pad border-t border-white/10 py-6">
         <SiteTranslate />
-        <p className="mt-2 text-xs text-white/70">
-          Powered by Google Translate — includes the languages on cwpd.org plus
-          more.
-        </p>
       </div>
 
       <div className="section-pad flex flex-col gap-3 border-t border-white/10 py-5 text-xs text-white/70 sm:flex-row sm:items-center sm:justify-between">
