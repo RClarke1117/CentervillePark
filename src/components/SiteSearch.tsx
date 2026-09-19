@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { parks } from "@/data/parks";
-import { news, programs } from "@/data/content";
+import { news, programs, getUpcomingEvents } from "@/data/content";
 
 type Hit = { href: string; title: string; meta: string; group: string };
 
@@ -32,12 +32,18 @@ function buildIndex(): Hit[] {
     group: "Programs",
   }));
   const newsHits = news.map((n) => ({
-    href: "/news",
+    href: "/news/",
     title: n.title,
     meta: n.category,
     group: "News",
   }));
-  return [...pages, ...parkHits, ...programHits, ...newsHits];
+  const eventHits = getUpcomingEvents().map((e) => ({
+    href: `/events/${e.slug}/`,
+    title: e.title,
+    meta: e.location,
+    group: "Events",
+  }));
+  return [...pages, ...parkHits, ...programHits, ...eventHits, ...newsHits];
 }
 
 export function SiteSearch() {

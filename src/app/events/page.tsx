@@ -1,53 +1,88 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
-import { news } from "@/data/content";
+import { ButtonLink } from "@/components/ButtonLink";
+import {
+  getUpcomingEvents,
+  RECDESK_SPECIAL_EVENTS,
+} from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Events",
-  description: "Upcoming special events from Centerville-Washington Park District.",
+  description:
+    "Upcoming special events from Centerville-Washington Park District — register through live RecDesk listings.",
 };
 
 export default function EventsPage() {
-  const events = news.filter((n) => n.category === "Event");
+  const upcoming = getUpcomingEvents();
 
   return (
     <div className="atmosphere min-h-screen">
       <PageHero
         eyebrow="Events"
-        title="Gather outdoors"
-        description="Movie nights, glow runs, adapted play days, and signature walks — roughly 30 large special events each year."
+        title="Upcoming events"
+        description="Special events only — pick one for details and registration."
         crumbs={[{ label: "Events" }]}
-      />
+      >
+        <ButtonLink href={RECDESK_SPECIAL_EVENTS} external>
+          Browse all special events
+        </ButtonLink>
+      </PageHero>
+
       <div className="section-pad py-12 pb-24 md:py-16">
-        <ol className="relative mx-auto max-w-3xl border-l border-forest/25 pl-8">
-          {events.map((e) => (
-            <li key={e.slug} className="relative pb-12 last:pb-0">
-              <span
-                className="absolute -left-[2.15rem] top-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-forest bg-paper"
-                aria-hidden
-              />
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-forest-mid">
-                {new Date(e.date).toLocaleDateString("en-US", {
-                  weekday: "long",
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </p>
-              <h2 className="mt-2 font-[family-name:var(--font-display)] text-2xl tracking-tight">
-                {e.title}
-              </h2>
-              <p className="mt-2 text-ink-muted">{e.excerpt}</p>
-              <Link
-                href="/programs"
-                className="focus-ring mt-4 inline-block text-sm font-semibold text-forest underline-offset-4 hover:underline"
-              >
-                Registration & details
-              </Link>
-            </li>
-          ))}
-        </ol>
+        {upcoming.length === 0 ? (
+          <p className="text-ink-muted">
+            No upcoming events right now. Check back soon, or browse the full
+            special events list.
+          </p>
+        ) : (
+          <ul className="mx-auto flex max-w-3xl flex-col gap-4">
+            {upcoming.map((e) => (
+              <li key={e.slug}>
+                <Link
+                  href={`/events/${e.slug}/`}
+                  className="focus-ring group grid overflow-hidden border border-line bg-paper transition hover:border-forest/30 sm:grid-cols-[140px_1fr]"
+                >
+                  <div className="relative min-h-28 sm:min-h-full">
+                    <Image
+                      src={e.image}
+                      alt=""
+                      fill
+                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                      sizes="140px"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center gap-2 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-forest-mid">
+                      {new Date(`${e.date}T12:00:00`).toLocaleDateString(
+                        "en-US",
+                        {
+                          weekday: "short",
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        },
+                      )}
+                      {" · "}
+                      {e.timeLabel.replace(/^[^·]+·\s*/, "")}
+                    </p>
+                    <h2 className="font-[family-name:var(--font-display)] text-2xl tracking-tight group-hover:text-forest-mid">
+                      {e.title}
+                    </h2>
+                    <p className="text-sm text-ink-muted">{e.location}</p>
+                    <p className="text-sm leading-relaxed text-ink-muted">
+                      {e.excerpt}
+                    </p>
+                    <span className="mt-1 text-sm font-semibold text-forest">
+                      Details & register →
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

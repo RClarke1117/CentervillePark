@@ -7,7 +7,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FavoriteButton } from "@/components/FavoriteButton";
 import { SharePrint } from "@/components/SharePrint";
 import { AMENITY_LABELS, getPark, parks } from "@/data/parks";
-import { news, programs } from "@/data/content";
+import { getUpcomingEvents, programs } from "@/data/content";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -42,7 +42,7 @@ export default async function ParkDetailPage({ params }: Props) {
   const relatedPrograms = programs.filter((p) =>
     p.location.toLowerCase().includes(park.name.split(" ")[0].toLowerCase()),
   );
-  const relatedNews = news.slice(0, 2);
+  const relatedNews = getUpcomingEvents().slice(0, 2);
 
   return (
     <article>
@@ -137,14 +137,20 @@ export default async function ParkDetailPage({ params }: Props) {
               className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
               style={{ fontVariationSettings: '"SOFT" 30' }}
             >
-              Recent stories
+              Upcoming events
             </h2>
             <ul className="mt-5 space-y-4">
               {relatedNews.map((n) => (
                 <li key={n.slug}>
-                  <Link href="/news" className="focus-ring group block">
+                  <Link
+                    href={`/events/${n.slug}/`}
+                    className="focus-ring group block"
+                  >
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-forest-mid">
-                      {n.category}
+                      {new Date(`${n.date}T12:00:00`).toLocaleDateString(
+                        "en-US",
+                        { month: "short", day: "numeric" },
+                      )}
                     </p>
                     <p className="mt-1 font-semibold group-hover:text-forest-mid">
                       {n.title}

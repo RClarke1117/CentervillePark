@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Reveal } from "@/components/Reveal";
-import { news } from "@/data/content";
+import { news, getUpcomingEvents } from "@/data/content";
 import { parks } from "@/data/parks";
 
 const planLinks = [
@@ -30,7 +30,18 @@ const planLinks = [
 
 export default function HomePage() {
   const featured = parks.filter((p) => p.featured).slice(0, 4);
-  const latest = news.slice(0, 3);
+  const upcoming = getUpcomingEvents().slice(0, 3);
+  const latest = upcoming.length
+    ? upcoming.map((e) => ({
+        slug: e.slug,
+        title: e.title,
+        date: e.date,
+        excerpt: e.excerpt,
+        category: "Event" as const,
+        image: e.image,
+        href: `/events/${e.slug}/`,
+      }))
+    : news.slice(0, 3).map((n) => ({ ...n, href: "/news/" }));
 
   return (
     <>
@@ -181,13 +192,13 @@ export default function HomePage() {
                 className="font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-4xl"
                 style={{ fontVariationSettings: '"SOFT" 30' }}
               >
-                Park District news
+                Upcoming events
               </h2>
               <Link
-                href="/news"
+                href="/events/"
                 className="focus-ring text-sm font-semibold text-forest underline-offset-4 hover:underline"
               >
-                All news
+                All events
               </Link>
             </div>
           </Reveal>
@@ -206,14 +217,20 @@ export default function HomePage() {
                   </div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-forest-mid">
                     {item.category} ·{" "}
-                    {new Date(item.date).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
+                    {new Date(`${item.date}T12:00:00`).toLocaleDateString(
+                      "en-US",
+                      {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      },
+                    )}
                   </p>
                   <h3 className="mt-2 font-[family-name:var(--font-display)] text-xl leading-snug tracking-tight">
-                    <Link href="/news" className="focus-ring hover:text-forest-mid">
+                    <Link
+                      href={item.href}
+                      className="focus-ring hover:text-forest-mid"
+                    >
                       {item.title}
                     </Link>
                   </h3>
