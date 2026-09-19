@@ -48,6 +48,8 @@ export type Park = {
   summary: string;
   image: string;
   featured?: boolean;
+  /** Exact RecDesk Location Filter label(s) for programs at this park */
+  recdeskLocations?: string[];
 };
 
 export const parks: Park[] = [
@@ -70,6 +72,7 @@ export const parks: Park[] = [
       "Home to the Park District office, an all-access playground, zero-depth sprayground, and shelters where kids of all abilities play side by side.",
     image: "/images/playground.jpg",
     featured: true,
+    recdeskLocations: ["Activity Center Park"],
   },
   {
     slug: "oak-grove",
@@ -93,6 +96,7 @@ export const parks: Park[] = [
       "A stand of old oaks anchors soccer fields, baseball diamonds, tennis courts, an archery range, and the community dog park.",
     image: "/images/park-community.jpg",
     featured: true,
+    recdeskLocations: ["Oak Grove Park"],
   },
   {
     slug: "grant",
@@ -106,6 +110,11 @@ export const parks: Park[] = [
       "A 222-acre natural area with trails through forest, meadow, prairie, and wetland — one of the largest open spaces in the district.",
     image: "/images/fog-trees.jpg",
     featured: true,
+    recdeskLocations: [
+      "Grant Park - Normandy Entrance",
+      "Grant Park - McEwen Entrance (All Amenities)",
+      "Grant Park - Nature Nook",
+    ],
   },
   {
     slug: "bill-yeck",
@@ -119,6 +128,11 @@ export const parks: Park[] = [
       "Nearly 200 acres along 1.75 miles of Sugar Creek — trails, rare plants, and year-round nature programs.",
     image: "/images/park-trail.jpg",
     featured: true,
+    recdeskLocations: [
+      "Bill Yeck Park - Smith House Entrance",
+      "Bill Yeck Park - McGuffey Meadow Entrance",
+      "Bill Yeck Park - Rooks Mill Lane Entrance",
+    ],
   },
   {
     slug: "schoolhouse",
@@ -139,6 +153,7 @@ export const parks: Park[] = [
       "Home to youth football and community gatherings, with playgrounds, shelters, and open fields for game days and movie nights.",
     image: "/images/park-meadow.jpg",
     featured: true,
+    recdeskLocations: ["Schoolhouse Park"],
   },
   {
     slug: "iron-horse",
@@ -158,6 +173,7 @@ export const parks: Park[] = [
     summary:
       "Named for the historic rail corridor, with a paved multi-use trail, playground, diamonds, and neighborhood gathering spaces.",
     image: "/images/hiking.jpg",
+    recdeskLocations: ["Iron Horse Park"],
   },
   {
     slug: "forest-field",
@@ -181,6 +197,7 @@ export const parks: Park[] = [
     summary:
       "An arboretum-meets-community park with paved loops into Bill Yeck, tennis and pickleball, and a natural play area.",
     image: "/images/nature-hills.jpg",
+    recdeskLocations: ["Forest Field Park"],
   },
   {
     slug: "oak-creek-south",
@@ -201,6 +218,7 @@ export const parks: Park[] = [
     summary:
       "Skatepark, play equipment, a renovated wetland stream corridor, and a group shelter with restrooms.",
     image: "/images/park-community.jpg",
+    recdeskLocations: ["Oak Creek South Park"],
   },
   {
     slug: "robert-f-mays",
@@ -219,6 +237,7 @@ export const parks: Park[] = [
     summary:
       "Community fields and a reservable shelter supporting youth sports and neighborhood gatherings.",
     image: "/images/park-meadow.jpg",
+    recdeskLocations: ["Robert F. Mays Park"],
   },
   {
     slug: "yankee",
@@ -240,6 +259,7 @@ export const parks: Park[] = [
     summary:
       "Tennis, pickleball, playground, and diamonds on 37 acres — a full community park along Yankee Street.",
     image: "/images/playground.jpg",
+    recdeskLocations: ["Yankee Park"],
   },
   {
     slug: "black-oak",
@@ -276,6 +296,7 @@ export const parks: Park[] = [
     summary:
       "A 10-foot-wide paved multi-use trail spanning 1.3 miles along the Holes Creek corridor.",
     image: "/images/hiking.jpg",
+    recdeskLocations: ["Holes Creek Park"],
   },
   {
     slug: "huffman",
@@ -312,6 +333,7 @@ export const parks: Park[] = [
     summary:
       "Wooded trails and play equipment, accessible from Forest Brook Boulevard and Deer Run Road.",
     image: "/images/park-trail.jpg",
+    recdeskLocations: ["Forest Walk Park"],
   },
   {
     slug: "nutt-woods",

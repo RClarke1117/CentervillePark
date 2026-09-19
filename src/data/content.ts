@@ -143,6 +143,8 @@ export const events: ParkEvent[] = [
   },
 ];
 
+export const RECDESK_PROGRAMS = "https://cwpd.recdesk.com/Community/Program";
+
 export const RECDESK_SPECIAL_EVENTS =
   "https://cwpd.recdesk.com/Community/Program?category=11";
 

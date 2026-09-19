@@ -5,9 +5,10 @@ import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FavoriteButton } from "@/components/FavoriteButton";
+import { RecDeskEmbed } from "@/components/RecDeskEmbed";
 import { SharePrint } from "@/components/SharePrint";
 import { AMENITY_LABELS, getPark, parks } from "@/data/parks";
-import { getUpcomingEvents, programs } from "@/data/content";
+import { getUpcomingEvents, RECDESK_PROGRAMS } from "@/data/content";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -39,10 +40,13 @@ export default async function ParkDetailPage({ params }: Props) {
     )
     .slice(0, 3);
 
-  const relatedPrograms = programs.filter((p) =>
-    p.location.toLowerCase().includes(park.name.split(" ")[0].toLowerCase()),
-  );
   const relatedNews = getUpcomingEvents().slice(0, 2);
+  const locationTip =
+    park.recdeskLocations && park.recdeskLocations.length > 0
+      ? park.recdeskLocations.length === 1
+        ? `Use Location Filter → “${park.recdeskLocations[0]}” for programs at this park.`
+        : `Use Location Filter and select a ${park.name} entrance for programs at this park.`
+      : "Use the Location filter if this park is listed — openings stay current automatically.";
 
   return (
     <article>
@@ -80,7 +84,7 @@ export default async function ParkDetailPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="section-pad grid gap-12 py-14 pb-24 lg:grid-cols-[1.4fr_0.8fr]">
+      <div className="section-pad grid gap-12 py-14 lg:grid-cols-[1.4fr_0.8fr]">
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
@@ -98,39 +102,6 @@ export default async function ParkDetailPage({ params }: Props) {
               </li>
             ))}
           </ul>
-
-          <div className="mt-12">
-            <h2
-              className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-              style={{ fontVariationSettings: '"SOFT" 30' }}
-            >
-              Upcoming nearby
-            </h2>
-            <p className="mt-2 text-sm text-ink-muted">
-              Programs related to this park — RecDesk-ready content model.
-            </p>
-            <ul className="mt-5 space-y-3">
-              {(relatedPrograms.length
-                ? relatedPrograms
-                : programs.slice(0, 2)
-              ).map((p) => (
-                <li
-                  key={p.id}
-                  className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line py-3"
-                >
-                  <div>
-                    <p className="font-semibold text-ink">{p.title}</p>
-                    <p className="text-sm text-ink-muted">
-                      {p.dateLabel} · {p.location}
-                    </p>
-                  </div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-forest-mid">
-                    {p.status}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           <div className="mt-12">
             <h2
@@ -215,6 +186,26 @@ export default async function ParkDetailPage({ params }: Props) {
             </a>
           </p>
         </aside>
+      </div>
+
+      <div className="section-pad border-t border-line bg-mist/40 py-14 pb-24">
+        <h2
+          className="font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-4xl"
+          style={{ fontVariationSettings: '"SOFT" 30' }}
+        >
+          Programs at {park.name}
+        </h2>
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-muted">
+          Register below in the live listing. {locationTip}
+        </p>
+        <div className="mt-8">
+          <RecDeskEmbed
+            src={RECDESK_PROGRAMS}
+            title={`Programs · ${park.name}`}
+            openLabel="Open programs in RecDesk"
+            frameHeight={1000}
+          />
+        </div>
       </div>
     </article>
   );
