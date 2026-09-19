@@ -7,7 +7,7 @@ from datetime import date
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.lib.colors import HexColor, white, black
+from reportlab.lib.colors import HexColor, white
 from reportlab.platypus import (
     SimpleDocTemplate,
     Paragraph,
@@ -15,100 +15,85 @@ from reportlab.platypus import (
     Table,
     TableStyle,
     PageBreak,
+    Image,
     KeepTogether,
-    HRFlowable,
 )
-from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
+from reportlab.lib.enums import TA_CENTER
 
 OUT = Path("/workspace/docs/CWPD-Website-Redesign-Proposal-Clarke-Design-Studio.pdf")
 ARTIFACT = Path(
     "/opt/cursor/artifacts/CWPD-Website-Redesign-Proposal-Clarke-Design-Studio.pdf"
 )
+LOGO_LOCKUP = Path("/workspace/docs/brand/loader-lockup.png")
 
-FOREST = HexColor("#1a4a36")
-FOREST_DEEP = HexColor("#0f2f23")
-GOLD = HexColor("#d4a017")
-INK = HexColor("#142018")
-MUTED = HexColor("#3d4f44")
-LINE = HexColor("#c5d9c8")
-MIST = HexColor("#eef4f0")
+# Clarke Design Studio brand
+BLUE = HexColor("#4A9BC4")
+BLUE_SOFT = HexColor("#9BCDE6")
+BLUE_PALE = HexColor("#E4F0F8")
+INK = HexColor("#0B0D10")
+INK_SOFT = HexColor("#1A1F26")
+MUTED = HexColor("#6B7480")
+LINE = HexColor("#E6EAEE")
+PAPER = HexColor("#F7F9FB")
 
 
 def styles():
     base = getSampleStyleSheet()
-    s = {
-        "cover_eyebrow": ParagraphStyle(
-            "cover_eyebrow",
-            parent=base["Normal"],
-            fontName="Helvetica-Bold",
-            fontSize=10,
-            textColor=GOLD,
-            tracking=2,
-            spaceAfter=12,
-        ),
-        "cover_title": ParagraphStyle(
-            "cover_title",
-            parent=base["Normal"],
-            fontName="Times-Bold",
-            fontSize=28,
-            leading=34,
-            textColor=white,
-            spaceAfter=16,
-        ),
+    return {
         "cover_sub": ParagraphStyle(
             "cover_sub",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=12,
-            leading=18,
-            textColor=HexColor("#e8f0eb"),
-            spaceAfter=8,
+            fontSize=11,
+            leading=16,
+            textColor=HexColor("#E8EEF2"),
+            spaceAfter=6,
         ),
         "h1": ParagraphStyle(
             "h1",
             parent=base["Heading1"],
-            fontName="Times-Bold",
-            fontSize=18,
-            leading=22,
-            textColor=FOREST_DEEP,
-            spaceBefore=18,
-            spaceAfter=10,
+            fontName="Helvetica-Bold",
+            fontSize=14,
+            leading=18,
+            textColor=INK,
+            spaceBefore=14,
+            spaceAfter=8,
         ),
         "h2": ParagraphStyle(
             "h2",
             parent=base["Heading2"],
             fontName="Helvetica-Bold",
-            fontSize=12,
-            leading=16,
-            textColor=FOREST,
-            spaceBefore=14,
-            spaceAfter=6,
+            fontSize=10,
+            leading=13,
+            textColor=BLUE,
+            spaceBefore=10,
+            spaceAfter=4,
         ),
         "body": ParagraphStyle(
             "body",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=10,
-            leading=14,
+            fontSize=9.5,
+            leading=13,
             textColor=INK,
-            spaceAfter=8,
+            spaceAfter=6,
         ),
         "bullet": ParagraphStyle(
             "bullet",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=10,
-            leading=14,
+            fontSize=9.5,
+            leading=12.5,
             textColor=INK,
-            leftIndent=14,
-            spaceAfter=4,
+            leftIndent=12,
+            spaceAfter=2,
         ),
         "meta": ParagraphStyle(
             "meta",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=9,
-            leading=12,
+            fontSize=8.5,
+            leading=11,
             textColor=MUTED,
             spaceAfter=4,
         ),
@@ -116,37 +101,28 @@ def styles():
             "table_cell",
             parent=base["Normal"],
             fontName="Helvetica",
-            fontSize=9,
-            leading=12,
+            fontSize=8.5,
+            leading=11,
             textColor=INK,
         ),
         "table_head": ParagraphStyle(
             "table_head",
             parent=base["Normal"],
             fontName="Helvetica-Bold",
-            fontSize=9,
-            leading=12,
+            fontSize=8.5,
+            leading=11,
             textColor=white,
         ),
         "price": ParagraphStyle(
             "price",
             parent=base["Normal"],
             fontName="Helvetica-Bold",
-            fontSize=11,
+            fontSize=12,
             leading=14,
-            textColor=FOREST_DEEP,
-            spaceAfter=4,
-        ),
-        "footer": ParagraphStyle(
-            "footer",
-            parent=base["Normal"],
-            fontName="Helvetica",
-            fontSize=8,
-            textColor=MUTED,
-            alignment=TA_CENTER,
+            textColor=INK,
+            spaceAfter=3,
         ),
     }
-    return s
 
 
 def P(text, style):
@@ -154,98 +130,92 @@ def P(text, style):
 
 
 def bullets(items, st):
-    return [P(f"• {item}", st["bullet"]) for item in items]
+    return [P(f"— {item}", st["bullet"]) for item in items]
 
 
 def add_header_footer(canvas, doc):
     canvas.saveState()
     canvas.setStrokeColor(LINE)
     canvas.setLineWidth(0.5)
-    canvas.line(0.75 * inch, 0.65 * inch, letter[0] - 0.75 * inch, 0.65 * inch)
-    canvas.setFont("Helvetica", 8)
+    canvas.line(0.7 * inch, 0.55 * inch, letter[0] - 0.7 * inch, 0.55 * inch)
+    canvas.setFont("Helvetica", 7.5)
     canvas.setFillColor(MUTED)
     canvas.drawString(
-        0.75 * inch,
-        0.4 * inch,
+        0.7 * inch,
+        0.32 * inch,
         "Clarke Design Studio  ·  CWPD Website Redesign Proposal",
     )
-    canvas.drawRightString(
-        letter[0] - 0.75 * inch, 0.4 * inch, f"Page {doc.page}"
-    )
+    canvas.drawRightString(letter[0] - 0.7 * inch, 0.32 * inch, f"{doc.page}")
     canvas.restoreState()
 
 
 def cover_page(st):
     story = []
-    # Spacer for green band drawn in first page template — use a table as cover block
-    cover_data = [
-        [
-            P(
-                "<font color='#e8b923'><b>PROPOSAL</b></font><br/><br/>"
-                "<font color='white' size='22'><b>Website Redesign<br/>for Centerville-Washington<br/>Park District</b></font><br/><br/>"
-                "<font color='#e8f0eb' size='11'>Response to RFP — Website Redesign<br/>"
-                "Released September 1, 2026 · Proposals due October 12, 2026</font><br/><br/>"
-                "<font color='#e8f0eb' size='10'>Submitted by<br/>"
-                "<b>Clarke Design Studio</b><br/>"
-                "Ryan Clarke, Designer<br/>"
-                "clarkeanthonyryan@yahoo.com<br/><br/>"
-                f"Date: {date.today().strftime('%B %d, %Y')}<br/>"
-                "Live concept: https://centerville-park.pages.dev/</font>",
-                st["cover_sub"],
-            )
-        ]
-    ]
-    t = Table(cover_data, colWidths=[6.5 * inch])
-    t.setStyle(
+    logo = Image(str(LOGO_LOCKUP), width=1.05 * inch, height=1.07 * inch)
+
+    right = P(
+        "<font color='#4A9BC4'><b>PROPOSAL</b></font><br/><br/>"
+        "<font color='white' size='15'><b>Website Redesign<br/>"
+        "Centerville-Washington Park District</b></font><br/><br/>"
+        "<font color='#c5dff0' size='9'>RFP response · Due October 12, 2026</font><br/><br/>"
+        "<font color='#e8eef2' size='9'>"
+        "<b>Clarke Design Studio</b><br/>"
+        "Ryan Clarke · ryan@clarkedesignstudio.com<br/>"
+        "clarkedesignstudio.com<br/><br/>"
+        f"{date.today().strftime('%B %d, %Y')}<br/>"
+        "Live site: https://centerville-park.pages.dev/"
+        "</font>",
+        st["cover_sub"],
+    )
+
+    band = Table([[logo, right]], colWidths=[1.35 * inch, 5.15 * inch])
+    band.setStyle(
         TableStyle(
             [
-                ("BACKGROUND", (0, 0), (-1, -1), FOREST_DEEP),
-                ("TOPPADDING", (0, 0), (-1, -1), 48),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 48),
-                ("LEFTPADDING", (0, 0), (-1, -1), 28),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 28),
-                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("BACKGROUND", (0, 0), (-1, -1), INK),
+                ("TOPPADDING", (0, 0), (-1, -1), 26),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 26),
+                ("LEFTPADDING", (0, 0), (0, 0), 22),
+                ("RIGHTPADDING", (0, 0), (0, 0), 12),
+                ("LEFTPADDING", (1, 0), (1, 0), 8),
+                ("RIGHTPADDING", (1, 0), (1, 0), 22),
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
             ]
         )
     )
-    story.append(t)
-    story.append(Spacer(1, 24))
+    story.append(band)
+    story.append(Spacer(1, 16))
     story.append(
         P(
-            "This proposal is grounded in the working prototype we designed and built for CWPD: "
-            "a mobile-first park district site on Cloudflare Pages, with live RecDesk registration, "
-            "RainoutLine field status, Google Translate, Domine/Montserrat brand typography, "
-            "and WCAG 2.1 AA–minded structure. Timeline is <b>immediate</b> because the public experience is already live.",
+            "This proposal covers launching the CWPD site already live at "
+            "<b>centerville-park.pages.dev</b> — mobile-first parks, programs, events, "
+            "RecDesk registration, field status, Google Translate, and WCAG 2.1 AA structure — "
+            "by pointing <b>cwpd.org</b> to Cloudflare Pages.",
             st["body"],
         )
     )
-    story.append(PageBreak())
     return story
 
 
 def section_overview(st):
     story = []
-    story.append(P("1. Understanding & approach", st["h1"]))
+    story.append(P("1. Approach", st["h1"]))
     story.append(
         P(
-            "CWPD asked for a mobile-first redesign that makes parks, programs, events, and facilities "
-            "easier to find; connects cleanly to RecDesk; meets WCAG 2.1 AA; and can be sustained after launch. "
-            "Our answer is the site already running at <b>centerville-park.pages.dev</b>, ready for the "
-            "<b>cwpd.org</b> domain to point at Cloudflare Pages.",
+            "CWPD needs a mobile-first site that makes parks, programs, events, and fields "
+            "easy to find, connects to RecDesk, meets WCAG 2.1 AA, and stays maintainable. "
+            "That site is built and running. Remaining work is content sync, DNS cutover, "
+            "and ongoing updates under retainer.",
             st["body"],
         )
     )
-    story.append(P("What we designed (now live)", st["h2"]))
     story.extend(
         bullets(
             [
-                "Home: brand-led hero (“Your community’s big backyard”), plan links, featured parks, upcoming events, news, Foundation handoff",
-                "Find a Park with amenity filters so residents can decide without opening every park page",
-                "All 51 parks with unique photos, amenities, Visit rules, and park-filtered RecDesk programs",
-                "Programs, Events, Shelters, and Fields (live athletic field status)",
-                "Foundation section with its own visual identity",
-                "Footer Google Translate (39 languages) and Accessibility page with axe-core evidence",
-                "Domine + Montserrat — CWPD’s brand font pairing",
+                "Home, Find a Park, all 51 parks, Programs, Events, Shelters, Fields",
+                "Live RecDesk embeds and park-filtered program lists",
+                "Foundation section, footer Translate (39 languages), Accessibility page",
+                "CWPD brand fonts (Domine + Montserrat) and slogan",
             ],
             st,
         )
@@ -255,57 +225,60 @@ def section_overview(st):
 
 def section_vendor_questions(st):
     story = []
-    story.append(P("2. Answers to vendor questions", st["h1"]))
+    story.append(P("2. Vendor questions", st["h1"]))
 
     qa = [
         (
-            "1. Three biggest opportunities for improvement",
-            "First: make discovery mobile-first — more than 60% of traffic is mobile, so Find a Park, fields, and registration must work in one thumb-friendly path (we built the mobile dock, full-width RecDesk on small screens, and at-a-glance park results). "
-            "Second: stop asking staff to re-enter programs on the website — wire RecDesk as the source of truth via embeds and facility-filtered program lists (already in the prototype). "
-            "Third: treat accessibility and clarity as brand — WCAG 2.1 AA structure, skip links, contrast, and plain visitor copy instead of meta “AI” explanation text.",
+            "1. Three biggest opportunities",
+            "Mobile-first discovery (over 60% of traffic is mobile). Keep RecDesk as the "
+            "single source for programs so staff do not re-enter listings. Ship clear writing "
+            "and WCAG 2.1 AA structure as the default.",
         ),
         (
             "2. What we would retain",
-            "CWPD’s slogan and voice (“Your community’s big backyard”), Domine/Montserrat brand fonts, the high-traffic destinations (field status, Find a Park, events, shelters, major parks), RecDesk as the registration system of record, Google Translate for multilingual access, RainoutLine for athletic fields, and the Foundation as a distinct but connected brand. We also retain the practical park taxonomy (community / nature / neighborhood) residents already understand.",
+            "Slogan and voice, Domine/Montserrat, Find a Park, fields, events, shelters, "
+            "major parks, RecDesk, Google Translate, RainoutLine, Foundation identity, "
+            "and the community / nature / neighborhood park types.",
         ),
         (
-            "3. RecDesk integration approach",
-            "RecDesk remains the system of record for programs and shelter reservations. The public site embeds live RecDesk program and facility lists, deep-links to registration and membership signup, and uses a Cloudflare Pages Function to filter programs by park facility IDs where RecDesk has no public location URL. "
-            "Program titles, dates, fees, and availability stay in RecDesk — staff do not duplicate that catalog into the marketing site. "
-            "Limitation (disclosed): this uses RecDesk’s public Community UI and FilterPrograms endpoint, not a private vendor API. If RecDesk later offers an official feed/API, we can migrate the proxy to it under the monthly retainer without redesigning the visitor experience.",
+            "3. RecDesk integration",
+            "RecDesk stays the system of record. The site embeds live lists, links to "
+            "registration, and uses a Cloudflare Function to filter programs by park when "
+            "needed. Catalog data is not duplicated into a second CMS.",
         ),
         (
-            "4. CMS recommendation and costs",
-            "For the launch path CWPD described — pointing the domain to our Cloudflare Pages site — we recommend <b>not</b> standing up a heavy WordPress rebuild on day one. The site is a static Next.js export: fast, secure (no PHP plugin surface), and already built. "
-            "<b>Day-one CMS model:</b> Clarke Design Studio manages content updates under the monthly retainer (news, alerts, park copy, photos, seasonal pages). Staff email or share copy; we publish. "
-            "<b>Optional Phase 2 (if CWPD wants in-house editing):</b> Decap CMS (open-source, Git-based) or Sanity free/team tier wired to the same Pages deploy — estimated setup <b>$2,500</b> one-time, then included in retainer hours. "
-            "This meets the RFP spirit (non-technical staff can request changes; optional future self-serve) without forcing a CMS migration before the domain cutover.",
+            "4. CMS recommendation",
+            "No WordPress rebuild on day one. The studio publishes updates under the monthly "
+            "retainer. Optional later: Decap or Sanity for staff editing (~$2,500 setup).",
         ),
         (
-            "5. How we achieve WCAG 2.1 AA",
-            "We design and ship with AA as a requirement, not a retrofit. The prototype already includes skip-to-content, visible focus, landmarks, labeled controls, reduced-motion support, contrast-minded UI, new-tab announcements, and an Accessibility statement. "
-            "Automated axe-core audits (WCAG 2.1 A/AA tags) report <b>0 violations on District-controlled UI</b>; RecDesk iframes and Google Translate are documented third-party limitations. "
-            "Before cutover and under retainer: keyboard pass, screen-reader spot checks, remediations, and keeping the public axe summary updated. Mandatory AA by April 2028 is planned as continuous compliance, not a scramble.",
+            "5. WCAG 2.1 AA",
+            "Built with skip links, focus styles, landmarks, contrast, and an Accessibility "
+            "statement. axe-core shows 0 violations on District-controlled UI. RecDesk and "
+            "Google Translate are documented third-party limits. Keyboard and screen-reader "
+            "checks before cutover; fixes under retainer through the April 2028 deadline.",
         ),
         (
-            "6. Preserving SEO during migration",
-            "We ship robots.txt and sitemap.xml with the static site, preserve meaningful URL patterns where possible (/parks/{slug}/, /events/, /fields/, etc.), keep title/meta/OG tags and Organization JSON-LD, and provide a 301 redirect map from legacy WordPress URLs to the new routes during DNS cutover. "
-            "Search Console and analytics stay on CWPD’s properties; we assist with property verification after cwpd.org points to Cloudflare Pages.",
+            "6. SEO during migration",
+            "robots.txt, sitemap, stable URL patterns, titles and Open Graph tags, JSON-LD, and a "
+            "301 redirect map from WordPress URLs at DNS cutover.",
         ),
         (
-            "7. Information architecture recommendations",
-            "Keep the customer jobs clear in primary nav: Find a Park, Programs, Events, Fields, Shelters, About — plus Foundation as a distinct callout. Home leads with brand, then “what do you need today,” featured parks, events, news, and Foundation. "
-            "Park Finder stays the decision tool; park pages stay a single repeatable template with amenities, Visit rules, and programs. We de-emphasize duplicate “related parks” clutter and meta marketing language. Analytics’ top pages (fields, finder, events, shelters, Oak Grove, Bill Yeck, Grant) remain one tap away.",
+            "7. Information architecture",
+            "Primary nav: Find a Park, Programs, Events, Fields, Shelters, About, plus "
+            "Foundation. Home leads with brand, then parks, events, and news. One park "
+            "page template for all 51 parks.",
         ),
         (
-            "8. What CWPD staff will be responsible for",
-            "Provide and approve final copy, photos, and policy language; manage RecDesk programs, fees, and shelter inventory; manage RainoutLine field updates; approve DNS cutover timing; review accessibility/content proofs; and designate a single marketing contact for retainer requests. "
-            "Staff are not required to learn a developer workflow for day-one launch.",
+            "8. CWPD staff responsibilities",
+            "Approve copy and photos; manage RecDesk and RainoutLine; approve DNS timing; "
+            "name one marketing contact for retainer requests. No developer workflow required "
+            "for launch.",
         ),
         (
-            "9. Ongoing technical resources after launch",
-            "Cloudflare Pages hosting (SSL, CDN, global edge), the monthly Clarke Design Studio retainer for content and maintenance, RecDesk (existing CWPD account), and Google Translate (no CWPD license fee for the standard website translator). "
-            "No DataYard WordPress stack is required for this path. Optional later: staff CMS credentials if Phase 2 Decap/Sanity is approved.",
+            "9. Ongoing technical resources",
+            "Cloudflare Pages, the $200/month retainer, existing RecDesk, and Google "
+            "Translate. No DataYard WordPress stack required for this path.",
         ),
     ]
 
@@ -317,211 +290,131 @@ def section_vendor_questions(st):
 
 def section_timeline(st):
     story = []
-    story.append(P("3. Proposed timeline — immediate", st["h1"]))
+    story.append(P("3. Timeline", st["h1"]))
     story.append(
         P(
-            "Because the public experience is already designed and deployed, we propose an <b>immediate</b> cutover path rather than a 2027 greenfield rebuild. Stages below compress discovery/design (complete) into launch and support.",
+            "Immediate cutover — design and build are done. Target: live on cwpd.org in "
+            "about <b>2–3 weeks</b> after notice to proceed.",
             st["body"],
         )
     )
-
     rows = [
         [
             P("<b>Stage</b>", st["table_head"]),
-            P("<b>Timing</b>", st["table_head"]),
+            P("<b>When</b>", st["table_head"]),
             P("<b>Work</b>", st["table_head"]),
         ],
         [
-            P("Discovery &amp; IA", st["table_cell"]),
-            P("Complete", st["table_cell"]),
-            P("RFP goals mapped; mobile IA shipped in prototype", st["table_cell"]),
-        ],
-        [
             P("Design &amp; build", st["table_cell"]),
-            P("Complete", st["table_cell"]),
-            P("Live concept on Cloudflare Pages", st["table_cell"]),
+            P("Done", st["table_cell"]),
+            P("Live on Cloudflare Pages", st["table_cell"]),
         ],
         [
             P("Content sync", st["table_cell"]),
             P("Week 1", st["table_cell"]),
-            P("Staff-provided final copy/photos; park &amp; news polish", st["table_cell"]),
+            P("Final copy, photos, news, alerts", st["table_cell"]),
         ],
         [
-            P("Testing &amp; AA pass", st["table_cell"]),
+            P("AA &amp; QA", st["table_cell"]),
             P("Week 1–2", st["table_cell"]),
-            P("axe + keyboard review; RecDesk/field checks", st["table_cell"]),
-        ],
-        [
-            P("Training", st["table_cell"]),
-            P("Week 2", st["table_cell"]),
-            P("Retainer request process; optional CMS intro", st["table_cell"]),
+            P("Accessibility pass; RecDesk / fields check", st["table_cell"]),
         ],
         [
             P("Launch", st["table_cell"]),
             P("Week 2–3", st["table_cell"]),
-            P("Point cwpd.org DNS to Cloudflare Pages; redirects", st["table_cell"]),
+            P("DNS to Cloudflare Pages; redirects", st["table_cell"]),
         ],
         [
-            P("Post-launch support", st["table_cell"]),
+            P("Support", st["table_cell"]),
             P("Ongoing", st["table_cell"]),
-            P("Monthly retainer; monitoring; enhancements", st["table_cell"]),
+            P("Monthly retainer", st["table_cell"]),
         ],
     ]
-    t = Table(rows, colWidths=[1.4 * inch, 1.0 * inch, 4.1 * inch])
+    t = Table(rows, colWidths=[1.35 * inch, 0.9 * inch, 4.25 * inch])
     t.setStyle(
         TableStyle(
             [
-                ("BACKGROUND", (0, 0), (-1, 0), FOREST),
-                ("BACKGROUND", (0, 1), (-1, -1), MIST),
+                ("BACKGROUND", (0, 0), (-1, 0), BLUE),
+                ("BACKGROUND", (0, 1), (-1, -1), PAPER),
                 ("GRID", (0, 0), (-1, -1), 0.4, LINE),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                ("TOPPADDING", (0, 0), (-1, -1), 6),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+                ("TOPPADDING", (0, 0), (-1, -1), 5),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
                 ("LEFTPADDING", (0, 0), (-1, -1), 6),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 6),
             ]
         )
     )
     story.append(t)
-    story.append(Spacer(1, 10))
-    story.append(
-        P(
-            "Target: domain live on the new site within approximately <b>two to three weeks</b> of award/notice to proceed, pending CWPD DNS access and content approvals.",
-            st["body"],
-        )
-    )
     return story
 
 
 def section_pricing(st):
     story = []
-    story.append(P("4. Investment &amp; monthly retainer", st["h1"]))
-    story.append(
-        P(
-            "Pricing reflects work already embodied in the live prototype (design + front-end build) and the remaining cutover, compliance, and ongoing care. Hosting is Cloudflare Pages with the district domain pointed to our project.",
-            st["body"],
-        )
-    )
+    story.append(P("4. Investment", st["h1"]))
 
-    story.append(P("One-time launch package", st["h2"]))
-    story.append(P("$14,500", st["price"]))
+    story.append(P("Launch package — $2,000", st["h2"]))
     story.extend(
         bullets(
             [
-                "Credit for completed UX/UI and Next.js prototype already demonstrated",
-                "Final content sync for parks, news, events, and alerts",
-                "DNS cutover plan: point cwpd.org to Cloudflare Pages",
-                "301 redirect map from legacy WordPress URLs",
-                "Pre-launch WCAG 2.1 AA verification pass (District-controlled UI)",
-                "RecDesk embed &amp; field-status production check",
-                "Staff handoff session (retainer workflow)",
-                "30 days hypercare after go-live included",
+                "Content sync, DNS cutover, 301 redirects",
+                "Pre-launch WCAG 2.1 AA check (District-controlled UI)",
+                "RecDesk and field-status production check",
+                "Staff handoff; 30 days hypercare after go-live",
             ],
             st,
         )
     )
 
-    story.append(P("Optional add-on", st["h2"]))
-    rows = [
+    story.append(P("Monthly retainer — $200 / month", st["h2"]))
+    story.extend(
+        bullets(
+            [
+                "Up to 2 hours / month for content updates and small fixes",
+                "Security / dependency updates; uptime checks",
+                "Email support on business days; larger work quoted separately",
+            ],
+            st,
+        )
+    )
+
+    story.append(P("Optional CMS setup — $2,500", st["h2"]))
+    story.append(
+        P(
+            "Decap or Sanity for in-house editing, if CWPD wants it after launch.",
+            st["body"],
+        )
+    )
+
+    summary = [
         [
             P("<b>Item</b>", st["table_head"]),
-            P("<b>Fee</b>", st["table_head"]),
+            P("<b>Amount</b>", st["table_head"]),
         ],
-        [
-            P("Phase 2 staff CMS (Decap or Sanity) setup &amp; training", st["table_cell"]),
-            P("$2,500 one-time", st["table_cell"]),
-        ],
+        [P("Launch package", st["table_cell"]), P("$2,000", st["table_cell"])],
+        [P("Monthly retainer", st["table_cell"]), P("$200 / month", st["table_cell"])],
+        [P("Optional CMS setup", st["table_cell"]), P("$2,500", st["table_cell"])],
     ]
-    t = Table(rows, colWidths=[5.0 * inch, 1.5 * inch])
+    t = Table(summary, colWidths=[4.5 * inch, 2.0 * inch])
     t.setStyle(
         TableStyle(
             [
-                ("BACKGROUND", (0, 0), (-1, 0), FOREST),
+                ("BACKGROUND", (0, 0), (-1, 0), INK),
                 ("GRID", (0, 0), (-1, -1), 0.4, LINE),
-                ("BACKGROUND", (0, 1), (-1, -1), white),
+                ("BACKGROUND", (0, 1), (-1, -1), BLUE_PALE),
                 ("TOPPADDING", (0, 0), (-1, -1), 6),
                 ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-                ("LEFTPADDING", (0, 0), (-1, -1), 6),
-            ]
-        )
-    )
-    story.append(t)
-
-    story.append(P("Monthly retainer (recommended)", st["h2"]))
-    story.append(P("$950 / month", st["price"]))
-    story.append(
-        P(
-            "Ongoing maintenance retainer — the model we recommend for CWPD after launch:",
-            st["body"],
-        )
-    )
-    story.extend(
-        bullets(
-            [
-                "Up to 6 hours / month of content updates, fixes, and small enhancements",
-                "Dependency and security updates for the Pages project",
-                "Uptime/visual checks for home, parks, fields, programs, shelters",
-                "RecDesk / field-status / Translate smoke checks after vendor changes",
-                "Minor accessibility remediations on District-controlled UI",
-                "Priority email support (business days)",
-                "Unused hours do not roll more than 30 days unless agreed in writing",
-                "Larger features quoted separately or drawn from a change budget",
-            ],
-            st,
-        )
-    )
-
-    story.append(P("Hosting", st["h2"]))
-    story.extend(
-        bullets(
-            [
-                "Platform: Cloudflare Pages (+ Pages Functions for field status &amp; park programs)",
-                "CWPD points DNS for cwpd.org (and www) to Cloudflare",
-                "SSL via Cloudflare; global CDN",
-                "Estimated Cloudflare cost at this traffic: typically within free/low Pro range — we recommend CWPD own the Cloudflare account; studio can administer under retainer",
-                "Annual hosting cash cost to CWPD: often $0–$240/year depending on Cloudflare plan chosen; not marked up by Clarke Design Studio",
-            ],
-            st,
-        )
-    )
-
-    story.append(P("Summary", st["h2"]))
-    summary = [
-        [
-            P("<b>Package</b>", st["table_head"]),
-            P("<b>Amount</b>", st["table_head"]),
-        ],
-        [
-            P("Immediate launch package", st["table_cell"]),
-            P("$14,500", st["table_cell"]),
-        ],
-        [
-            P("Optional CMS setup", st["table_cell"]),
-            P("$2,500", st["table_cell"]),
-        ],
-        [
-            P("Monthly retainer", st["table_cell"]),
-            P("$950 / month", st["table_cell"]),
-        ],
-    ]
-    t2 = Table(summary, colWidths=[4.5 * inch, 2.0 * inch])
-    t2.setStyle(
-        TableStyle(
-            [
-                ("BACKGROUND", (0, 0), (-1, 0), FOREST_DEEP),
-                ("GRID", (0, 0), (-1, -1), 0.4, LINE),
-                ("BACKGROUND", (0, 1), (-1, -1), MIST),
-                ("TOPPADDING", (0, 0), (-1, -1), 8),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
                 ("LEFTPADDING", (0, 0), (-1, -1), 8),
             ]
         )
     )
-    story.append(t2)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
+    story.append(t)
+    story.append(Spacer(1, 4))
     story.append(
         P(
-            "Fees are USD. Proposal valid for 90 days. No WordPress plugin or proprietary lock-in: CWPD owns the site content, design files, and custom code delivered under this engagement.",
+            "Hosting: Cloudflare Pages (often $0–$240/year). CWPD owns the account; "
+            "studio can administer under retainer. Fees in USD; valid 90 days. "
+            "CWPD owns delivered content, design files, and custom code.",
             st["meta"],
         )
     )
@@ -530,140 +423,79 @@ def section_pricing(st):
 
 def section_hosting_security(st):
     story = []
-    story.append(P("5. Hosting &amp; security", st["h1"]))
-    story.append(
+    block = []
+    block.append(P("5. Hosting &amp; security", st["h1"]))
+    block.append(
         P(
-            "Recommended change from DataYard WordPress hosting to <b>Cloudflare Pages</b>, with CWPD (or Clarke Design Studio under retainer) managing the project. Domain remains cwpd.org.",
+            "Move from DataYard WordPress to <b>Cloudflare Pages</b>. Domain stays cwpd.org.",
             st["body"],
         )
     )
     items = [
-        ("Environment", "Static site (Next.js export) + Cloudflare Pages Functions"),
-        ("Provider", "Cloudflare"),
-        ("Data location", "Cloudflare global edge network (US-centric traffic served from nearest PoP)"),
-        ("Uptime", "Cloudflare publicly targets high availability; static assets have no origin PHP stack"),
-        ("Backups", "Git repository is source of truth; Cloudflare deployment history for rollback"),
-        ("DR", "Redeploy from Git; DNS remains under CWPD control"),
-        ("SSL", "HTTPS via Cloudflare"),
-        ("Auth", "No public-site logins required; RecDesk handles registration accounts"),
-        ("Vulnerabilities", "No WordPress plugin attack surface; dependency updates under retainer"),
-        ("Malware / monitoring", "Cloudflare edge protections; retainer visual/uptime checks"),
-        ("Outage response", "Business-day retainer response; critical DNS/hosting issues escalated same day when notified"),
+        ("Stack", "Static Next.js export + Cloudflare Pages Functions"),
+        ("SSL / CDN", "HTTPS and global edge via Cloudflare"),
+        ("Backups", "Git is source of truth; deploy history for rollback"),
+        ("Security", "No WordPress plugins; dependency updates under retainer"),
+        ("Outages", "Business-day response; critical DNS issues same day when notified"),
     ]
     rows = [[P("<b>Topic</b>", st["table_head"]), P("<b>Approach</b>", st["table_head"])]]
     for k, v in items:
         rows.append([P(k, st["table_cell"]), P(v, st["table_cell"])])
-    t = Table(rows, colWidths=[1.6 * inch, 4.9 * inch])
+    t = Table(rows, colWidths=[1.3 * inch, 5.2 * inch])
     t.setStyle(
         TableStyle(
             [
-                ("BACKGROUND", (0, 0), (-1, 0), FOREST),
+                ("BACKGROUND", (0, 0), (-1, 0), BLUE),
                 ("GRID", (0, 0), (-1, -1), 0.4, LINE),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                ("TOPPADDING", (0, 0), (-1, -1), 5),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+                ("TOPPADDING", (0, 0), (-1, -1), 4),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
                 ("LEFTPADDING", (0, 0), (-1, -1), 6),
                 ("BACKGROUND", (0, 1), (-1, -1), white),
             ]
         )
     )
-    story.append(t)
-    return story
-
-
-def section_experience(st):
-    story = []
-    story.append(P("6. Experience, personnel, accessibility, RecDesk, IP", st["h1"]))
-
-    story.append(P("Comparable work &amp; sample", st["h2"]))
-    story.append(
-        P(
-            "Primary sample for this RFP: the CWPD redesign concept itself — "
-            "<b>https://centerville-park.pages.dev/</b> — a full park-district marketing site with finder, 51 park templates, RecDesk handoff, live fields, Foundation, translation, and accessibility documentation. "
-            "Clarke Design Studio specializes in brand-led public and civic digital experiences.",
-            st["body"],
-        )
-    )
-
-    story.append(P("Key personnel", st["h2"]))
-    story.append(
-        P(
-            "<b>Ryan Clarke</b> — Designer / lead. Responsible for visual design, UX, front-end implementation, accessibility review, RecDesk/field integration wiring, launch, and retainer delivery. "
-            "Contact: clarkeanthonyryan@yahoo.com",
-            st["body"],
-        )
-    )
-
-    story.append(P("Accessibility process", st["h2"]))
-    story.extend(
-        bullets(
-            [
-                "Build with semantic HTML, keyboard access, focus visibility, and contrast from the start",
-                "Automated axe-core audits (wcag2a/aa + wcag21a/aa) on key templates before launch",
-                "Manual keyboard pass; document known third-party limits (RecDesk, Google Translate)",
-                "Remediate District-controlled issues under launch package and retainer",
-                "Public Accessibility page + audit summary retained on the site",
-            ],
-            st,
-        )
-    )
-
-    story.append(P("RecDesk experience &amp; limitations", st["h2"]))
-    story.append(
-        P(
-            "Implemented live RecDesk Community embeds for programs and facilities; Cloudflare Function proxy for facility-filtered program listings; deep links to membership signup and program detail. "
-            "Limitations: no private RecDesk API contract in this proposal; automation is via RecDesk’s public interfaces. Duplicate entry of the program catalog is avoided by not mirroring RecDesk into a second CMS database. "
-            "Third-party RecDesk UI accessibility is outside full District control; we mitigate with clear “open full list” paths and titles.",
-            st["body"],
-        )
-    )
-
-    story.append(P("References", st["h2"]))
-    story.append(
-        P(
-            "Professional references available on request for municipal / brand digital work. For this submission, the working CWPD prototype is the primary reviewable artifact.",
-            st["body"],
-        )
-    )
-
-    story.append(P("Intellectual property", st["h2"]))
-    story.append(
-        P(
-            "All website content, data, design files, and custom code delivered for CWPD under this engagement shall be CWPD’s property upon payment. "
-            "We do not retain proprietary runtime licenses that would block CWPD from maintaining or migrating the site. Open-source components (Next.js, React, etc.) remain under their respective licenses. "
-            "Google Translate and RecDesk remain third-party services under CWPD’s/Google’s/RecDesk’s terms.",
-            st["body"],
-        )
-    )
+    block.append(t)
+    story.append(KeepTogether(block))
     return story
 
 
 def section_close(st):
     story = []
-    story.append(P("7. Closing", st["h1"]))
+    story.append(P("6. Team, sample &amp; terms", st["h1"]))
     story.append(
         P(
-            "We are ready to point <b>cwpd.org</b> at the Cloudflare Pages project, complete content sync, and operate under a monthly retainer. "
-            "The design is not a slide deck — it is already a running park district website.",
+            "<b>Ryan Clarke</b> — design, build, accessibility, RecDesk/fields wiring, "
+            "launch, and retainer. ryan@clarkedesignstudio.com",
             st["body"],
         )
     )
     story.append(
         P(
-            "Submitted by Clarke Design Studio<br/>"
-            "Ryan Clarke<br/>"
-            "clarkeanthonyryan@yahoo.com<br/>"
-            "Live concept: https://centerville-park.pages.dev/",
+            "Primary sample: <b>https://centerville-park.pages.dev/</b>. "
+            "References available on request.",
             st["body"],
         )
     )
-    story.append(Spacer(1, 12))
-    story.append(HRFlowable(width="100%", thickness=1, color=GOLD, spaceAfter=10))
     story.append(
         P(
-            "Note on homepage wording: “Your community’s big backyard” uses the singular possessive "
-            "<i>community’s</i>, matching CWPD’s established slogan (not “communities”). "
-            "If CWPD prefers plural (“communities’”) to emphasize Centerville and Washington Township together, we can change it in one deploy.",
+            "Delivered content, design files, and custom code belong to CWPD upon payment. "
+            "Open-source libraries keep their licenses. RecDesk and Google Translate remain "
+            "third-party services.",
+            st["body"],
+        )
+    )
+    story.append(Spacer(1, 8))
+    story.append(
+        P(
+            "Ready to point <b>cwpd.org</b> to Cloudflare Pages and support the site under retainer.",
+            st["body"],
+        )
+    )
+    story.append(
+        P(
+            "Clarke Design Studio · Ryan Clarke · ryan@clarkedesignstudio.com · "
+            "clarkedesignstudio.com",
             st["meta"],
         )
     )
@@ -675,10 +507,10 @@ def build():
     doc = SimpleDocTemplate(
         str(OUT),
         pagesize=letter,
-        leftMargin=0.75 * inch,
-        rightMargin=0.75 * inch,
-        topMargin=0.7 * inch,
-        bottomMargin=0.85 * inch,
+        leftMargin=0.7 * inch,
+        rightMargin=0.7 * inch,
+        topMargin=0.55 * inch,
+        bottomMargin=0.7 * inch,
         title="CWPD Website Redesign Proposal — Clarke Design Studio",
         author="Clarke Design Studio",
     )
@@ -689,11 +521,10 @@ def build():
     story.append(PageBreak())
     story.extend(section_timeline(st))
     story.extend(section_pricing(st))
-    story.append(PageBreak())
     story.extend(section_hosting_security(st))
-    story.extend(section_experience(st))
     story.extend(section_close(st))
     doc.build(story, onFirstPage=add_header_footer, onLaterPages=add_header_footer)
+    ARTIFACT.parent.mkdir(parents=True, exist_ok=True)
     ARTIFACT.write_bytes(OUT.read_bytes())
     print("wrote", OUT, "bytes", OUT.stat().st_size)
     print("artifact", ARTIFACT)
