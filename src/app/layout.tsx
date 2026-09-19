@@ -5,6 +5,7 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { MobileDock } from "@/components/MobileDock";
 import { BackToTop } from "@/components/BackToTop";
 import { Domine, Montserrat } from "next/font/google";
+import { SITE_URL } from "@/data/site";
 import "./globals.css";
 
 const display = Domine({
@@ -20,6 +21,7 @@ const sans = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Centerville-Washington Park District",
     template: "%s · CWPD",
@@ -31,6 +33,7 @@ export const metadata: Metadata = {
     description:
       "Your community's big backyard — parks, programs, and events in Centerville & Washington Township.",
     type: "website",
+    url: SITE_URL,
   },
 };
 
@@ -39,8 +42,8 @@ const orgJsonLd = {
   "@type": "GovernmentOrganization",
   name: "Centerville-Washington Park District",
   alternateName: "CWPD",
-  url: "https://cwpd.org",
-  logo: "https://cwpd.org/wp-content/uploads/2016/04/CWPD_logo.png",
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/cwpd-logo.png`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "221 N. Main Street",
