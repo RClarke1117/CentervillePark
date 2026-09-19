@@ -1,0 +1,101 @@
+import Link from "next/link";
+
+const columns = [
+  {
+    title: "Explore",
+    links: [
+      { href: "/parks", label: "Find a Park" },
+      { href: "/programs", label: "Programs & registration" },
+      { href: "/events", label: "Upcoming events" },
+      { href: "/shelters", label: "Reserve a shelter" },
+    ],
+  },
+  {
+    title: "Today",
+    links: [
+      { href: "/fields", label: "Athletic field status" },
+      { href: "/parks?amenity=dog-park", label: "Dog park" },
+      { href: "/news", label: "Park District news" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
+  {
+    title: "Connect",
+    links: [
+      { href: "/foundation", label: "Foundation" },
+      { href: "/about", label: "About CWPD" },
+      { href: "/about#volunteer", label: "Volunteer" },
+      { href: "/about#careers", label: "Careers" },
+    ],
+  },
+];
+
+export function SiteFooter() {
+  return (
+    <footer className="bg-forest-deep text-white">
+      <div className="section-pad grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-8">
+        <div>
+          <p
+            className="font-[family-name:var(--font-display)] text-2xl leading-tight tracking-tight"
+            style={{ fontVariationSettings: '"SOFT" 40, "WONK" 0' }}
+          >
+            Centerville-Washington
+            <br />
+            Park District
+          </p>
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
+            Your community&apos;s big backyard — 51 parks across 1,063 acres in
+            Centerville and Washington Township.
+          </p>
+          <p className="mt-6 text-sm text-white/70">
+            221 N. Main Street
+            <br />
+            Centerville, Ohio 45459
+            <br />
+            <a className="focus-ring mt-2 inline-block underline-offset-2 hover:underline" href="tel:9374335155">
+              (937) 433-5155
+            </a>
+          </p>
+          <p className="mt-3 text-xs text-white/50">
+            Office hours: 8 a.m. – 3:30 p.m., Monday–Friday
+          </p>
+        </div>
+
+        {columns.map((col) => (
+          <div key={col.title}>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-bright">
+              {col.title}
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {col.links.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="focus-ring text-sm text-white/75 transition hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="section-pad flex flex-col gap-3 border-t border-white/10 py-5 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} Centerville-Washington Park District</p>
+        <p>
+          Redesign concept by{" "}
+          <a
+            href="https://clarkedesignstudio.com"
+            className="focus-ring text-white/70 underline-offset-2 hover:text-white hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Clarke Design Studio
+          </a>
+        </p>
+      </div>
+    </footer>
+  );
+}
