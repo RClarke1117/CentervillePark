@@ -23,7 +23,7 @@ export function ProgramsClient() {
         description="Listings mirror RecDesk where feasible — reducing duplicate staff entry while keeping registration on the system CWPD already trusts."
         crumbs={[{ label: "Programs" }]}
       >
-        <ButtonLink href="https://secure.recdesk.com/Community/Home" external>
+        <ButtonLink href="https://cwpd.recdesk.com/Community/Home" external>
           Open RecDesk registration
         </ButtonLink>
       </PageHero>

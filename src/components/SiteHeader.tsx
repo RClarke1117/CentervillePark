@@ -68,8 +68,9 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={`focus-ring rounded-sm px-2.5 py-2 text-sm font-medium transition-colors ${
-                  active ? "text-white" : "text-white/90 hover:text-white"
+                  active ? "!text-white" : "!text-white/90 hover:!text-white"
                 }`}
+                style={{ color: "#ffffff" }}
               >
                 {item.label}
               </Link>
@@ -128,12 +129,13 @@ export function SiteHeader() {
           id="mobile-nav"
           className="section-pad border-t border-white/15 bg-forest-deep py-3 lg:hidden"
         >
-          <nav aria-label="Mobile" className="flex flex-col gap-0.5">
+          <nav aria-label="Mobile" className="flex flex-col gap-0.5 text-white">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="focus-ring rounded-sm px-2 py-3 text-base font-medium text-white"
+                className="focus-ring rounded-sm px-2 py-3 text-base font-medium !text-white"
+                style={{ color: "#ffffff" }}
                 onClick={() => setOpen(false)}
               >
                 {item.label}
@@ -141,7 +143,8 @@ export function SiteHeader() {
             ))}
             <Link
               href="/foundation"
-              className="focus-ring mt-2 rounded-sm bg-[#9ec0ef] px-3 py-3 text-center text-base font-semibold text-foundation"
+              className="focus-ring mt-2 rounded-sm bg-[#9ec0ef] px-3 py-3 text-center text-base font-semibold !text-foundation"
+              style={{ color: "#1e3a5f" }}
               onClick={() => setOpen(false)}
             >
               Foundation

@@ -71,8 +71,20 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+}
+
+/* Prevent base body ink from winning over nav utilities */
+header nav a {
+  color: #ffffff;
+}
+
+header nav a[href="/foundation"] {
+  color: #ffffff;
+}
+
+#mobile-nav a[href="/foundation"] {
+  color: #1e3a5f;
 }
 
 img {

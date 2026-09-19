@@ -22,7 +22,7 @@ export default function SheltersPage() {
         description="Community parks offer reservable shelters for reunions, birthdays, and team parties. Booking continues through RecDesk with clearer park context here."
         crumbs={[{ label: "Shelters" }]}
       >
-        <ButtonLink href="https://secure.recdesk.com/Community/Home" external>
+        <ButtonLink href="https://cwpd.recdesk.com/Community/Facility" external>
           Start a reservation
         </ButtonLink>
       </PageHero>
