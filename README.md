@@ -1,6 +1,8 @@
 # Centerville-Washington Park District — Redesign Prototype
 
-Concept redesign of [cwpd.org](https://cwpd.org) prepared for the CWPD Website Redesign RFP (proposals due Oct 12, 2026), to Clarke Design Studio quality standards.
+Concept redesign of [cwpd.org](https://cwpd.org) for the CWPD Website Redesign RFP (proposals due Oct 12, 2026).
+
+**Live:** https://centerville-park.pages.dev/
 
 ## Run locally
 
@@ -11,19 +13,38 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## What’s demonstrated
+## Production build
 
-- **Mobile-first IA** focused on Find a Park, shelters, programs/RecDesk handoff, field status, news, and Foundation
-- **Improved Park Finder** with amenity filters and at-a-glance results (RFP: decide without opening every park page)
-- **Repeatable park templates** with amenities, related programs, and news hooks
-- **Foundation** section with a distinct visual identity linked from the home page
-- **WCAG-minded** structure: skip link, focus rings, semantic headings, reduced-motion support
-- **Brand-led hero** and intentional motion (reveal + subtle ken burns), per Clarke Design Studio expectations
+```bash
+npm run build
+npx wrangler pages deploy out --project-name=centerville-park
+```
+
+Static HTML is written to `out/`. Cloudflare Pages Functions in `functions/api/` provide:
+
+- `/api/field-status` — live RainoutLine status from cwpd.org  
+- `/api/park-programs` — RecDesk facility-filtered program list  
+
+## Self-contained assets
+
+Everything needed to render the public site is in this repository:
+
+- Logo and photography under `public/images/` (including all 51 park photos)  
+- Domine + Montserrat via `next/font` (downloaded at build, served from the deploy)  
+- Page content in `src/data/`  
+
+Third-party services used by design (same class as the live district site):
+
+- **RecDesk** — program/shelter registration embeds  
+- **Google Translate** — footer language control  
+- **RainoutLine / cwpd.org field status** — live field board  
+
+The static front end still works if those services are slow; embeds and APIs degrade gracefully.
+
+## RFP readiness
+
+See [docs/rfp-readiness.md](./docs/rfp-readiness.md) for a requirement-by-requirement check against the CWPD RFP.
 
 ## Stack
 
-Next.js (App Router), TypeScript, Tailwind CSS v4, Framer Motion available, curated park content from cwpd.org.
-
-## Note
-
-This is a front-end prototype for proposal and design review — not a live CMS or RecDesk integration. Content is representative; production would migrate staff-provided content and wire RecDesk feeds/API.
+Next.js App Router (static export), TypeScript, Tailwind CSS v4, Cloudflare Pages.

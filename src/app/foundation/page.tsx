@@ -16,7 +16,7 @@ export default function FoundationPage() {
         tone="foundation"
         eyebrow="Foundation for Centerville-Washington Parks"
         title="Private generosity for a public backyard."
-        description="A distinct nonprofit partner — visually separate from the Park District — funding trees, benches, trail enhancements, and program scholarships."
+        description="A nonprofit partner funding trees, benches, trail enhancements, and program scholarships."
         crumbs={[{ label: "Foundation" }]}
       >
         <div className="flex flex-wrap gap-3">
@@ -37,7 +37,6 @@ export default function FoundationPage() {
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-3xl tracking-tight text-foundation"
-            style={{ fontVariationSettings: '"SOFT" 20' }}
           >
             Ways to give
           </h2>

@@ -19,7 +19,7 @@ const planLinks = [
   {
     href: "/programs",
     title: "Search & register",
-    text: "Camps, classes, and special events — with a clearer handoff into RecDesk.",
+    text: "Camps, classes, and special events — search and register.",
   },
   {
     href: "/fields",
@@ -31,17 +31,7 @@ const planLinks = [
 export default function HomePage() {
   const featured = parks.filter((p) => p.featured).slice(0, 4);
   const upcoming = getUpcomingEvents().slice(0, 3);
-  const latest = upcoming.length
-    ? upcoming.map((e) => ({
-        slug: e.slug,
-        title: e.title,
-        date: e.date,
-        excerpt: e.excerpt,
-        category: "Event" as const,
-        image: e.image,
-        href: `/events/${e.slug}/`,
-      }))
-    : news.slice(0, 3).map((n) => ({ ...n, href: "/news/" }));
+  const latestNews = news.slice(0, 2);
 
   return (
     <>
@@ -61,7 +51,6 @@ export default function HomePage() {
           </p>
           <h1
             className="reveal reveal-delay-1 mt-4 max-w-4xl font-[family-name:var(--font-display)] text-[clamp(2.75rem,8vw,5.75rem)] leading-[0.95] tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 50, "WONK" 0, "opsz" 144' }}
           >
             Your community&apos;s
             <br />
@@ -78,7 +67,7 @@ export default function HomePage() {
             </ButtonLink>
           </div>
           <p
-            className="scroll-cue mt-14 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/55"
+            className="scroll-cue mt-14 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70"
             aria-hidden
           >
             Scroll
@@ -92,7 +81,6 @@ export default function HomePage() {
             <div className="max-w-2xl">
               <h2
                 className="font-[family-name:var(--font-display)] text-3xl tracking-tight text-ink md:text-4xl"
-                style={{ fontVariationSettings: '"SOFT" 30' }}
               >
                 Plan your park experience
               </h2>
@@ -138,7 +126,6 @@ export default function HomePage() {
             <div className="max-w-xl">
               <h2
                 className="font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-4xl"
-                style={{ fontVariationSettings: '"SOFT" 30' }}
               >
                 Parks worth knowing by name
               </h2>
@@ -190,7 +177,6 @@ export default function HomePage() {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <h2
                 className="font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-4xl"
-                style={{ fontVariationSettings: '"SOFT" 30' }}
               >
                 Upcoming events
               </h2>
@@ -203,7 +189,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
-            {latest.map((item, i) => (
+            {upcoming.map((item, i) => (
               <Reveal key={item.slug} delay={i * 80}>
                 <article className="flex flex-col">
                   <div className="relative mb-4 aspect-[16/10] overflow-hidden">
@@ -216,7 +202,7 @@ export default function HomePage() {
                     />
                   </div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-forest-mid">
-                    {item.category} ·{" "}
+                    Event ·{" "}
                     {new Date(`${item.date}T12:00:00`).toLocaleDateString(
                       "en-US",
                       {
@@ -228,7 +214,7 @@ export default function HomePage() {
                   </p>
                   <h3 className="mt-2 font-[family-name:var(--font-display)] text-xl leading-snug tracking-tight">
                     <Link
-                      href={item.href}
+                      href={`/events/${item.slug}/`}
                       className="focus-ring hover:text-forest-mid"
                     >
                       {item.title}
@@ -242,6 +228,57 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="section-pad py-14 md:py-16">
+        <Reveal>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-4xl">
+              Park District news
+            </h2>
+            <Link
+              href="/news/"
+              className="focus-ring text-sm font-semibold text-forest underline-offset-4 hover:underline"
+            >
+              All news
+            </Link>
+          </div>
+        </Reveal>
+        <ul className="mt-8 grid gap-6 md:grid-cols-2">
+          {latestNews.map((item) => (
+            <li key={item.slug}>
+              <Link
+                href="/news/"
+                className="focus-ring group grid gap-4 border border-line bg-paper p-5 transition hover:border-forest/30 sm:grid-cols-[140px_1fr]"
+              >
+                <div className="relative min-h-24 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="140px"
+                  />
+                </div>
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-forest-mid">
+                    {item.category} ·{" "}
+                    {new Date(`${item.date}T12:00:00`).toLocaleDateString(
+                      "en-US",
+                      { month: "short", day: "numeric", year: "numeric" },
+                    )}
+                  </p>
+                  <h3 className="mt-2 font-[family-name:var(--font-display)] text-xl tracking-tight group-hover:text-forest-mid">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                    {item.excerpt}
+                  </p>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="relative overflow-hidden bg-foundation text-white">
@@ -261,14 +298,12 @@ export default function HomePage() {
               </p>
               <h2
                 className="mt-4 font-[family-name:var(--font-display)] text-3xl tracking-tight md:text-5xl"
-                style={{ fontVariationSettings: '"SOFT" 20' }}
               >
                 Give the backyard a future.
               </h2>
               <p className="mt-4 max-w-md text-base leading-relaxed text-white/80">
-                A distinct nonprofit partner — visually separate from Park
-                District operations — funding trees, benches, trails, and
-                scholarships.
+                A nonprofit partner funding trees, benches, trails, and
+                scholarships across the Park District.
               </p>
               <div className="mt-8">
                 <ButtonLink

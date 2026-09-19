@@ -22,7 +22,6 @@ export default function AboutPage() {
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 30' }}
           >
             How we are funded
           </h2>
@@ -44,7 +43,6 @@ export default function AboutPage() {
         <div>
           <h2
             className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-            style={{ fontVariationSettings: '"SOFT" 30' }}
           >
             Proud to be home
           </h2>
@@ -69,7 +67,6 @@ export default function AboutPage() {
       >
         <h2
           className="font-[family-name:var(--font-display)] text-2xl tracking-tight"
-          style={{ fontVariationSettings: '"SOFT" 30' }}
         >
           Volunteer & careers
         </h2>

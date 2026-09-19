@@ -199,6 +199,31 @@ img {
   outline-offset: 3px;
 }
 
+/* Google Translate (cwpd.org-compatible): hide banner, prevent layout jump */
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-tooltip {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.goog-text-highlight {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.goog-te-gadget {
+  font-size: 0 !important;
+}
+
+.goog-te-combo {
+  font-size: 0.875rem !important;
+}
+
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(22px);
