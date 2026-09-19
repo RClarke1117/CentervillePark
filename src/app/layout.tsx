@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { AlertBanner } from "@/components/AlertBanner";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { MobileDock } from "@/components/MobileDock";
 import { BackToTop } from "@/components/BackToTop";
@@ -70,7 +69,6 @@ export default function RootLayout({
           Skip to content
         </a>
         <ScrollProgress />
-        <AlertBanner />
         <SiteHeader />
         <main id="main" className="flex-1">
           {children}

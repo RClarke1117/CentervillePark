@@ -10,7 +10,7 @@ const nav = [
   { href: "/parks", label: "Find a Park" },
   { href: "/programs", label: "Programs" },
   { href: "/events", label: "Events" },
-  { href: "/fields", label: "Field Status" },
+  { href: "/fields", label: "Fields" },
   { href: "/shelters", label: "Shelters" },
   { href: "/about", label: "About" },
 ];
@@ -19,6 +19,7 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [alertOpen, setAlertOpen] = useState(false);
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -32,7 +33,12 @@ export function SiteHeader() {
     setOpen(false);
   }, [pathname]);
 
-  const solid = !isHome || scrolled || open;
+  useEffect(() => {
+    const dismissed = sessionStorage.getItem("cwpd-alert-dismissed");
+    if (!dismissed) setAlertOpen(true);
+  }, []);
+
+  const solid = !isHome || scrolled || open || alertOpen;
 
   return (
     <header
@@ -42,6 +48,44 @@ export function SiteHeader() {
           : "bg-transparent"
       }`}
     >
+      {alertOpen && (
+        <div
+          role="status"
+          className="border-b border-amber-soft/40 bg-[#2a2416] text-amber-soft"
+        >
+          <div className="section-pad flex items-start gap-3 py-2 text-sm md:items-center">
+            <span
+              className="mt-0.5 shrink-0 font-bold text-gold-bright md:mt-0"
+              aria-hidden
+            >
+              ●
+            </span>
+            <p className="flex-1 leading-snug text-[#f6e8c4]">
+              <strong className="font-semibold text-white">Field update:</strong>{" "}
+              Some athletic fields are limited after overnight rain.{" "}
+              <Link
+                href="/fields"
+                className="focus-ring underline underline-offset-2 !text-[#f6e8c4]"
+                style={{ color: "#f6e8c4" }}
+              >
+                Check field status
+              </Link>
+              .
+            </p>
+            <button
+              type="button"
+              className="focus-ring shrink-0 px-2 py-1 text-xs font-semibold uppercase tracking-wider text-white/70 hover:text-white"
+              onClick={() => {
+                sessionStorage.setItem("cwpd-alert-dismissed", "1");
+                setAlertOpen(false);
+              }}
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="section-pad flex items-center justify-between gap-3 py-3 md:py-4">
         <Link
           href="/"
@@ -78,7 +122,8 @@ export function SiteHeader() {
           })}
           <Link
             href="/foundation"
-            className="focus-ring ml-1 rounded-sm border border-[#9ec0ef]/50 bg-[#1e3a5f]/80 px-3 py-2 text-sm font-semibold text-white transition hover:bg-foundation"
+            className="focus-ring ml-1 rounded-sm border border-[#9ec0ef]/50 bg-[#1e3a5f]/80 px-3 py-2 text-sm font-semibold !text-white"
+            style={{ color: "#ffffff" }}
           >
             Foundation
           </Link>
@@ -143,7 +188,7 @@ export function SiteHeader() {
             ))}
             <Link
               href="/foundation"
-              className="focus-ring mt-2 rounded-sm bg-[#9ec0ef] px-3 py-3 text-center text-base font-semibold !text-foundation"
+              className="focus-ring mt-2 rounded-sm bg-[#9ec0ef] px-3 py-3 text-center text-base font-semibold"
               style={{ color: "#1e3a5f" }}
               onClick={() => setOpen(false)}
             >
