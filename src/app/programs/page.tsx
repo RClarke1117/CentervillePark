@@ -67,7 +67,7 @@ export default function ProgramsPage() {
           src={RECDESK_PROGRAMS}
           title="CWPD program registration"
           openLabel="Open full RecDesk programs"
-          minHeight={1100}
+          frameHeight={1100}
         />
       </div>
     </div>

@@ -71,7 +71,7 @@ export default function SheltersPage() {
           src={RECDESK_FACILITY}
           title="CWPD facility & shelter reservations"
           openLabel="Open full RecDesk facilities"
-          minHeight={1000}
+          frameHeight={1000}
         />
       </div>
     </div>
