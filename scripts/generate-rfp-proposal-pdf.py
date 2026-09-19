@@ -249,7 +249,9 @@ def section_vendor_questions(st):
         (
             "4. CMS recommendation",
             "No WordPress rebuild on day one. The studio publishes updates under the monthly "
-            "retainer. Optional later: Decap or Sanity for staff editing (~$2,500 setup).",
+            "retainer. Optional later: a simple staff admin (Decap or similar) so district "
+            "staff can edit news, alerts, and short page copy without touching code — "
+            "setup ~$1,000.",
         ),
         (
             "5. WCAG 2.1 AA",
@@ -377,10 +379,10 @@ def section_pricing(st):
         )
     )
 
-    story.append(P("Optional CMS setup — $2,500", st["h2"]))
+    story.append(P("Optional CMS setup — $1,000", st["h2"]))
     story.append(
         P(
-            "Decap or Sanity for in-house editing, if CWPD wants it after launch.",
+            "Simple staff admin for news, alerts, and short page copy — not a full WordPress rebuild.",
             st["body"],
         )
     )
@@ -392,7 +394,7 @@ def section_pricing(st):
         ],
         [P("Launch package", st["table_cell"]), P("$2,000", st["table_cell"])],
         [P("Monthly retainer", st["table_cell"]), P("$200 / month", st["table_cell"])],
-        [P("Optional CMS setup", st["table_cell"]), P("$2,500", st["table_cell"])],
+        [P("Optional CMS setup", st["table_cell"]), P("$1,000", st["table_cell"])],
     ]
     t = Table(summary, colWidths=[4.5 * inch, 2.0 * inch])
     t.setStyle(
