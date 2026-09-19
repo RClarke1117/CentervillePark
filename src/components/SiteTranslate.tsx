@@ -2,22 +2,47 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
-/** Same language set as cwpd.org Google Language Translator widget */
+/** Languages offered via Google Translate (includes cwpd.org set + additional) */
 export const TRANSLATE_LANGUAGES = [
   { code: "en", label: "English" },
-  { code: "es", label: "Spanish" },
-  { code: "zh-CN", label: "Chinese (Simplified)" },
+  { code: "am", label: "Amharic" },
   { code: "ar", label: "Arabic" },
+  { code: "bn", label: "Bengali" },
+  { code: "zh-CN", label: "Chinese (Simplified)" },
+  { code: "zh-TW", label: "Chinese (Traditional)" },
+  { code: "fr", label: "French" },
+  { code: "de", label: "German" },
+  { code: "el", label: "Greek" },
+  { code: "gu", label: "Gujarati" },
+  { code: "ht", label: "Haitian Creole" },
+  { code: "ha", label: "Hausa" },
+  { code: "he", label: "Hebrew" },
   { code: "hi", label: "Hindi" },
+  { code: "it", label: "Italian" },
+  { code: "ja", label: "Japanese" },
+  { code: "kn", label: "Kannada" },
   { code: "ko", label: "Korean" },
+  { code: "ml", label: "Malayalam" },
+  { code: "mr", label: "Marathi" },
+  { code: "ne", label: "Nepali" },
   { code: "fa", label: "Persian" },
+  { code: "pl", label: "Polish" },
   { code: "pt", label: "Portuguese" },
   { code: "pa", label: "Punjabi" },
+  { code: "ro", label: "Romanian" },
   { code: "ru", label: "Russian" },
+  { code: "so", label: "Somali" },
+  { code: "es", label: "Spanish" },
+  { code: "sw", label: "Swahili" },
+  { code: "tl", label: "Tagalog" },
+  { code: "ta", label: "Tamil" },
   { code: "te", label: "Telugu" },
   { code: "th", label: "Thai" },
   { code: "tr", label: "Turkish" },
   { code: "uk", label: "Ukrainian" },
+  { code: "ur", label: "Urdu" },
+  { code: "vi", label: "Vietnamese" },
+  { code: "yo", label: "Yoruba" },
 ] as const;
 
 const INCLUDED = TRANSLATE_LANGUAGES.map((l) => l.code).join(",");
@@ -165,8 +190,7 @@ export function SiteTranslate({ compact = false }: { compact?: boolean }) {
         aria-hidden={ready ? undefined : true}
       />
       <p className="sr-only">
-        Machine translation powered by Google Translate, matching the language
-        options on the current Centerville-Washington Park District website.
+        Machine translation powered by Google Translate.
       </p>
     </div>
   );

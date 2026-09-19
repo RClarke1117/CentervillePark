@@ -114,7 +114,8 @@ export function SiteFooter() {
       <div className="section-pad border-t border-white/10 py-6">
         <SiteTranslate />
         <p className="mt-2 text-xs text-white/70">
-          Same languages as cwpd.org — powered by Google Translate.
+          Powered by Google Translate — includes the languages on cwpd.org plus
+          more.
         </p>
       </div>
 

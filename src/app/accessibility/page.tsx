@@ -31,7 +31,7 @@ const features = [
   },
   {
     title: "Language",
-    text: "The site language is set to English. A Google Translate control in the footer offers the same language set as cwpd.org for machine translation.",
+    text: "The site language is set to English. A Google Translate control in the footer offers dozens of languages for machine translation.",
   },
 ];
 
