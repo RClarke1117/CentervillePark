@@ -37,7 +37,7 @@ export default async function ParkDetailPage({ params }: Props) {
 
   return (
     <article>
-      <header className="relative min-h-[70svh] overflow-hidden bg-forest-deep text-white">
+      <header className="media-frame relative min-h-[70svh] overflow-hidden bg-forest-deep text-white">
         <Image
           src={park.image}
           alt=""
@@ -47,19 +47,19 @@ export default async function ParkDetailPage({ params }: Props) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/55 to-forest-deep/25" />
-        <div className="section-pad relative flex min-h-[70svh] flex-col justify-end pb-12 pt-28">
+        <div className="section-pad relative z-[5] flex min-h-[70svh] flex-col justify-end pb-12 pt-28">
           <Breadcrumbs
             items={[
               { href: "/parks", label: "Parks" },
               { label: park.name },
             ]}
           />
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
+          <p className="text-on-media-sm mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
             {park.type} park
             {park.acres != null ? ` · ${park.acres} acres` : ""}
           </p>
           <h1
-            className="mt-3 font-[family-name:var(--font-display)] text-5xl tracking-tight md:text-6xl"
+            className="text-on-media mt-3 font-[family-name:var(--font-display)] text-5xl tracking-tight md:text-6xl"
           >
             {park.name}
           </h1>

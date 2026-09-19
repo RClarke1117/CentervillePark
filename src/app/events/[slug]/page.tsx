@@ -45,7 +45,7 @@ export default async function EventDetailPage({ params }: Props) {
 
   return (
     <div className="atmosphere min-h-screen">
-      <div className="relative min-h-[42svh] overflow-hidden bg-forest-deep text-white md:min-h-[50svh]">
+      <div className="media-frame relative min-h-[42svh] overflow-hidden bg-forest-deep text-white md:min-h-[50svh]">
         <Image
           src={event.image}
           alt=""
@@ -55,7 +55,7 @@ export default async function EventDetailPage({ params }: Props) {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/60 to-forest-deep/30" />
-        <div className="section-pad relative flex min-h-[42svh] flex-col justify-end pb-10 pt-28 md:min-h-[50svh] md:pb-14">
+        <div className="section-pad relative z-[5] flex min-h-[42svh] flex-col justify-end pb-10 pt-28 md:min-h-[50svh] md:pb-14">
           <p className="text-xs text-white/85">
             <Link href="/" className="focus-ring hover:text-white">
               Home
@@ -67,11 +67,11 @@ export default async function EventDetailPage({ params }: Props) {
             {" / "}
             <span className="text-white/90">{event.title}</span>
           </p>
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
+          <p className="text-on-media-sm mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-bright">
             Special event
           </p>
           <h1
-            className="mt-3 max-w-3xl font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
+            className="text-on-media mt-3 max-w-3xl font-[family-name:var(--font-display)] text-4xl tracking-tight md:text-5xl"
           >
             {event.title}
           </h1>

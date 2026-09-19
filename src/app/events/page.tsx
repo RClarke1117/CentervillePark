@@ -44,7 +44,7 @@ export default function EventsPage() {
                   href={`/events/${e.slug}/`}
                   className="focus-ring group grid overflow-hidden border border-line bg-paper transition hover:border-forest/30 sm:grid-cols-[140px_1fr]"
                 >
-                  <div className="relative min-h-28 sm:min-h-full">
+                  <div className="media-frame relative min-h-28 sm:min-h-full">
                     <Image
                       src={e.image}
                       alt=""

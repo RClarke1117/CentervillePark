@@ -55,7 +55,7 @@ export default function FoundationPage() {
             </li>
           </ul>
         </div>
-        <div className="relative min-h-72 overflow-hidden">
+        <div className="media-frame relative min-h-72 overflow-hidden">
           <Image
             src="/images/foundation.jpg"
             alt=""
